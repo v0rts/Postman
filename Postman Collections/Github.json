@@ -1,0 +1,115 @@
+{
+  "info": {
+    "_postman_id": "78b4b625-e19b-4ed9-b99b-baf2ffb621b1",
+    "name": "Github",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "fceded09-54cd-4ad4-8aaf-8cfc4d892579",
+      "name": "List SSH Keys",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{PersonalAccessToken}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{URL}}/user"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "5f8673c6-6909-4e72-89d7-aa6b2512125f",
+      "name": "Upload SSH Keys",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{PersonalAccessToken}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {},
+        "url": "{{URL}}/user/keys"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "39536a30-1b6b-44c3-affb-2938afc4640a",
+      "name": "List My Orgs",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{PersonalAccessToken}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{URL}}/user"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "841c13a0-ca57-42c8-87a6-279293d5ed82",
+      "name": "List All Orgs",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{PersonalAccessToken}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{URL}}/organizations"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "71e6058e-8ffc-4b31-99de-5972a64a9025",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "1fe0605c-89f3-477d-abaa-cfeae2f4543c",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
