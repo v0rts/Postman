@@ -1328,6 +1328,395 @@
           ],
           "_postman_id": "a710b737-0802-4b0a-9b8c-4039c5f43291",
           "_postman_isSubFolder": true
+        },
+        {
+          "name": "#Action=Withdraw Byoip Cidr",
+          "item": [
+            {
+              "name": "GET Withdraw Byoip Cidr",
+              "_postman_id": "7b05e674-4134-4c13-97be-dcb6aaadf857",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "",
+                    "description": "Amazon Signature authorization v4"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "http://ec2.{{region}}.amazonaws.com/?Cidr=<string>&DryRun=<boolean>&Action=<string>&Version=<string>#Action=WithdrawByoipCidr",
+                  "protocol": "http",
+                  "host": [
+                    "ec2",
+                    "{{region}}",
+                    "amazonaws",
+                    "com"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "The public IPv4 address range, in CIDR notation.",
+                      "key": "Cidr",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.",
+                      "key": "DryRun",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "hash": "Action=WithdrawByoipCidr",
+                  "variable": [
+                    {
+                      "id": "1a4a049b-dea4-45e8-8033-e3b2516f3f2f",
+                      "key": "region",
+                      "value": "{{region}}",
+                      "type": "string",
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
+                    }
+                  ]
+                },
+                "description": "<p>Stops advertising an IPv4 address range that is provisioned as an address pool.</p> <p>You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.</p> <p>It can take a few minutes before traffic to the specified addresses stops routing to AWS because of BGP propagation delays.</p>"
+              },
+              "response": [
+                {
+                  "id": "d94d4a90-ba39-458b-843f-22a99e643830",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Amazon Signature authorization v4",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": ""
+                      },
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://ec2.{{region}}.amazonaws.com/?Cidr=<string>&DryRun=<boolean>&Action=<string>&Version=<string>#Action=WithdrawByoipCidr",
+                      "protocol": "http",
+                      "host": [
+                        "ec2",
+                        "{{region}}",
+                        "amazonaws",
+                        "com"
+                      ],
+                      "path": [
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "Cidr",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "DryRun",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "Action",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "Version",
+                          "value": "<string>"
+                        }
+                      ],
+                      "hash": "Action=WithdrawByoipCidr"
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "POST Withdraw Byoip Cidr",
+              "_postman_id": "756641c7-66d1-4021-9eb0-5039b9bded7c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "",
+                    "description": "Amazon Signature authorization v4"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "Cidr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DryRun",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=WithdrawByoipCidr",
+                  "protocol": "http",
+                  "host": [
+                    "ec2",
+                    "{{region}}",
+                    "amazonaws",
+                    "com"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "hash": "Action=WithdrawByoipCidr",
+                  "variable": [
+                    {
+                      "id": "e4049cd0-1650-41e0-a606-9d00692737f6",
+                      "key": "region",
+                      "value": "{{region}}",
+                      "type": "string",
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
+                    }
+                  ]
+                },
+                "description": "<p>Stops advertising an IPv4 address range that is provisioned as an address pool.</p> <p>You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.</p> <p>It can take a few minutes before traffic to the specified addresses stops routing to AWS because of BGP propagation delays.</p>"
+              },
+              "response": [
+                {
+                  "id": "5bf8e7df-300b-4d2a-96c0-17c8b174e19c",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Amazon Signature authorization v4",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": ""
+                      },
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "Cidr",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "DryRun",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=WithdrawByoipCidr",
+                      "protocol": "http",
+                      "host": [
+                        "ec2",
+                        "{{region}}",
+                        "amazonaws",
+                        "com"
+                      ],
+                      "path": [
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "Action",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "Version",
+                          "value": "<string>"
+                        }
+                      ],
+                      "hash": "Action=WithdrawByoipCidr"
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            }
+          ],
+          "_postman_id": "6f0462e0-7039-4728-b53b-b8c5b7791c2f",
+          "_postman_isSubFolder": true
         }
       ],
       "_postman_id": "9496eb9b-c881-461b-a454-58359b903210"
