@@ -7,12 +7,9 @@
   },
   "item": [
     {
-      "_postman_id": "dd1f4756-3061-4b1d-9f4e-11858c31a755",
       "name": "RDS",
-      "description": "",
       "item": [
         {
-          "_postman_id": "0bc5845b-6dbf-4c95-baf2-3b7476a4c284",
           "name": "Describe RDS Instances",
           "event": [
             {
@@ -89,6 +86,10 @@
               }
             }
           ],
+          "_postman_id": "0bc5845b-6dbf-4c95-baf2-3b7476a4c284",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "awsv4",
@@ -214,10 +215,6 @@
                 "value": "AWS4-HMAC-SHA256 Credential=AKIAJSC5VPELVYZXCMLA/20170420/us-east-1/rds/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=ebd34fffe1f5137e13831362cd9f151b222301ebc0c74948eb32b2ceabbba1ca"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "https://rds.{{awsRegion}}.amazonaws.com/?Operation=DescribeDBInstances&Version=2014-10-31&MaxRecords={{maxRecords}}&Marker={{marker}}",
               "protocol": "https",
@@ -233,23 +230,19 @@
               "query": [
                 {
                   "key": "Operation",
-                  "value": "DescribeDBInstances",
-                  "equals": true
+                  "value": "DescribeDBInstances"
                 },
                 {
                   "key": "Version",
-                  "value": "2014-10-31",
-                  "equals": true
+                  "value": "2014-10-31"
                 },
                 {
                   "key": "MaxRecords",
-                  "value": "{{maxRecords}}",
-                  "equals": true
+                  "value": "{{maxRecords}}"
                 },
                 {
                   "key": "Marker",
-                  "value": "{{marker}}",
-                  "equals": true
+                  "value": "{{marker}}"
                 }
               ]
             },
@@ -258,7 +251,6 @@
           "response": []
         },
         {
-          "_postman_id": "0c0255c7-b9e6-4b31-9dbc-20791b0b30da",
           "name": "Get Metric Statistics: FreeStorageSpace",
           "event": [
             {
@@ -305,6 +297,10 @@
               }
             }
           ],
+          "_postman_id": "0c0255c7-b9e6-4b31-9dbc-20791b0b30da",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "awsv4",
@@ -437,10 +433,6 @@
                 "value": "AWS4-HMAC-SHA256 Credential=AKIAJSC5VPELVYZXCMLA/20170410/us-east-1/monitoring/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=0559c1f9d1644bf191eebede289e40a21cff0d86fe3bb41c95294bf05bd5e3de"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "https://monitoring.{{awsRegion}}.amazonaws.com/?Dimensions.member.1.Name=DBInstanceIdentifier&Dimensions.member.1.Value={{dbIdentifier}}&MetricName=FreeStorageSpace&Namespace=AWS/RDS&Operation=GetMetricStatistics&Period={{secPerDay}}&Statistics.member.1=Average&Unit=Bytes&Version=2010-08-01&StartTime={{startTime}}&EndTime={{endTime}}",
               "protocol": "https",
@@ -456,58 +448,47 @@
               "query": [
                 {
                   "key": "Dimensions.member.1.Name",
-                  "value": "DBInstanceIdentifier",
-                  "equals": true
+                  "value": "DBInstanceIdentifier"
                 },
                 {
                   "key": "Dimensions.member.1.Value",
-                  "value": "{{dbIdentifier}}",
-                  "equals": true
+                  "value": "{{dbIdentifier}}"
                 },
                 {
                   "key": "MetricName",
-                  "value": "FreeStorageSpace",
-                  "equals": true
+                  "value": "FreeStorageSpace"
                 },
                 {
                   "key": "Namespace",
-                  "value": "AWS/RDS",
-                  "equals": true
+                  "value": "AWS/RDS"
                 },
                 {
                   "key": "Operation",
-                  "value": "GetMetricStatistics",
-                  "equals": true
+                  "value": "GetMetricStatistics"
                 },
                 {
                   "key": "Period",
-                  "value": "{{secPerDay}}",
-                  "equals": true
+                  "value": "{{secPerDay}}"
                 },
                 {
                   "key": "Statistics.member.1",
-                  "value": "Average",
-                  "equals": true
+                  "value": "Average"
                 },
                 {
                   "key": "Unit",
-                  "value": "Bytes",
-                  "equals": true
+                  "value": "Bytes"
                 },
                 {
                   "key": "Version",
-                  "value": "2010-08-01",
-                  "equals": true
+                  "value": "2010-08-01"
                 },
                 {
                   "key": "StartTime",
-                  "value": "{{startTime}}",
-                  "equals": true
+                  "value": "{{startTime}}"
                 },
                 {
                   "key": "EndTime",
-                  "value": "{{endTime}}",
-                  "equals": true
+                  "value": "{{endTime}}"
                 }
               ]
             },
@@ -516,7 +497,6 @@
           "response": []
         },
         {
-          "_postman_id": "a78aa400-f203-4403-bd38-497dcdbc85b7",
           "name": "Check RDS Instance tags",
           "event": [
             {
@@ -700,6 +680,10 @@
               }
             }
           ],
+          "_postman_id": "a78aa400-f203-4403-bd38-497dcdbc85b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "awsv4",
@@ -825,10 +809,6 @@
                 "value": "AWS4-HMAC-SHA256 Credential=AKIAJSC5VPELVYZXCMLA/20170410/us-east-1/rds/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=8c2697df4051204e79c2fc126caf0d6165d1df297a187503feccd993676279e0"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "https://rds.{{awsRegion}}.amazonaws.com/?Operation=ListTagsForResource&Version=2014-10-31&ResourceName={{arn}}",
               "protocol": "https",
@@ -844,18 +824,15 @@
               "query": [
                 {
                   "key": "Operation",
-                  "value": "ListTagsForResource",
-                  "equals": true
+                  "value": "ListTagsForResource"
                 },
                 {
                   "key": "Version",
-                  "value": "2014-10-31",
-                  "equals": true
+                  "value": "2014-10-31"
                 },
                 {
                   "key": "ResourceName",
-                  "value": "{{arn}}",
-                  "equals": true
+                  "value": "{{arn}}"
                 }
               ]
             },
@@ -864,8 +841,11 @@
           "response": []
         },
         {
-          "_postman_id": "e201f7da-7c4c-45be-b2f5-8db737f51b9f",
           "name": " Describe RDS Instances",
+          "_postman_id": "e201f7da-7c4c-45be-b2f5-8db737f51b9f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -882,7 +862,10 @@
                 "value": "20170420T144512Z"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "https://rds.{{awsRegion}}.amazonaws.com/?Operation=DescribeDBInstances&Version=2014-10-31&MaxRecords={{maxRecords}}&Marker={{marker}}",
               "protocol": "https",
@@ -898,30 +881,32 @@
               "query": [
                 {
                   "key": "Operation",
-                  "value": "DescribeDBInstances",
-                  "equals": true
+                  "value": "DescribeDBInstances"
                 },
                 {
                   "key": "Version",
-                  "value": "2014-10-31",
-                  "equals": true
+                  "value": "2014-10-31"
                 },
                 {
                   "key": "MaxRecords",
-                  "value": "{{maxRecords}}",
-                  "equals": true
+                  "value": "{{maxRecords}}"
                 },
                 {
                   "key": "Marker",
-                  "value": "{{marker}}",
-                  "equals": true
+                  "value": "{{marker}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "dd1f4756-3061-4b1d-9f4e-11858c31a755"
+    },
+    {
+      "name": "EC2",
+      "item": [],
+      "_postman_id": "202b719f-a6f4-428e-8b8f-17b8591010b9"
     }
   ],
   "event": [
