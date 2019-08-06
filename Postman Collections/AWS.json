@@ -1718,12 +1718,6 @@
           "_postman_isSubFolder": true
         },
         {
-          "name": "x",
-          "item": [],
-          "_postman_id": "d94f0314-a7e9-4d83-91d8-3fbdd5bdad4a",
-          "_postman_isSubFolder": true
-        },
-        {
           "name": "#Action=Update Security Group Rule Descriptions Egress",
           "item": [
             {
@@ -2144,6 +2138,12 @@
             }
           ],
           "_postman_id": "17cf8efa-4a01-4701-93a6-bcc4021e577b",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "x",
+          "item": [],
+          "_postman_id": "d94f0314-a7e9-4d83-91d8-3fbdd5bdad4a",
           "_postman_isSubFolder": true
         }
       ],
