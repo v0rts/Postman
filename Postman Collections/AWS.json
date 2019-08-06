@@ -1330,6 +1330,395 @@
           "_postman_isSubFolder": true
         },
         {
+          "name": "#Action=Unassign Ipv6Addresses",
+          "item": [
+            {
+              "name": "GET Unassign Ipv6Addresses",
+              "_postman_id": "b767bb67-d0fb-4c40-a9e3-0e206db0a07d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "",
+                    "description": "Amazon Signature authorization v4"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "http://ec2.{{region}}.amazonaws.com/?Ipv6Addresses=<string>,<string>&NetworkInterfaceId=<string>&Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
+                  "protocol": "http",
+                  "host": [
+                    "ec2",
+                    "{{region}}",
+                    "amazonaws",
+                    "com"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "The IPv6 addresses to unassign from the network interface.",
+                      "key": "Ipv6Addresses",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "description": "The ID of the network interface.",
+                      "key": "NetworkInterfaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "hash": "Action=UnassignIpv6Addresses",
+                  "variable": [
+                    {
+                      "id": "d8863f3c-730a-4cab-8a0c-96ea36889a1d",
+                      "key": "region",
+                      "value": "{{region}}",
+                      "type": "string",
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
+                    }
+                  ]
+                },
+                "description": "Unassigns one or more IPv6 addresses from a network interface."
+              },
+              "response": [
+                {
+                  "id": "17021544-b037-442e-936b-b44ba8e09ba4",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Amazon Signature authorization v4",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": ""
+                      },
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://ec2.{{region}}.amazonaws.com/?Ipv6Addresses=<string>,<string>&NetworkInterfaceId=<string>&Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
+                      "protocol": "http",
+                      "host": [
+                        "ec2",
+                        "{{region}}",
+                        "amazonaws",
+                        "com"
+                      ],
+                      "path": [
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "Ipv6Addresses",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "key": "NetworkInterfaceId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "Action",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "Version",
+                          "value": "<string>"
+                        }
+                      ],
+                      "hash": "Action=UnassignIpv6Addresses"
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "POST Unassign Ipv6Addresses",
+              "_postman_id": "82fb9fa7-7580-487f-af6f-51a4d619b9b8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "",
+                    "description": "Amazon Signature authorization v4"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "Ipv6Addresses",
+                      "value": "[\"<string>\",\"<string>\"]"
+                    },
+                    {
+                      "key": "NetworkInterfaceId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
+                  "protocol": "http",
+                  "host": [
+                    "ec2",
+                    "{{region}}",
+                    "amazonaws",
+                    "com"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "hash": "Action=UnassignIpv6Addresses",
+                  "variable": [
+                    {
+                      "id": "19285153-04d6-41ed-a17c-1aacb49f641c",
+                      "key": "region",
+                      "value": "{{region}}",
+                      "type": "string",
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
+                    }
+                  ]
+                },
+                "description": "Unassigns one or more IPv6 addresses from a network interface."
+              },
+              "response": [
+                {
+                  "id": "9a7869ea-519a-41ec-be3c-f5ee11ad7e06",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Amazon Signature authorization v4",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": ""
+                      },
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "Ipv6Addresses",
+                          "value": "[\"<string>\",\"<string>\"]"
+                        },
+                        {
+                          "key": "NetworkInterfaceId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
+                      "protocol": "http",
+                      "host": [
+                        "ec2",
+                        "{{region}}",
+                        "amazonaws",
+                        "com"
+                      ],
+                      "path": [
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "Action",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "Version",
+                          "value": "<string>"
+                        }
+                      ],
+                      "hash": "Action=UnassignIpv6Addresses"
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            }
+          ],
+          "_postman_id": "095804fe-89c2-4bac-9354-abbead3569ee",
+          "_postman_isSubFolder": true
+        },
+        {
           "name": "#Action=Unmonitor Instances",
           "item": [
             {
@@ -2529,26 +2918,118 @@
           ],
           "_postman_id": "6f0462e0-7039-4728-b53b-b8c5b7791c2f",
           "_postman_isSubFolder": true
-        },
+        }
+      ],
+      "_postman_id": "9496eb9b-c881-461b-a454-58359b903210"
+    },
+    {
+      "name": "#Action=Unassign Private Ip Addresses",
+      "item": [
         {
-          "name": "#Action=Unassign Ipv6Addresses",
-          "item": [
-            {
-              "name": "GET Unassign Ipv6Addresses",
-              "_postman_id": "b767bb67-d0fb-4c40-a9e3-0e206db0a07d",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
+          "name": "GET Unassign Private Ip Addresses",
+          "_postman_id": "2a47d782-480d-4889-a9d5-1ad1263cb46d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "description": "Amazon Signature authorization v4"
               },
-              "request": {
-                "auth": {
-                  "type": "noauth"
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              }
+            ],
+            "url": {
+              "raw": "http://ec2.{{region}}.amazonaws.com/?NetworkInterfaceId=<string>&PrivateIpAddress=<string>,<string>&Action=<string>&Version=<string>#Action=UnassignPrivateIpAddresses",
+              "protocol": "http",
+              "host": [
+                "ec2",
+                "{{region}}",
+                "amazonaws",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "The ID of the network interface.",
+                  "key": "NetworkInterfaceId",
+                  "value": "<string>"
                 },
+                {
+                  "description": "The secondary private IP addresses to unassign from the network interface. You can specify this option multiple times to unassign more than one IP address.",
+                  "key": "PrivateIpAddress",
+                  "value": "<string>,<string>"
+                },
+                {
+                  "key": "Action",
+                  "value": "<string>"
+                },
+                {
+                  "key": "Version",
+                  "value": "<string>"
+                }
+              ],
+              "hash": "Action=UnassignPrivateIpAddresses",
+              "variable": [
+                {
+                  "id": "6f9a34a0-2d36-4374-99a5-931026ba2ea2",
+                  "key": "region",
+                  "value": "{{region}}",
+                  "type": "string",
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
+                }
+              ]
+            },
+            "description": "Unassigns one or more secondary private IP addresses from a network interface."
+          },
+          "response": [
+            {
+              "id": "92ba7855-6472-4666-87b9-2b6d81760211",
+              "name": "Success",
+              "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
+                    "description": {
+                      "content": "Amazon Signature authorization v4",
+                      "type": "text/plain"
+                    },
                     "key": "Authorization",
-                    "value": "",
-                    "description": "Amazon Signature authorization v4"
+                    "value": ""
                   },
                   {
                     "key": "X-Amz-Content-Sha256",
@@ -2580,7 +3061,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "http://ec2.{{region}}.amazonaws.com/?Ipv6Addresses=<string>,<string>&NetworkInterfaceId=<string>&Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
+                  "raw": "http://ec2.{{region}}.amazonaws.com/?NetworkInterfaceId=<string>&PrivateIpAddress=<string>,<string>&Action=<string>&Version=<string>#Action=UnassignPrivateIpAddresses",
                   "protocol": "http",
                   "host": [
                     "ec2",
@@ -2593,14 +3074,12 @@
                   ],
                   "query": [
                     {
-                      "description": "The IPv6 addresses to unassign from the network interface.",
-                      "key": "Ipv6Addresses",
-                      "value": "<string>,<string>"
-                    },
-                    {
-                      "description": "The ID of the network interface.",
                       "key": "NetworkInterfaceId",
                       "value": "<string>"
+                    },
+                    {
+                      "key": "PrivateIpAddress",
+                      "value": "<string>,<string>"
                     },
                     {
                       "key": "Action",
@@ -2611,127 +3090,136 @@
                       "value": "<string>"
                     }
                   ],
-                  "hash": "Action=UnassignIpv6Addresses",
-                  "variable": [
-                    {
-                      "id": "d8863f3c-730a-4cab-8a0c-96ea36889a1d",
-                      "key": "region",
-                      "value": "{{region}}",
-                      "type": "string",
-                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
-                    }
-                  ]
-                },
-                "description": "Unassigns one or more IPv6 addresses from a network interface."
+                  "hash": "Action=UnassignPrivateIpAddresses"
+                }
               },
-              "response": [
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
                 {
-                  "id": "17021544-b037-442e-936b-b44ba8e09ba4",
-                  "name": "Success",
-                  "originalRequest": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "description": {
-                          "content": "Amazon Signature authorization v4",
-                          "type": "text/plain"
-                        },
-                        "key": "Authorization",
-                        "value": ""
-                      },
-                      {
-                        "key": "X-Amz-Content-Sha256",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Date",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Algorithm",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Credential",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Security-Token",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Signature",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-SignedHeaders",
-                        "value": "<string>"
-                      }
-                    ],
-                    "url": {
-                      "raw": "http://ec2.{{region}}.amazonaws.com/?Ipv6Addresses=<string>,<string>&NetworkInterfaceId=<string>&Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
-                      "protocol": "http",
-                      "host": [
-                        "ec2",
-                        "{{region}}",
-                        "amazonaws",
-                        "com"
-                      ],
-                      "path": [
-                        ""
-                      ],
-                      "query": [
-                        {
-                          "key": "Ipv6Addresses",
-                          "value": "<string>,<string>"
-                        },
-                        {
-                          "key": "NetworkInterfaceId",
-                          "value": "<string>"
-                        },
-                        {
-                          "key": "Action",
-                          "value": "<string>"
-                        },
-                        {
-                          "key": "Version",
-                          "value": "<string>"
-                        }
-                      ],
-                      "hash": "Action=UnassignIpv6Addresses"
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": ""
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "POST Unassign Private Ip Addresses",
+          "_postman_id": "d76e0dd9-9899-47d0-bc35-4bbc526616f0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "description": "Amazon Signature authorization v4"
+              },
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "NetworkInterfaceId",
+                  "value": "<string>"
+                },
+                {
+                  "key": "PrivateIpAddress",
+                  "value": "[\"<string>\",\"<string>\"]"
                 }
               ]
             },
-            {
-              "name": "POST Unassign Ipv6Addresses",
-              "_postman_id": "82fb9fa7-7580-487f-af6f-51a4d619b9b8",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "noauth"
+            "url": {
+              "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=UnassignPrivateIpAddresses",
+              "protocol": "http",
+              "host": [
+                "ec2",
+                "{{region}}",
+                "amazonaws",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "Action",
+                  "value": "<string>"
                 },
+                {
+                  "key": "Version",
+                  "value": "<string>"
+                }
+              ],
+              "hash": "Action=UnassignPrivateIpAddresses",
+              "variable": [
+                {
+                  "id": "80464d0a-a66d-4ae8-9c60-af365fafbda7",
+                  "key": "region",
+                  "value": "{{region}}",
+                  "type": "string",
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
+                }
+              ]
+            },
+            "description": "Unassigns one or more secondary private IP addresses from a network interface."
+          },
+          "response": [
+            {
+              "id": "2463b934-1065-4f69-8d04-52cad9571b7c",
+              "name": "Success",
+              "originalRequest": {
                 "method": "POST",
                 "header": [
                   {
+                    "description": {
+                      "content": "Amazon Signature authorization v4",
+                      "type": "text/plain"
+                    },
                     "key": "Authorization",
-                    "value": "",
-                    "description": "Amazon Signature authorization v4"
+                    "value": ""
                   },
                   {
                     "key": "X-Amz-Content-Sha256",
@@ -2770,17 +3258,17 @@
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "key": "Ipv6Addresses",
-                      "value": "[\"<string>\",\"<string>\"]"
-                    },
-                    {
                       "key": "NetworkInterfaceId",
                       "value": "<string>"
+                    },
+                    {
+                      "key": "PrivateIpAddress",
+                      "value": "[\"<string>\",\"<string>\"]"
                     }
                   ]
                 },
                 "url": {
-                  "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
+                  "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=UnassignPrivateIpAddresses",
                   "protocol": "http",
                   "host": [
                     "ec2",
@@ -2801,126 +3289,26 @@
                       "value": "<string>"
                     }
                   ],
-                  "hash": "Action=UnassignIpv6Addresses",
-                  "variable": [
-                    {
-                      "id": "19285153-04d6-41ed-a17c-1aacb49f641c",
-                      "key": "region",
-                      "value": "{{region}}",
-                      "type": "string",
-                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1)"
-                    }
-                  ]
-                },
-                "description": "Unassigns one or more IPv6 addresses from a network interface."
-              },
-              "response": [
-                {
-                  "id": "9a7869ea-519a-41ec-be3c-f5ee11ad7e06",
-                  "name": "Success",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "description": {
-                          "content": "Amazon Signature authorization v4",
-                          "type": "text/plain"
-                        },
-                        "key": "Authorization",
-                        "value": ""
-                      },
-                      {
-                        "key": "X-Amz-Content-Sha256",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Date",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Algorithm",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Credential",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Security-Token",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-Signature",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "X-Amz-SignedHeaders",
-                        "value": "<string>"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "value": "application/x-www-form-urlencoded"
-                      }
-                    ],
-                    "body": {
-                      "mode": "urlencoded",
-                      "urlencoded": [
-                        {
-                          "key": "Ipv6Addresses",
-                          "value": "[\"<string>\",\"<string>\"]"
-                        },
-                        {
-                          "key": "NetworkInterfaceId",
-                          "value": "<string>"
-                        }
-                      ]
-                    },
-                    "url": {
-                      "raw": "http://ec2.{{region}}.amazonaws.com/?Action=<string>&Version=<string>#Action=UnassignIpv6Addresses",
-                      "protocol": "http",
-                      "host": [
-                        "ec2",
-                        "{{region}}",
-                        "amazonaws",
-                        "com"
-                      ],
-                      "path": [
-                        ""
-                      ],
-                      "query": [
-                        {
-                          "key": "Action",
-                          "value": "<string>"
-                        },
-                        {
-                          "key": "Version",
-                          "value": "<string>"
-                        }
-                      ],
-                      "hash": "Action=UnassignIpv6Addresses"
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": ""
+                  "hash": "Action=UnassignPrivateIpAddresses"
                 }
-              ]
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
             }
-          ],
-          "_postman_id": "095804fe-89c2-4bac-9354-abbead3569ee",
-          "_postman_isSubFolder": true
+          ]
         }
       ],
-      "_postman_id": "9496eb9b-c881-461b-a454-58359b903210"
+      "_postman_id": "f48032a5-1354-4e7f-b99f-a1ebb3c5e17c"
     }
   ],
   "event": [
