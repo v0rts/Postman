@@ -905,7 +905,14 @@
     },
     {
       "name": "EC2",
-      "item": [],
+      "item": [
+        {
+          "name": "x",
+          "item": [],
+          "_postman_id": "d94f0314-a7e9-4d83-91d8-3fbdd5bdad4a",
+          "_postman_isSubFolder": true
+        }
+      ],
       "_postman_id": "202b719f-a6f4-428e-8b8f-17b8591010b9"
     },
     {
