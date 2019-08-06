@@ -904,11 +904,6 @@
       "_postman_id": "dd1f4756-3061-4b1d-9f4e-11858c31a755"
     },
     {
-      "name": "EC2",
-      "item": [],
-      "_postman_id": "202b719f-a6f4-428e-8b8f-17b8591010b9"
-    },
-    {
       "name": "#Action=Withdraw Byoip Cidr",
       "item": [
         {
@@ -1295,6 +1290,11 @@
         }
       ],
       "_postman_id": "53633140-ed16-496a-bd02-6216c38df72a"
+    },
+    {
+      "name": "EC2",
+      "item": [],
+      "_postman_id": "202b719f-a6f4-428e-8b8f-17b8591010b9"
     }
   ],
   "event": [
