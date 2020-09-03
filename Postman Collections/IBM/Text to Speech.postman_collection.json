@@ -1,0 +1,3413 @@
+{
+	"info": {
+		"_postman_id": "f4f94ca4-73a7-4f61-a9b7-7b19d8a820cd",
+		"name": "Text to Speech",
+		"description": "The IBM Watson&trade; Text to Speech service provides APIs that use IBM's speech-synthesis capabilities to synthesize text into natural-sounding speech in a variety of languages, dialects, and voices. The service supports at least one male or female voice, sometimes both, for each language. The audio is streamed back to the client with minimal delay. \n\nFor speech synthesis, the service supports a synchronous HTTP Representational State Transfer (REST) interface and a WebSocket interface. Both interfaces support plain text and SSML input. SSML is an XML-based markup language that provides text annotation for speech-synthesis applications. The WebSocket interface also supports the SSML <code>&lt;mark&gt;</code> element and word timings. \n\nThe service offers a customization interface that you can use to define sounds-like or phonetic translations for words. A sounds-like translation consists of one or more words that, when combined, sound like the word. A phonetic translation is based on the SSML phoneme format for representing a word. You can specify a phonetic translation in standard International Phonetic Alphabet (IPA) representation or in the proprietary IBM Symbolic Phonetic Representation (SPR). The Arabic, Chinese, Dutch, and Korean languages support only IPA. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "voices",
+					"item": [
+						{
+							"name": "List voices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/voices",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"voices"
+									]
+								},
+								"description": "Lists all voices available for use with the service. The information includes the name, language, gender, and other details about the voice. The ordering of the list of voices can change from call to call; do not rely on an alphabetized or static list of voices. To see information about a specific voice, use the **Get a voice** method. \n\n**See also:** [Listing all available voices](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-voices#listVoices)."
+							},
+							"response": [
+								{
+									"name": "**Not Acceptable**. The request specified an `Accept` header with an incompatible content type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**Unsupported Media Type**. The request specified an unacceptable media type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices"
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**OK**. The request succeeded.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"voices\": [\n  {\n   \"name\": \"es-LA_SofiaV3Voice\",\n   \"language\": \"es-LA\",\n   \"customizable\": true,\n   \"gender\": \"female\",\n   \"url\": \"{url}/v1/voices/es-LA_SofiaV3Voice\",\n   \"supported_features\": {\n    \"voice_transformation\": false,\n    \"custom_pronunciation\": true\n   },\n   \"description\": \"Sofia: Latin American Spanish (español latinoamericano) female voice.\"\n  },\n  {\n   \"name\": \"pt-BR_IsabelaV3Voice\",\n   \"language\": \"pt-BR\",\n   \"customizable\": true,\n   \"gender\": \"female\",\n   \"url\": \"{url}/v1/voices/pt-BR_IsabelaV3Voice\",\n   \"supported_features\": {\n    \"voice_transformation\": false,\n    \"custom_pronunciation\": true\n   },\n   \"description\": \"Isabela: Brazilian Portuguese (português brasileiro) female voice.\"\n  },\n  {\n   \"name\": \"en-GB_KateV3Voice\",\n   \"language\": \"en-GB\",\n   \"customizable\": true,\n   \"gender\": \"female\",\n   \"url\": \"{url}/v1/voices/en-GB_KateV3Voice\",\n   \"supported_features\": {\n    \"voice_transformation\": false,\n    \"custom_pronunciation\": true\n   },\n   \"description\": \"Kate: British English female voice.\"\n  }\n ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a voice",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"voices",
+										":voice"
+									],
+									"query": [
+										{
+											"key": "customization_id",
+											"value": "<string>",
+											"description": "The customization ID (GUID) of a custom voice model for which information is to be returned. You must make the request with credentials for the instance of the service that owns the custom model. Omit the parameter to see information about the specified voice with no customization."
+										}
+									],
+									"variable": [
+										{
+											"key": "voice",
+											"value": "<string>",
+											"description": "(Required) The voice for which information is to be returned."
+										}
+									]
+								},
+								"description": "Gets information about the specified voice. The information includes the name, language, gender, and other details about the voice. Specify a customization ID to obtain information for a custom voice model that is defined for the language of the specified voice. To list information about all available voices, use the **List voices** method. \n\n**See also:** [Listing a specific voice](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-voices#listVoice)."
+							},
+							"response": [
+								{
+									"name": "**Not Acceptable**. The request specified an `Accept` header with an incompatible content type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices",
+												":voice"
+											],
+											"query": [
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "voice"
+												}
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**Unsupported Media Type**. The request specified an unacceptable media type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices",
+												":voice"
+											],
+											"query": [
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "voice"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'customization_id'`",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices",
+												":voice"
+											],
+											"query": [
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "voice"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**OK**. The request succeeded.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices",
+												":voice"
+											],
+											"query": [
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "voice"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"url\": \"{url}/v1/voices/en-US_AllisonVoice\",\n \"name\": \"en-US_AllisonVoice\",\n \"language\": \"en-US\",\n \"customizable\": true,\n \"gender\": \"female\",\n \"supported_features\": {\n  \"voice_transformation\": true,\n  \"custom_pronunciation\": true\n },\n \"description\": \"Allison: American English female voice.\"\n}"
+								},
+								{
+									"name": "**Not Modified**. The requested resource has not been modified since the time specified by the `If-Modified-Since` header, as documented in the HTTP specification.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices",
+												":voice"
+											],
+											"query": [
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "voice"
+												}
+											]
+										}
+									},
+									"status": "Not Modified",
+									"code": 304,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ({id}) for user`",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/voices/:voice?customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"voices",
+												":voice"
+											],
+											"query": [
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "voice"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "synthesize",
+					"item": [
+						{
+							"name": "Synthesize audio (GET)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"synthesize"
+									],
+									"query": [
+										{
+											"key": "accept",
+											"value": "audio/ogg;codecs=opus",
+											"description": "The requested format (MIME type) of the audio. You can use the `accept` parameter or the `Accept` header to specify the audio format. URL-encode the argument to the `accept` parameter; for example, `audio/mulaw;rate=8000` becomes `audio%2Fmulaw%3Brate%3D8000`. For more information about specifying an audio format, see **Audio formats (accept types)** in the method description."
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice",
+											"description": "The voice to use for synthesis."
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>",
+											"description": "The customization ID (GUID) of a custom voice model to use for the synthesis. If a custom voice model is specified, it works only if it matches the language of the indicated voice. You must make the request with credentials for the instance of the service that owns the custom model. Omit the parameter to use the specified voice with no customization."
+										},
+										{
+											"key": "text",
+											"value": "<string>",
+											"description": "(Required) The text to synthesize. Specify either plain text or a subset of SSML. SSML is an XML-based markup language that provides text annotation for speech-synthesis applications. Pass a maximum of 8 KB of input, which includes the input text and the URL and headers."
+										}
+									]
+								},
+								"description": "Synthesizes text to audio that is spoken in the specified voice. The service bases its understanding of the language for the input text on the specified voice. Use a voice that matches the language of the input text. \n\nThe method accepts a maximum of 8 KB of input, which includes the input text and the URL and headers. The 8 KB limit includes any SSML tags that you specify. The service returns the synthesized audio stream as an array of bytes. \n\n**See also:** [The HTTP interface](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-usingHTTP#usingHTTP). \n\n### Audio formats (accept types)\n\n The service can return audio in the following formats (MIME types).\n* Where indicated, you can optionally specify the sampling rate (`rate`) of the audio. You must specify a sampling rate for the `audio/l16` and `audio/mulaw` formats. A specified sampling rate must lie in the range of 8 kHz to 192 kHz. Some formats restrict the sampling rate to certain values, as noted.\n* For the `audio/l16` format, you can optionally specify the endianness (`endianness`) of the audio: `endianness=big-endian` or `endianness=little-endian`. \n\nUse the `Accept` header or the `accept` parameter to specify the requested format of the response audio. If you omit an audio format altogether, the service returns the audio in Ogg format with the Opus codec (`audio/ogg;codecs=opus`). The service always returns single-channel audio.\n* `audio/basic` - The service returns audio with a sampling rate of 8000 Hz.\n* `audio/flac` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/l16` - You must specify the `rate` of the audio. You can optionally specify the `endianness` of the audio. The default endianness is `little-endian`.\n* `audio/mp3` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/mpeg` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/mulaw` - You must specify the `rate` of the audio.\n* `audio/ogg` - The service returns the audio in the `vorbis` codec. You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/ogg;codecs=opus` - You can optionally specify the `rate` of the audio. Only the following values are valid sampling rates: `48000`, `24000`, `16000`, `12000`, or `8000`. If you specify a value other than one of these, the service returns an error. The default sampling rate is 48,000 Hz.\n* `audio/ogg;codecs=vorbis` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/wav` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/webm` - The service returns the audio in the `opus` codec. The service returns audio with a sampling rate of 48,000 Hz.\n* `audio/webm;codecs=opus` - The service returns audio with a sampling rate of 48,000 Hz.\n* `audio/webm;codecs=vorbis` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz. \n\nFor more information about specifying an audio format, including additional details about some of the formats, see [Audio formats](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-audioFormats#audioFormats). \n\n### Warning messages\n\n If a request includes invalid query parameters, the service returns a `Warnings` response header that provides messages about the invalid parameters. The warning includes a descriptive message and a list of invalid argument strings. For example, a message such as `\"Unknown arguments:\"` or `\"Unknown url query arguments:\"` followed by a list of the form `\"{invalid_arg_1}, {invalid_arg_2}.\"` The request succeeds despite the warnings."
+							},
+							"response": [
+								{
+									"name": "**OK**. The request succeeded.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Warnings",
+											"value": "consequat enim magna pariatur dolore",
+											"description": "Warning messages about invalid query parameters included with the request. The warning includes a descriptive message and a list of invalid argument strings. For example, a message such as `\"Unknown arguments:\"` or `\"Unknown url query arguments:\"` followed by a list of the form `\"{invalid_arg_1}, {invalid_arg_2}.\"` The request succeeds despite the warnings."
+										},
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": "ipsum tempor fugiat elit nulla"
+								},
+								{
+									"name": "**Unsupported Media Type**. The request specified an unacceptable media type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid. If the request fails SSML validation, the description of the error explains the failure. For example, `<prosody> with attribute volume is not supported in the current voice`. For more information, see [SSML validation](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-ssml#errors).",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Not Modified**. The requested resource has not been modified since the time specified by the `If-Modified-Since` header, as documented in the HTTP specification.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Not Modified",
+									"code": 304,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Not Acceptable**. The request specified an incompatible content type or failed to specify a required sampling rate.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Internal Server Error**. The service experienced an internal error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Service Unavailable**. The service is currently unavailable.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>&text=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												},
+												{
+													"key": "text",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Synthesize audio",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"text\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"synthesize"
+									],
+									"query": [
+										{
+											"key": "accept",
+											"value": "audio/ogg;codecs=opus",
+											"description": "The requested format (MIME type) of the audio. You can use the `accept` parameter or the `Accept` header to specify the audio format. URL-encode the argument to the `accept` parameter; for example, `audio/mulaw;rate=8000` becomes `audio%2Fmulaw%3Brate%3D8000`. For more information about specifying an audio format, see **Audio formats (accept types)** in the method description."
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice",
+											"description": "The voice to use for synthesis."
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>",
+											"description": "The customization ID (GUID) of a custom voice model to use for the synthesis. If a custom voice model is specified, it works only if it matches the language of the indicated voice. You must make the request with credentials for the instance of the service that owns the custom model. Omit the parameter to use the specified voice with no customization."
+										}
+									]
+								},
+								"description": "Synthesizes text to audio that is spoken in the specified voice. The service bases its understanding of the language for the input text on the specified voice. Use a voice that matches the language of the input text. \n\nThe method accepts a maximum of 5 KB of input text in the body of the request, and 8 KB for the URL and headers. The 5 KB limit includes any SSML tags that you specify. The service returns the synthesized audio stream as an array of bytes. \n\n**See also:** [The HTTP interface](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-usingHTTP#usingHTTP). \n\n### Audio formats (accept types)\n\n The service can return audio in the following formats (MIME types).\n* Where indicated, you can optionally specify the sampling rate (`rate`) of the audio. You must specify a sampling rate for the `audio/l16` and `audio/mulaw` formats. A specified sampling rate must lie in the range of 8 kHz to 192 kHz. Some formats restrict the sampling rate to certain values, as noted.\n* For the `audio/l16` format, you can optionally specify the endianness (`endianness`) of the audio: `endianness=big-endian` or `endianness=little-endian`. \n\nUse the `Accept` header or the `accept` parameter to specify the requested format of the response audio. If you omit an audio format altogether, the service returns the audio in Ogg format with the Opus codec (`audio/ogg;codecs=opus`). The service always returns single-channel audio.\n* `audio/basic` - The service returns audio with a sampling rate of 8000 Hz.\n* `audio/flac` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/l16` - You must specify the `rate` of the audio. You can optionally specify the `endianness` of the audio. The default endianness is `little-endian`.\n* `audio/mp3` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/mpeg` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/mulaw` - You must specify the `rate` of the audio.\n* `audio/ogg` - The service returns the audio in the `vorbis` codec. You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/ogg;codecs=opus` - You can optionally specify the `rate` of the audio. Only the following values are valid sampling rates: `48000`, `24000`, `16000`, `12000`, or `8000`. If you specify a value other than one of these, the service returns an error. The default sampling rate is 48,000 Hz.\n* `audio/ogg;codecs=vorbis` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/wav` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz.\n* `audio/webm` - The service returns the audio in the `opus` codec. The service returns audio with a sampling rate of 48,000 Hz.\n* `audio/webm;codecs=opus` - The service returns audio with a sampling rate of 48,000 Hz.\n* `audio/webm;codecs=vorbis` - You can optionally specify the `rate` of the audio. The default sampling rate is 22,050 Hz. \n\nFor more information about specifying an audio format, including additional details about some of the formats, see [Audio formats](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-audioFormats#audioFormats). \n\n### Warning messages\n\n If a request includes invalid query parameters, the service returns a `Warnings` response header that provides messages about the invalid parameters. The warning includes a descriptive message and a list of invalid argument strings. For example, a message such as `\"Unknown arguments:\"` or `\"Unknown url query arguments:\"` followed by a list of the form `\"{invalid_arg_1}, {invalid_arg_2}.\"` The request succeeds despite the warnings."
+							},
+							"response": [
+								{
+									"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid. If the request fails SSML validation, the description of the error explains the failure. For example, `<prosody> with attribute volume is not supported in the current voice`. For more information, see [SSML validation](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-ssml#errors).",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"text\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Service Unavailable**. The service is currently unavailable.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"text\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Internal Server Error**. The service experienced an internal error.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"text\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**Not Acceptable**. The request specified an incompatible content type or failed to specify a required sampling rate.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"text\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "**OK**. The request succeeded.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"text\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Warnings",
+											"value": "consequat enim magna pariatur dolore",
+											"description": "Warning messages about invalid query parameters included with the request. The warning includes a descriptive message and a list of invalid argument strings. For example, a message such as `\"Unknown arguments:\"` or `\"Unknown url query arguments:\"` followed by a list of the form `\"{invalid_arg_1}, {invalid_arg_2}.\"` The request succeeds despite the warnings."
+										},
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": "ipsum tempor fugiat elit nulla"
+								},
+								{
+									"name": "**Unsupported Media Type**. The request specified an unacceptable media type.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"text\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/synthesize?accept=audio/ogg;codecs=opus&voice=en-US_MichaelVoice&customization_id=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"synthesize"
+											],
+											"query": [
+												{
+													"key": "accept",
+													"value": "audio/ogg;codecs=opus"
+												},
+												{
+													"key": "voice",
+													"value": "en-US_MichaelVoice"
+												},
+												{
+													"key": "customization_id",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "audio/basic"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "customizations",
+					"item": [
+						{
+							"name": "{customization id}",
+							"item": [
+								{
+									"name": "words",
+									"item": [
+										{
+											"name": "{word}",
+											"item": [
+												{
+													"name": "Add a custom word",
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"translation\": \"<string>\",\n    \"part_of_speech\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words",
+																":word"
+															],
+															"variable": [
+																{
+																	"key": "customization_id",
+																	"value": "<string>",
+																	"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+																},
+																{
+																	"key": "word",
+																	"value": "<string>",
+																	"description": "(Required) The word that is to be added or updated for the custom voice model."
+																}
+															]
+														},
+														"description": "Adds a single word and its translation to the specified custom voice model. Adding a new translation for a word that already exists in a custom model overwrites the word's existing translation. A custom model can contain no more than 20,000 entries. You must use credentials for the instance of the service that owns a model to add a word to it. \n\nYou can define sounds-like or phonetic translations for words. A sounds-like translation consists of one or more words that, when combined, sound like the word. Phonetic translations are based on the SSML phoneme format for representing a word. You can specify them in standard International Phonetic Alphabet (IPA) representation\n\n  <code>&lt;phoneme alphabet=\"ipa\" ph=\"t&#601;m&#712;&#593;to\"&gt;&lt;/phoneme&gt;</code>\n\n  or in the proprietary IBM Symbolic Phonetic Representation (SPR)\n\n  <code>&lt;phoneme alphabet=\"ibm\" ph=\"1gAstroEntxrYFXs\"&gt;&lt;/phoneme&gt;</code> \n\n**Note:** This method is currently a beta release. \n\n**See also:**\n* [Adding a single word to a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuWordAdd)\n* [Adding words to a Japanese custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuJapaneseAdd)\n* [Understanding customization](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customIntro#customIntro)"
+													},
+													"response": [
+														{
+															"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"translation\": \"<string>\",\n    \"part_of_speech\": \"<string>\"\n}"
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "**OK**. The word was successfully added to the custom voice model.",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"translation\": \"<string>\",\n    \"part_of_speech\": \"<string>\"\n}"
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "**Internal Server Error**. The service experienced an internal error.",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"translation\": \"<string>\",\n    \"part_of_speech\": \"<string>\"\n}"
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "**Bad request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. If the request fails SSML validation, the description of the error explains the failure; for more information, see [SSML validation](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-ssml#errors). Specific messages include\n* `Invalid parameter '{name}' in request`\n* `Invalid value for 'customization_id'`\n* `Required parameter 'translation' is missing`\n* <code>&lt;phoneme alphabet=\"{alphabet}\" ph=\"{translation}\"&gt;&lt;/phoneme&gt; is not a standard SSML format</code>\n* <code>In SSML: &lt;phoneme alphabet=\"ipa\" ph=\"{translation}\"&gt;&lt;/phoneme&gt;, attribute 'ph' is not a standard IPA format</code>\n* <code>In SSML: &lt;phoneme alphabet=\"ibm\" ph=\"{translation}\"&gt;&lt;/phoneme&gt;, attribute 'ph' is not a standard SPR format</code>\n* `Invalid part_of_speech name`\n* `Part of speech is supported for ja-JP language only`\n* `Invalid header value for '{header}'`",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"translation\": \"<string>\",\n    \"part_of_speech\": \"<string>\"\n}"
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												},
+												{
+													"name": "Get a custom word",
+													"request": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words",
+																":word"
+															],
+															"variable": [
+																{
+																	"key": "customization_id",
+																	"value": "<string>",
+																	"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+																},
+																{
+																	"key": "word",
+																	"value": "<string>",
+																	"description": "(Required) The word that is to be queried from the custom voice model."
+																}
+															]
+														},
+														"description": "Gets the translation for a single word from the specified custom model. The output shows the translation as it is defined in the model. You must use credentials for the instance of the service that owns a model to list its words. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Querying a single word from a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuWordQueryModel)."
+													},
+													"response": [
+														{
+															"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+														},
+														{
+															"name": "**OK**. The request succeeded.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"translation\": \"ackles\"\n}"
+														},
+														{
+															"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'customization_id'`\n* `Word: {word} not found in customization_id: {customization_id}`\n* `Invalid header value for '{header}'`",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+														},
+														{
+															"name": "**Internal Server Error**. The service experienced an internal error.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+														}
+													]
+												},
+												{
+													"name": "Delete a custom word",
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words",
+																":word"
+															],
+															"variable": [
+																{
+																	"key": "customization_id",
+																	"value": "<string>",
+																	"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+																},
+																{
+																	"key": "word",
+																	"value": "<string>",
+																	"description": "(Required) The word that is to be deleted from the custom voice model."
+																}
+															]
+														},
+														"description": "Deletes a single word from the specified custom voice model. You must use credentials for the instance of the service that owns a model to delete its words. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Deleting a word from a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuWordDelete)."
+													},
+													"response": [
+														{
+															"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "**No Content**. The word was successfully deleted from the custom voice model.",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "No Content",
+															"code": 204,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "**Internal Server Error**. The service experienced an internal error.",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'customization_id'`\n* `Word: {word} not found in customization_id: {customization_id}`\n* `Invalid header value for '{header}'`",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customizations/:customization_id/words/:word",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customizations",
+																		":customization_id",
+																		"words",
+																		":word"
+																	],
+																	"variable": [
+																		{
+																			"key": "customization_id"
+																		},
+																		{
+																			"key": "word"
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											],
+											"protocolProfileBehavior": {},
+											"_postman_isSubFolder": true
+										},
+										{
+											"name": "Add custom words",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id",
+														"words"
+													],
+													"variable": [
+														{
+															"key": "customization_id",
+															"value": "<string>",
+															"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+														}
+													]
+												},
+												"description": "Adds one or more words and their translations to the specified custom voice model. Adding a new translation for a word that already exists in a custom model overwrites the word's existing translation. A custom model can contain no more than 20,000 entries. You must use credentials for the instance of the service that owns a model to add words to it. \n\nYou can define sounds-like or phonetic translations for words. A sounds-like translation consists of one or more words that, when combined, sound like the word. Phonetic translations are based on the SSML phoneme format for representing a word. You can specify them in standard International Phonetic Alphabet (IPA) representation\n\n  <code>&lt;phoneme alphabet=\"ipa\" ph=\"t&#601;m&#712;&#593;to\"&gt;&lt;/phoneme&gt;</code>\n\n  or in the proprietary IBM Symbolic Phonetic Representation (SPR)\n\n  <code>&lt;phoneme alphabet=\"ibm\" ph=\"1gAstroEntxrYFXs\"&gt;&lt;/phoneme&gt;</code> \n\n**Note:** This method is currently a beta release. \n\n**See also:**\n* [Adding multiple words to a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuWordsAdd)\n* [Adding words to a Japanese custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuJapaneseAdd)\n* [Understanding customization](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customIntro#customIntro)"
+											},
+											"response": [
+												{
+													"name": "**Internal Server Error**. The service experienced an internal error.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+												},
+												{
+													"name": "**OK**. The words were successfully added to the custom voice model.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{}"
+												},
+												{
+													"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. If the request fails SSML validation, the description of the error explains the failure; for more information, see [SSML validation](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-ssml#errors). Specific messages include\n* `Invalid parameter '{name}' in request`\n* `Invalid value for 'customization_id'`\n* <code>&lt;phoneme alphabet=\"{alphabet}\" ph=\"{translation}\"&gt;&lt;/phoneme&gt; is not a standard SSML format</code>\n* <code>In SSML: &lt;phoneme alphabet=\"ipa\" ph=\"{translation}\"&gt;&lt;/phoneme&gt;, attribute 'ph' is not a standard IPA format</code>\n* <code>In SSML: &lt;phoneme alphabet=\"ibm\" ph=\"{translation}\"&gt;&lt;/phoneme&gt;, attribute 'ph' is not a standard SPR format</code>\n* `Invalid part_of_speech name`\n* `Part of speech is supported for ja-JP language only`\n* `Invalid header value for '{header}'`",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+												},
+												{
+													"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+												}
+											]
+										},
+										{
+											"name": "List custom words",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id",
+														"words"
+													],
+													"variable": [
+														{
+															"key": "customization_id",
+															"value": "<string>",
+															"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+														}
+													]
+												},
+												"description": "Lists all of the words and their translations for the specified custom voice model. The output shows the translations as they are defined in the model. You must use credentials for the instance of the service that owns a model to list its words. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Querying all words from a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuWordsQueryModel)."
+											},
+											"response": [
+												{
+													"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+												},
+												{
+													"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'customization_id'`\n* `Invalid header value for '{header}'`\n* `Dictionary format error` (if the custom voice model contains no words)",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+												},
+												{
+													"name": "**Internal Server Error**. The service experienced an internal error.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+												},
+												{
+													"name": "**OK**. The request succeeded.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customizations/:customization_id/words",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customizations",
+																":customization_id",
+																"words"
+															],
+															"variable": [
+																{
+																	"key": "customization_id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"words\": [\n  {\n   \"word\": \"NCAA\",\n   \"translation\": \"N C double A\"\n  },\n  {\n   \"word\": \"ACLs\",\n   \"translation\": \"ackles\"\n  },\n  {\n   \"word\": \"iPhone\",\n   \"translation\": \"I phone\"\n  },\n  {\n   \"word\": \"EEE\",\n   \"translation\": \"<phoneme alphabet=\\\"ibm\\\" ph=\\\"tr1Ipxl.1i\\\"></phoneme>\"\n  },\n  {\n   \"word\": \"IEEE\",\n   \"translation\": \"<phoneme alphabet=\\\"ibm\\\" ph=\\\"1Y.tr1Ipxl.1i\\\"></phoneme>\"\n  }\n ]\n}"
+												}
+											]
+										}
+									],
+									"protocolProfileBehavior": {},
+									"_postman_isSubFolder": true
+								},
+								{
+									"name": "Update a custom model",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations",
+												":customization_id"
+											],
+											"variable": [
+												{
+													"key": "customization_id",
+													"value": "<string>",
+													"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+												}
+											]
+										},
+										"description": "Updates information for the specified custom voice model. You can update metadata such as the name and description of the voice model. You can also update the words in the model and their translations. Adding a new translation for a word that already exists in a custom model overwrites the word's existing translation. A custom model can contain no more than 20,000 entries. You must use credentials for the instance of the service that owns a model to update it. \n\nYou can define sounds-like or phonetic translations for words. A sounds-like translation consists of one or more words that, when combined, sound like the word. Phonetic translations are based on the SSML phoneme format for representing a word. You can specify them in standard International Phonetic Alphabet (IPA) representation\n\n  <code>&lt;phoneme alphabet=\"ipa\" ph=\"t&#601;m&#712;&#593;to\"&gt;&lt;/phoneme&gt;</code>\n\n  or in the proprietary IBM Symbolic Phonetic Representation (SPR)\n\n  <code>&lt;phoneme alphabet=\"ibm\" ph=\"1gAstroEntxrYFXs\"&gt;&lt;/phoneme&gt;</code> \n\n**Note:** This method is currently a beta release. \n\n**See also:**\n* [Updating a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customModels#cuModelsUpdate)\n* [Adding words to a Japanese custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuJapaneseAdd)\n* [Understanding customization](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customIntro#customIntro)"
+									},
+									"response": [
+										{
+											"name": "**Internal Server Error**. The service experienced an internal error.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+										},
+										{
+											"name": "**OK**. The custom voice model was successfully updated.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "**Bad request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. If the request fails SSML validation, the description of the error explains the failure; for more information, see [SSML validation](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-ssml#errors). Specific messages include\n* `Invalid parameter '{name}' in request`\n* `Invalid value for 'customization_id'`\n* <code>For word: '{word}', &lt;phoneme alphabet=\"{alphabet}\" ph=\"{translation}\"&gt;&lt;/phoneme&gt; is not a standard SSML format</code>\n* <code>In SSML: &lt;phoneme alphabet=\"ipa\" ph=\"{translation}\"&gt;&lt;/phoneme&gt;, attribute 'ph' is not a standard IPA format</code>\n* <code>In SSML: &lt;phoneme alphabet=\"ibm\" ph=\"{translation}\"&gt;&lt;/phoneme&gt;, attribute 'ph' is not a standard SPR format</code>\n* `Invalid part_of_speech name`\n* `Part of speech is supported for ja-JP language only`\n* `Invalid header value for '{header}'`\n* `Invalid request`",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+										},
+										{
+											"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"words\": [\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        },\n        {\n            \"word\": \"<string>\",\n            \"translation\": \"<string>\",\n            \"part_of_speech\": \"<string>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get a custom model",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations",
+												":customization_id"
+											],
+											"variable": [
+												{
+													"key": "customization_id",
+													"value": "<string>",
+													"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+												}
+											]
+										},
+										"description": "Gets all information about a specified custom voice model. In addition to metadata such as the name and description of the voice model, the output includes the words and their translations as defined in the model. To see just the metadata for a voice model, use the **List custom models** method. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Querying a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customModels#cuModelsQuery)."
+									},
+									"response": [
+										{
+											"name": "**Not Modified**. The requested resource has not been modified since the time specified by the `If-Modified-Since` header, as documented in the HTTP specification.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Not Modified",
+											"code": 304,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'customization_id'`\n* `Invalid header value for '{header}'`",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+										},
+										{
+											"name": "**Internal Server Error**. The service experienced an internal error.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+										},
+										{
+											"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+										},
+										{
+											"name": "**OK**. The request succeeded.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"customization_id\": \"d76ea7bb-cc91-4591-a9fb-aabf048dcc61\",\n \"name\": \"First Model Update\",\n \"description\": \"First custom voice model update\",\n \"language\": \"en-US\",\n \"owner\": \"35df7157-fad0-498c-912c-6e429f5c1e11\",\n \"created\": \"2017-01-23T16:00:32.893\",\n \"last_modified\": \"2017-01-23T16:00:35.619\",\n \"words\": [\n  {\n   \"word\": \"NCAA\",\n   \"translation\": \"N C double A\"\n  },\n  {\n   \"word\": \"iPhone\",\n   \"translation\": \"I phone\"\n  }\n ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Delete a custom model",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations",
+												":customization_id"
+											],
+											"variable": [
+												{
+													"key": "customization_id",
+													"value": "<string>",
+													"description": "(Required) The customization ID (GUID) of the custom voice model. You must make the request with credentials for the instance of the service that owns the custom model."
+												}
+											]
+										},
+										"description": "Deletes the specified custom voice model. You must use credentials for the instance of the service that owns a model to delete it. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Deleting a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customModels#cuModelsDelete)."
+									},
+									"response": [
+										{
+											"name": "**No Content**. The custom voice model was successfully deleted.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'customization_id'`\n* `Invalid header value for '{header}'`",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "**Internal Server Error**. The service experienced an internal error.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customizations/:customization_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customizations",
+														":customization_id"
+													],
+													"variable": [
+														{
+															"key": "customization_id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Create a custom model",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"<string>\",\n    \"language\": \"en-US\",\n    \"description\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/customizations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"customizations"
+									]
+								},
+								"description": "Creates a new empty custom voice model. You must specify a name for the new custom model. You can optionally specify the language and a description for the new model. The model is owned by the instance of the service whose credentials are used to create it. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Creating a custom model](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customModels#cuModelsCreate)."
+							},
+							"response": [
+								{
+									"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid parameter '{name}' in request`\n* `Required parameter '{name}' is missing`\n* `Invalid header value for '{header}'`",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"language\": \"en-US\",\n    \"description\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**Internal Server Error**. The service experienced an internal error.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"language\": \"en-US\",\n    \"description\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**Created**. The custom voice model was successfully created.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"language\": \"en-US\",\n    \"description\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"customization_id\": \"51e996ea-86ca-482e-b7ec-0f31c34e5ee9\"\n}"
+								}
+							]
+						},
+						{
+							"name": "List custom models",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/customizations?language=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"customizations"
+									],
+									"query": [
+										{
+											"key": "language",
+											"value": "<string>",
+											"description": "The language for which custom voice models that are owned by the requesting credentials are to be returned. Omit the parameter to see all custom voice models that are owned by the requester."
+										}
+									]
+								},
+								"description": "Lists metadata such as the name and description for all custom voice models that are owned by an instance of the service. Specify a language to list the voice models for that language only. To see the words in addition to the metadata for a specific voice model, use the **List a custom model** method. You must use credentials for the instance of the service that owns a model to list information about it. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Querying all custom models](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customModels#cuModelsQueryAll)."
+							},
+							"response": [
+								{
+									"name": "**Internal Server Error**. The service experienced an internal error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations?language=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations"
+											],
+											"query": [
+												{
+													"key": "language",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid value for 'language'`\n* `Invalid header value for '{header}'`\n* `Input parameter '{parameter}' is invalid`",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations?language=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations"
+											],
+											"query": [
+												{
+													"key": "language",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+								},
+								{
+									"name": "**OK**. The request succeeded.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/customizations?language=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"customizations"
+											],
+											"query": [
+												{
+													"key": "language",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"customizations\": [\n  {\n   \"owner\": \"53fd7517-af0d-849d-801b-6e042a5d2f22\",\n   \"language\": \"en-US\",\n   \"created\": \"2016-07-15T19:15:17.926Z\",\n   \"customization_id\": \"a4df11a9-7cf9-48e8-8319-08fb7c3b1aa8\",\n   \"name\": \"Second Model\",\n   \"description\": \"Second custom voice model\",\n   \"last_modified\": \"2016-07-15T19:15:17.926Z\"\n  },\n  {\n   \"owner\": \"53fd7517-af0d-849d-801b-6e042a5d2f22\",\n   \"language\": \"en-US\",\n   \"created\": \"2016-07-15T18:12:31.743Z\",\n   \"customization_id\": \"53506a62-6861-41f5-9a44-352047edcf6f\",\n   \"name\": \"First Model Update\",\n   \"description\": \"First custom voice model update\",\n   \"last_modified\": \"2016-07-15T18:23:50.912Z\"\n  }\n ]\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get pronunciation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"pronunciation"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "<string>",
+									"description": "(Required) The word for which the pronunciation is requested."
+								},
+								{
+									"key": "voice",
+									"value": "en-US_MichaelVoice",
+									"description": "A voice that specifies the language in which the pronunciation is to be returned. All voices for the same language (for example, `en-US`) return the same translation."
+								},
+								{
+									"key": "format",
+									"value": "ipa",
+									"description": "The phoneme format in which to return the pronunciation. The Arabic, Chinese, Dutch, and Korean languages support only IPA. Omit the parameter to obtain the pronunciation in the default format. "
+								},
+								{
+									"key": "customization_id",
+									"value": "<string>",
+									"description": "The customization ID (GUID) of a custom voice model for which the pronunciation is to be returned. The language of a specified custom model must match the language of the specified voice. If the word is not defined in the specified custom model, the service returns the default translation for the custom model's language. You must make the request with credentials for the instance of the service that owns the custom model. Omit the parameter to see the translation for the specified voice with no customization."
+								}
+							]
+						},
+						"description": "Gets the phonetic pronunciation for the specified word. You can request the pronunciation for a specific format. You can also request the pronunciation for a specific voice to see the default translation for the language of that voice or for a specific custom voice model to see the translation for that voice model. \n\n**Note:** This method is currently a beta release. \n\n**See also:** [Querying a word from a language](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-customWords#cuWordsQueryLanguage)."
+					},
+					"response": [
+						{
+							"name": "**Unauthorized**. The specified `customization_id` is invalid for the requesting credentials:\n* `Invalid customization_id ('{id}') for user`",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+						},
+						{
+							"name": "**Internal Server Error**. The service experienced an internal error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+						},
+						{
+							"name": "**Not Acceptable**. The request specified an `Accept` header with an incompatible content type.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Acceptable",
+							"code": 406,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+						},
+						{
+							"name": "**Not Found**. The specified `model` was not found:\n* `Model '{model}' not found`",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+						},
+						{
+							"name": "**Service Unavailable**. The service is currently unavailable.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+						},
+						{
+							"name": "**Bad Request**. A required input parameter is null or a specified input parameter or header value is invalid or not supported. Specific messages include\n* `Invalid parameter '{name}' in request`\n* `Required parameter '{name}' is missing`\n* `Invalid header value for '{header}'`\n* `Invalid value for 'customization_id'`\n* `Customization language {language} does not match the language {language} for voice {voice}`",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"aliqua \",\n \"code\": 52172840,\n \"code_description\": \"laboris officia\"\n}"
+						},
+						{
+							"name": "**OK**. The request succeeded.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"pronunciation\": \"`[.1Y] `[.1i] `[.1i] `[.1i]\"\n}"
+						},
+						{
+							"name": "**Not Modified**. The requested resource has not been modified since the time specified by the `If-Modified-Since` header, as documented in the HTTP specification.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/pronunciation?text=<string>&voice=en-US_MichaelVoice&format=ipa&customization_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"pronunciation"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "<string>"
+										},
+										{
+											"key": "voice",
+											"value": "en-US_MichaelVoice"
+										},
+										{
+											"key": "format",
+											"value": "ipa"
+										},
+										{
+											"key": "customization_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Modified",
+							"code": 304,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete labeled data",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/user_data?customer_id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"user_data"
+							],
+							"query": [
+								{
+									"key": "customer_id",
+									"value": "<string>",
+									"description": "(Required) The customer ID for which all data is to be deleted."
+								}
+							]
+						},
+						"description": "Deletes all data that is associated with a specified customer ID. The method deletes all data for the customer ID, regardless of the method by which the information was added. The method has no effect if no data is associated with the customer ID. You must issue the request with credentials for the same instance of the service that was used to associate the customer ID with the data. You associate a customer ID with data by passing the `X-Watson-Metadata` header with a request that passes the data. \n\n**Note:** If you delete an instance of the service from the service console, all data associated with that service instance is automatically deleted. This includes all custom voice models and word/translation pairs, and all data related to speech synthesis requests. \n\n**See also:** [Information security](https://cloud.ibm.com/docs/text-to-speech?topic=text-to-speech-information-security#information-security)."
+					},
+					"response": [
+						{
+							"name": "**Bad Request**. The request did not pass a customer ID:\n* `No customer ID found in the request`",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/user_data?customer_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"user_data"
+									],
+									"query": [
+										{
+											"key": "customer_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "**OK**. The deletion request was successfully submitted.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/user_data?customer_id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"user_data"
+									],
+									"query": [
+										{
+											"key": "customer_id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "https://api.us-south.text-to-speech.watson.cloud.ibm.com",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

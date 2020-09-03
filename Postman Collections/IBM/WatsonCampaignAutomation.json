@@ -1,0 +1,2209 @@
+{
+	"info": {
+		"_postman_id": "6ad2ff9a-8822-44de-9f1f-f49b481dce00",
+		"name": "Watson Campaign Automation XML API",
+		"description": "This collection contains samples of all WCA XML API calls available for consumption.  It uses the more secure OAuth 2.0 system for authentication.\n\nUpdate the operation \"Generate an Access Token\" with your credentials to easily generate access tokens for API access to your organization.\n\nRemember to replace the X in each URL with your Pod number, i.e. if your organization is on Pod 5, you should change your URLs to api5.ibmmarketingcloud.com before submitting.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication (OAuth 2)",
+			"item": [
+				{
+					"name": "Generate an Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46fa2d50-40d3-4e2d-b7d4-de8cfb9beba0",
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"pm.environment.set(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": "Using a combination of unique values for Client Id, Client Secret, and Refresh Token, this operation can be used to generate an Access Token to be used for additional authenticated API calls."
+					},
+					"response": []
+				}
+			],
+			"description": "Save your own unique Client Id, Client Secret, and Refresh Token with this request for easy authentication in the future.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Automation Management",
+			"item": [
+				{
+					"name": "Get automated message group details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetMessageGroupDetails>\n      <MESSAGE_GROUP_ID>59294</MESSAGE_GROUP_ID>\n    </GetMessageGroupDetails>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns details about a specific Automated Message Group."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of programs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetPrograms>\n      <INCLUDE_ACTIVE>True</INCLUDE_ACTIVE>\n      <INCLUDE_INACTIVE>False</INCLUDE_INACTIVE>\n      <CREATED_DATE_RANGE>\n        <BEGIN_DATE>10/01/2017</BEGIN_DATE>\n        <END_DATE>10/15/2017</END_DATE>\n      </CREATED_DATE_RANGE>\n      <INCLUDE_TAGS>\n        <TAG>Lead Gen</TAG>\n        <TAG>January Campaigns</TAG>\n      </INCLUDE_TAGS>\n      <APPROVED_FOR_SALES/>\n    </GetPrograms>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a list of programs for an organization."
+					},
+					"response": []
+				},
+				{
+					"name": "Add a contact to a program",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <AddContactToProgram>\n      <PROGRAM_ID>56753246</PROGRAM_ID>\n      <CONTACT_ID>7657657</CONTACT_ID>\n    </AddContactToProgram>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface is used to add a contact to the beginning of a automated program."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a contact's relationship to programs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetProgramsByContact>\n      <INCLUDE_ACTIVE>true</INCLUDE_ACTIVE>\n      <INCLUDE_INACTIVE>false</INCLUDE_INACTIVE>\n      <VISITOR_KEY>bc658296-7a01-e3a5-ac28-be350ed3b1c6</VISITOR_KEY>\n      <INCLUDE_HISTORY/>\n      <APPROVED_FOR_SALES/>\n      <INCLUDE_TAGS>\n        <TAG>Winter Campaigns</TAG>\n      </INCLUDE_TAGS>\n      <INCLUDE_TRACK/>\n      <INCLUDE_STEP/>\n    </GetProgramsByContact>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracst a list of programs for a specific contact or known web tracked visitor."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Contact Management",
+			"item": [
+				{
+					"name": "Add a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <AddRecipient>\n      <LIST_ID>2740754</LIST_ID>\n      <CREATED_FROM>1</CREATED_FROM>\n      <UPDATE_IF_FOUND>true</UPDATE_IF_FOUND>\n      <COLUMN>\n        <NAME>EMAIL</NAME>\n        <VALUE>someone@domain.com</VALUE>\n      </COLUMN>\n    </AddRecipient>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface adds one new contact to an existing database."
+					},
+					"response": []
+				},
+				{
+					"name": "Double opt-in a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <DoubleOptInRecipient>\n      <LIST_ID>3240481</LIST_ID>\n      <COLUMN>\n        <NAME>EMAIL</NAME>\n        <VALUE>someone@domain.com</VALUE>\n      </COLUMN>\n    </DoubleOptInRecipient>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "Confirm an Opt-in for a contact in a double opt-in database"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <RemoveRecipient>\n      <LIST_ID>10000</LIST_ID>\n      <EMAIL>somebody@domain.com</EMAIL>\n    </RemoveRecipient>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface allows the removal of a contact from a database or contact list."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <UpdateRecipient>\n      <LIST_ID>85628</LIST_ID>\n      <OLD_EMAIL>someone@domain.com</OLD_EMAIL>\n      <COLUMN>\n        <NAME>CustomerId</NAME>\n        <VALUE>123-45-6789</VALUE>\n      </COLUMN>\n      <COLUMN>\n        <NAME>EMAIL</NAME>\n        <VALUE>someonenew@domain.com</VALUE>\n      </COLUMN>\n      <COLUMN>\n        <NAME>Street Address</NAME>\n        <VALUE>123 New Street</VALUE>\n      </COLUMN>\n      <SNOOZE_SETTINGS>\n        <SNOOZED>true</SNOOZED>\n        <RESUME_SEND_DATE>06/15/2019</RESUME_SEND_DATE>\n      </SNOOZE_SETTINGS>\n    </UpdateRecipient>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface updates a contact in an existing database."
+					},
+					"response": []
+				},
+				{
+					"name": "Opt out a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <OptOutRecipient>\n      <LIST_ID>45654</LIST_ID>\n      <EMAIL>someone@domain.com</EMAIL>\n    </OptOutRecipient>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface moves a contact in a database to an opted-out state."
+					},
+					"response": []
+				},
+				{
+					"name": "Select contact details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <SelectRecipientData>\n      <LIST_ID>45654</LIST_ID>\n      <EMAIL>someone@domain.com</EMAIL>\n      <COLUMN>\n        <NAME>Customer ID</NAME>\n        <VALUE>123-45-6789</VALUE>\n      </COLUMN>\n    </SelectRecipientData>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface retrieves the information about a contact in a database."
+					},
+					"response": []
+				},
+				{
+					"name": "Add a contact to a contact list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <AddContactToContactList>\n      <CONTACT_LIST_ID>85628</CONTACT_LIST_ID>\n      <CONTACT_ID>15674222</CONTACT_ID>\n    </AddContactToContactList>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface adds one new contact to an existing contact list.\n\nNote: CONTACT_ID is a another identifier for the Recipient ID element found in other API inputs and responses."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk import contact data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ImportList>\n      <MAP_FILE>list_import_map.xml</MAP_FILE>\n      <SOURCE_FILE>list_create.csv</SOURCE_FILE>\n    </ImportList>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface, along with SFTP, allows batch import of a mapping file and source file containing new, modified, or opted out contacts. Contacts can also be added to an existing contact list."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk export contact data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ExportList>\n      <LIST_ID>59294</LIST_ID>\n      <EXPORT_TYPE>ALL</EXPORT_TYPE>\n      <EXPORT_FORMAT>CSV</EXPORT_FORMAT>\n      <ADD_TO_STORED_FILES/>\n      <DATE_START>06/25/2017 01:00:00</DATE_START>\n      <DATE_END>06/28/2017 23:59:59</DATE_END>\n      <EXPORT_COLUMNS>\n        <COLUMN>FIRST_NAME</COLUMN>\n        <COLUMN>INITIAL</COLUMN>\n        <COLUMN>LAST_NAME</COLUMN>\n      </EXPORT_COLUMNS>\n    </ExportList>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface exports contact data from a database, query, or contact list."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk delete records from a list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <PurgeData>\n      <TARGET_ID>87981</TARGET_ID>\n      <SOURCE_ID>64987</SOURCE_ID>\n    </PurgeData>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface soft deletes all records from a target database, suppression, seed, test, or contact list based on the contacts that exist in a specific source database, contact list, or query."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Database Management",
+			"item": [
+				{
+					"name": "Get a list of databases, queries, contact lists, et al",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetLists>\n      <VISIBILITY>0</VISIBILITY>\n      <LIST_TYPE>2</LIST_TYPE>\n    </GetLists>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts lists for an organization."
+					},
+					"response": []
+				},
+				{
+					"name": "Get meta data for a database, query, or relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetListMetaData>\n      <LIST_ID>59294</LIST_ID>\n    </GetListMetaData>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns the description of a database, query, or relational table."
+					},
+					"response": []
+				},
+				{
+					"name": "Add a database column",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <AddListColumn>\n      <LIST_ID>60700</LIST_ID>\n      <COLUMN_NAME>Interested In</COLUMN_NAME>\n      <COLUMN_TYPE>20</COLUMN_TYPE>\n      <DEFAULT>Sales;Coupons</DEFAULT>\n      <SELECTION_VALUES>\n        <VALUE>Sales</VALUE>\n        <VALUE>Coupons</VALUE>\n        <VALUE>Product News</VALUE>\n        <VALUE>Corporate News</VALUE>\n      </SELECTION_VALUES>\n    </AddListColumn>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface allows adding a column to an existing Watson Campaign Automation database."
+					},
+					"response": []
+				},
+				{
+					"name": "Set a column value",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <SetColumnValue>\n      <LIST_ID>140146</LIST_ID>\n      <COLUMN_NAME>State</COLUMN_NAME>\n      <COLUMN_VALUE>GA</COLUMN_VALUE>\n      <ACTION>1</ACTION>\n      <EMAIL>someone@domain.com</EMAIL>\n    </SetColumnValue>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface updates a column value for all records in a restricted database or a classic query."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a contact list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <CreateContactList>\n      <DATABASE_ID>565576</DATABASE_ID>\n      <CONTACT_LIST_NAME>Re-marketing Contacts</CONTACT_LIST_NAME>\n      <VISIBILITY>0</VISIBILITY>\n      <PARENT_FOLDER_PATH>MainFolder/SubFolder</PARENT_FOLDER_PATH>\n    </CreateContactList>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface creates a contact list for an existing WCA database."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a classic query of a database",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <CreateQuery>\n      <QUERY_NAME>Has_Mobile_30_Zip</QUERY_NAME>\n      <PARENT_LIST_ID>17607</PARENT_LIST_ID>\n      <VISIBILITY>0</VISIBILITY>\n      <PARENT_FOLDER_ID>9512</PARENT_FOLDER_ID>\n      <ALLOW_FIELD_CHANGE>0</ALLOW_FIELD_CHANGE>\n      <SELECT_COLUMNS>Last_Name|First_Name</SELECT_COLUMNS>\n      <CRITERIA>\n        <TYPE>editable</TYPE>\n        <EXPRESSION>\n          <TYPE>TE</TYPE>\n          <COLUMN_NAME>Zip</COLUMN_NAME>\n          <OPERATORS>\n            <![CDATA[BETWEEN]]>\n          </OPERATORS>\n          <VALUES>\n            <![CDATA[30000|30999]]>\n          </VALUES>\n          <LEFT_PARENS>(</LEFT_PARENS>\n        </EXPRESSION>\n        <EXPRESSION>\n          <AND_OR>AND</AND_OR>\n          <TYPE>TE</TYPE>\n          <COLUMN_NAME>Mobile</COLUMN_NAME>\n          <OPERATORS>\n            <![CDATA[IS NOT null]]>\n          </OPERATORS>\n          <RIGHT_PARENS>)</RIGHT_PARENS>\n        </EXPRESSION>\n        <EXPRESSION>\n          <TABLE_ID>4645</TABLE_ID>\n          <AND_OR>AND</AND_OR>\n          <LEFT_PARENS>(</LEFT_PARENS>\n          <RT_EXPRESSION>\n            <TYPE>TE</TYPE>\n            <COLUMN_NAME>Purchase Type</COLUMN_NAME>\n            <OPERATORS>\n              <![CDATA[=]]>\n            </OPERATORS>\n            <VALUES>\n              <![CDATA[New]]>\n            </VALUES>\n            <LEFT_PARENS>(</LEFT_PARENS>\n          </RT_EXPRESSION>\n          <RT_EXPRESSION>\n            <AND_OR>AND</AND_OR>\n            <TYPE>DE</TYPE>\n            <COLUMN_NAME>Purchase Date</COLUMN_NAME>\n            <OPERATORS>\n              <![CDATA[>]]>\n            </OPERATORS>\n            <VALUES>\n              <![CDATA[[Current Date]-3]]>\n            </VALUES>\n            <RIGHT_PARENS>)</RIGHT_PARENS>\n          </RT_EXPRESSION>\n        </EXPRESSION>\n        <EXPRESSION>\n          <TABLE_ID>8581</TABLE_ID>\n          <AND_OR>OR</AND_OR>\n          <RIGHT_PARENS>)</RIGHT_PARENS>\n          <RT_EXPRESSION>\n            <TYPE>TE</TYPE>\n            <COLUMN_NAME>Expired</COLUMN_NAME>\n            <OPERATORS>\n              <![CDATA[=]]>\n            </OPERATORS>\n            <VALUES>\n              <![CDATA[true]]>\n            </VALUES>\n          </RT_EXPRESSION>\n        </EXPRESSION>\n      </CRITERIA>\n      <BEHAVIOR>\n        <OPTION_OPERATOR>103</OPTION_OPERATOR>\n        <TYPE_OPERATOR>111</TYPE_OPERATOR>\n        <MAILING_ID>669614</MAILING_ID>\n        <REPORT_ID>502993</REPORT_ID>\n      </BEHAVIOR>\n    </CreateQuery>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports programmatically creating a classic query of an existing Watson Campaign Automation database."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a query of a database",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <CreateQuery>\n      <QUERY_NAME>Web Site Activity</QUERY_NAME>\n      <PARENT_LIST_ID>348328</PARENT_LIST_ID>\n      <VISIBILITY>1</VISIBILITY>\n      <CRITERIA>\n        <EXPRESSION criteria_type=\"behavior\">\n          <CONJUNCTION>AND</CONJUNCTION>\n          <OPERATOR>has visited web site</OPERATOR>\n          <WEB_SITE>test1.com</WEB_SITE>\n          <TIMEFRAME>at any time</TIMEFRAME>\n          <START_VALUE></START_VALUE>\n          <END_VALUE></END_VALUE>\n        </EXPRESSION>\n        <EXPRESSION criteria_type=\"behavior\">\n          <CONJUNCTION>AND</CONJUNCTION>\n          <OPERATOR>has visited web page</OPERATOR>\n          <WEB_PAGE>www.ibm.com</WEB_PAGE>\n          <TIMEFRAME>less than</TIMEFRAME>\n          <VALUE>12</VALUE>\n          <TIME_UNIT>days</TIME_UNIT>\n        </EXPRESSION>\n      </CRITERIA>\n    </CreateQuery>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports programmatically creating a query of an existing Watson Campaign Automation database."
+					},
+					"response": []
+				},
+				{
+					"name": "Calculate the current contacts for a query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <CalculateQuery>\n      <QUERY_ID>59294</QUERY_ID>\n      <EMAIL>notify@yourcompany.com</EMAIL>\n    </CalculateQuery>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface executes a query to determine the number of matching contacts."
+					},
+					"response": []
+				}
+			],
+			"description": "This section defines the automation interfaces for importing and/or updating databases from external files. We refer to these as User Actions.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Dynamic Content",
+			"item": [
+				{
+					"name": "Create a new dynamic content ruleset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <AddDCRuleset>\n      <LIST_ID>12345</LIST_ID>\n      <RULESET_NAME>My New Ruleset</RULESET_NAME>\n      <CONTENT_AREAS>\n        <CONTENT_AREA name=\"123\" type=\"Body-HTML\">\n          <DEFAULT_CONTENT name=\"default\"><![CDATA[this is the default content.]]></DEFAULT_CONTENT>\n        </CONTENT_AREA>\n      </CONTENT_AREAS>\n      <RULES>\n        <RULE>\n          <RULE_NAME>Email is not blank</RULE_NAME>\n          <PRIORITY>1</PRIORITY>\n          <CRITERIA>\n            <EXPRESSION criteria_type=\"profile\">\n              <COLUMN>Email</COLUMN>\n              <OPERATOR>is not blank</OPERATOR>\n            </EXPRESSION>\n          </CRITERIA>\n        </RULE>\n      </RULES>\n    </AddDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface creates a ruleset including its content areas, rules, and content."
+					},
+					"response": []
+				},
+				{
+					"name": "Import a dynamic content ruleset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ImportDCRuleset>\n      <FILE_NAME>promo.zip</FILE_NAME>\n      <MAILING_ID>41781</MAILING_ID>\n      <LIST_ID>22205</LIST_ID>\n    </ImportDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface imports a compressed file that contains an XML file that defines a new or classic dynamic content ruleset and any associated HTML or images. Imported files are loaded from the user's FTP upload directory."
+					},
+					"response": []
+				},
+				{
+					"name": "Export a dynamic content ruleset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ExportDCRuleset>\n      <RULESET_ID>12604</RULESET_ID>\n      <MOVE_TO_FTP>TRUE</MOVE_TO_FTP>\n    </ExportDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface exports a specified ruleset and all associated content (including images), from the Asset Library as a compressed file."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of dynamic content rulesets for a mailing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ListDCRulesetsForMailing>\n      <MAILING_ID>31986</MAILING_ID>\n    </ListDCRulesetsForMailing>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns a list of available dynamic content rulesets for a specified mailing."
+					},
+					"response": []
+				},
+				{
+					"name": "Get dynamic content ruleset details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetDCRuleset>\n      <RULESET_ID>123456789</RULESET_ID>\n    </GetDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns the specified ruleset in XML format. It does not support returning content images."
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a dynamic content ruleset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ReplaceDCRuleset>\n      <RULESET_ID>8309</RULESET_ID>\n      <CONTENT_AREAS>\n        <CONTENT_AREA name=\"dc_mailing_subject\" type=\"Subject\">\n          <DEFAULT_CONTENT name=\"Default.dc_mailing_subject\">\n            <![CDATA[All clothing on sale this week.]]>\n          </DEFAULT_CONTENT>\n        </CONTENT_AREA>\n        <CONTENT_AREA name=\"dc_promo\" type=\"Body-HTML\">\n          <DEFAULT_CONTENT name=\"Default.dc_promo\">\n            <![CDATA[10% Off Everything]]>\n          </DEFAULT_CONTENT>\n        </CONTENT_AREA>\n      </CONTENT_AREAS>\n      <RULES>\n        <RULE>\n          <RULE_NAME>MalePromotion</RULE_NAME>\n          <PRIORITY>1</PRIORITY>\n          <CRITERIA>\n            <EXPRESSION>\n              <AND_OR/>\n              <LEFT_PARENS>(</LEFT_PARENS>\n              <TYPE>TE</TYPE>\n              <COLUMN_NAME>Gender</COLUMN_NAME>\n              <OPERATORS>\n                <![CDATA[=]]>\n              </OPERATORS>\n              <VALUES>\n                <![CDATA[M]]>\n              </VALUES>\n              <RIGHT_PARENS>)</RIGHT_PARENS>\n            </EXPRESSION>\n            <EXPRESSION>\n              <AND_OR>AND</AND_OR>\n              <LEFT_PARENS>(</LEFT_PARENS>\n              <TYPE>NE</TYPE>\n              <COLUMN_NAME>Salary</COLUMN_NAME>\n              <OPERATORS>\n                <![CDATA[>]]>\n              </OPERATORS>\n              <VALUES>\n                <![CDATA[90000]]>\n              </VALUES>\n              <RIGHT_PARENS>)</RIGHT_PARENS>\n            </EXPRESSION>\n          </CRITERIA>\n          <CONTENTS>\n            <CONTENT name=\"male_subject\" content_area=\"dc_mailing_subject\">\n              <![CDATA[Men’s clothing on sale thisweek.]]>\n            </CONTENT>\n            <CONTENT name=\"male_promo\" content_area=\"dc_promo\">\n              <![CDATA[10% Off All Men's Clothing]]>\n            </CONTENT>\n          </CONTENTS>\n        </RULE>\n        <RULE>\n          <RULE_NAME>FemalePromotion</RULE_NAME>\n          <PRIORITY>2</PRIORITY>\n          <CRITERIA>\n            <EXPRESSION>\n              <AND_OR/>\n              <PRIORITY>2</PRIORITY>\n              <CRITERIA>\n                <EXPRESSION>\n                  <AND_OR/>\n                  <LEFT_PARENS>(</LEFT_PARENS>\n                  <TYPE>TE</TYPE>\n                  <COLUMN_NAME>Gender</COLUMN_NAME>\n                  <OPERATORS>\n                    <![CDATA[=]]>\n                  </OPERATORS>\n                  <VALUES>\n                    <![CDATA[F]]>\n                  </VALUES>\n                  <RIGHT_PARENS>)</RIGHT_PARENS>\n                </EXPRESSION>\n                <EXPRESSION>\n                  <AND_OR>AND</AND_OR>\n                  <LEFT_PARENS>(</LEFT_PARENS>\n                  <TYPE>NE</TYPE>\n                  <COLUMN_NAME>Salary</COLUMN_NAME>\n                  <OPERATORS>\n                    <![CDATA[>]]>\n                  </OPERATORS>\n                  <VALUES>\n                    <![CDATA[90000]]>\n                  </VALUES>\n                  <RIGHT_PARENS>)</RIGHT_PARENS>\n                </EXPRESSION>\n              </CRITERIA>\n            </EXPRESSION>\n          </CRITERIA>\n          <CONTENTS>\n            <CONTENT name=\"female_subject\" content_area=\"dc_mailing_subject\">\n              <![CDATA[Women's clothing on sale this week.]]>\n            </CONTENT>\n            <CONTENT name=\"female_promo\" content_area=\"dc_promo\">\n              <![CDATA[10% Off All Women's Clothing]]>\n            </CONTENT>\n          </CONTENTS>\n        </RULE>\n      </RULES>\n    </ReplaceDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface replaces an existing ruleset with new parameters."
+					},
+					"response": []
+				},
+				{
+					"name": "Validate a dynamic content ruleset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ValidateDCRuleset>\n      <MAILING_ID>31986</MAILING_ID>\n    </ValidateDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface performs a validation check against all dynamic content rulesets (including nested rulesets) associated with the specified mailing."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a dynamic content ruleset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <DeleteDCRuleset>\n      <RULESET_ID>123</RULESET_ID>\n    </DeleteDCRuleset>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface deletes a specified ruleset from the Asset Library, and only if it is not associated with a mailing."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Relational Table Management",
+			"item": [
+				{
+					"name": "Create a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <CreateTable>\n      <TABLE_NAME>Purchases</TABLE_NAME>\n      <COLUMNS>\n        <COLUMN>\n          <NAME>RecordId</NAME>\n          <TYPE>NUMERIC</TYPE>\n          <IS_REQUIRED>true</IS_REQUIRED>\n          <KEY_COLUMN>true</KEY_COLUMN>\n        </COLUMN>\n        <COLUMN>\n          <NAME>PurchaseDate</NAME>\n          <TYPE>DATE</TYPE>\n          <IS_REQUIRED>true</IS_REQUIRED>\n        </COLUMN>\n        <COLUMN>\n          <NAME>ProductId</NAME>\n          <TYPE>NUMERIC</TYPE>\n          <IS_REQUIRED>true</IS_REQUIRED>\n        </COLUMN>\n      </COLUMNS>\n    </CreateTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface creates a new relational table within Watson Campaign Automation."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new, or bulk import records into, a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ImportTable>\n      <MAP_FILE>table_import_map.xml</MAP_FILE>\n      <SOURCE_FILE>table_create.csv</SOURCE_FILE>\n    </ImportTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface is used for creating or updating a relational table within Watson Campaign Automation."
+					},
+					"response": []
+				},
+				{
+					"name": "Associate a relational table to a database",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <JoinTable>\n      <TABLE_NAME>Shared/WebAnalytics/Purchases</TABLE_NAME>\n      <LIST_ID>65745</LIST_ID>\n      <MAP_FIELD>\n        <LIST_FIELD>ItemID</LIST_FIELD>\n        <TABLE_FIELD>ItemID</TABLE_FIELD>\n      </MAP_FIELD>\n      <MAP_FIELD>\n        <LIST_FIELD>PurchPrice</LIST_FIELD>\n        <TABLE_FIELD>Purchase Price</TABLE_FIELD>\n      </MAP_FIELD>\n    </JoinTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface associates a relational table to a database.  You can also use this API to remove an existing association by including the optional REMOVE element.  If specified, the Watson Campaign Automation API ignores any MAP_FIELD elements."
+					},
+					"response": []
+				},
+				{
+					"name": "Insert or update records in a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <InsertUpdateRelationalTable>\n      <TABLE_ID>86767</TABLE_ID>\n      <ROWS>\n        <ROW>\n          <COLUMN name=\"Record Id\">\n            <![CDATA[GHbjh73643hsdiy]]>\n          </COLUMN>\n          <COLUMN name=\"Purchase Date\">\n            <![CDATA[01/09/1975]]>\n          </COLUMN>\n          <COLUMN name=\"Product Id\">\n            <![CDATA[123454]]>\n          </COLUMN>\n        </ROW>\n        <ROW>\n          <COLUMN name=\"Record Id\">\n            <![CDATA[WStfh73643hsdgw]]>\n          </COLUMN>\n          <COLUMN name=\"Purchase Date\">\n            <![CDATA[02/11/1980]]>\n          </COLUMN>\n          <COLUMN name=\"Product Id\">\n            <![CDATA[45789]]>\n          </COLUMN>\n        </ROW>\n        <ROW>\n          <COLUMN name=\"Record Id\">\n            <![CDATA[Yuhbh73643hsfgh]]>\n          </COLUMN>\n          <COLUMN name=\"Purchase Date\">\n            <![CDATA[05/10/1980]]>\n          </COLUMN>\n          <COLUMN name=\"Product Id\">\n            <![CDATA[4766454]]>\n          </COLUMN>\n        </ROW>\n      </ROWS>\n    </InsertUpdateRelationalTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface inserts new records or updates existing records within a relational table data."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete records from a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <DeleteRelationalTableData>\n      <TABLE_ID>56753246</TABLE_ID>\n      <ROWS>\n        <ROW>\n          <KEY_COLUMN name=\"Record Id\">\n            <![CDATA[GHbjh73643hsdiy]]>\n          </KEY_COLUMN>\n        </ROW>\n        <ROW>\n          <KEY_COLUMN name=\"Record Id\">\n            <![CDATA[WStfh73643hsdgw]]>\n          </KEY_COLUMN>\n        </ROW>\n      </ROWS>\n    </DeleteRelationalTableData>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface deletes specific records from a relational table."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk export records from a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ExportTable>\n      <TABLE_NAME>Shared/Web Purchases</TABLE_NAME>\n      <EXPORT_FORMAT>CSV</EXPORT_FORMAT>\n      <ADD_TO_STORED_FILES/>\n      <DATE_START>07/25/2017 00:00:01</DATE_START>\n      <DATE_END>09/30/2017 23:59:59</DATE_END>\n    </ExportTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports exporting relational table data from Watson Campaign Automation."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk delete records from a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <PurgeTable>\n      <TABLE_NAME>WebAnalytics/Purchases</TABLE_NAME>\n      <TABLE_VISIBILITY>0</TABLE_VISIBILITY>\n      <DELETE_BEFORE>07/25/2017 12:12:12</DELETE_BEFORE>\n      <EMAIL>someone@yourcompany.com</EMAIL>\n    </PurgeTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports deleting Relational Table data from the Watson Campaign Automation.  You can purge all data (or specify a date range by using DELETE_BEFORE)."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a relational table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <DeleteTable>\n      <TABLE_NAME>WebAnalyticsPurchases</TABLE_NAME>\n      <TABLE_VISIBILITY>0</TABLE_VISIBILITY>\n      <EMAIL>someone@yourcompany.com</EMAIL>\n    </DeleteTable>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports deleting a relational table."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reporting",
+			"item": [
+				{
+					"name": "Export raw contact events",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <RawRecipientDataExport>\n      <EVENT_DATE_START>10/01/2017 00:00:00</EVENT_DATE_START>\n      <EVENT_DATE_END>10/05/2017 23:59:59</EVENT_DATE_END>\n      <MOVE_TO_FTP/>\n      <EXPORT_FORMAT>0</EXPORT_FORMAT>\n      <EXCLUDE_DELETED/>\n      <EMAIL>admin@yourorg.com</EMAIL>\n      <ALL_EVENT_TYPES/>\n      <INCLUDE_INBOX_MONITORING/>\n      <RETURN_MAILING_NAME/>\n      <RETURN_SUBJECT/>\n      <COLUMNS>\n        <COLUMN>\n          <NAME>CustomerID</NAME>\n        </COLUMN>\n        <COLUMN>\n          <NAME>First Name</NAME>\n        </COLUMN>\n        <COLUMN>\n          <NAME>Last Name</NAME>\n        </COLUMN>\n      </COLUMNS>\n    </RawRecipientDataExport>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface allows exporting unique contact-level events and creates a compressed file that contains a single flat file with all metrics. You can request all (or a subset) of the event types during a certain time span."
+					},
+					"response": []
+				},
+				{
+					"name": "Export web tracking events",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <WebTrackingDataExport>\n      <EVENT_DATE_START>10/01/2017 00:00:00</EVENT_DATE_START>\n      <EVENT_DATE_END>10/05/2017 23:59:59</EVENT_DATE_END>\n      <DATABASE_ID>123456</DATABASE_ID>\n      <DOMAINS>\n        <DOMAIN_ID>122412</DOMAIN_ID>\n        <DOMAIN_ID>234523</DOMAIN_ID>\n      </DOMAINS>\n      <SITES>\n        <SITE_ID>2389423</SITE_ID>\n      </SITES>\n      <MOVE_TO_FTP/>\n      <EXPORT_FORMAT>0</EXPORT_FORMAT>\n      <EMAIL>admin@yourorg.com</EMAIL>\n      <ALL_EVENT_TYPES/>\n      <COLUMNS>\n        <COLUMN>\n          <NAME>CustomerID</NAME>\n        </COLUMN>\n        <COLUMN>\n          <NAME>First Name</NAME>\n        </COLUMN>\n        <COLUMN>\n          <NAME>Last Name</NAME>\n        </COLUMN>\n      </COLUMNS>\n    </WebTrackingDataExport>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface allows exporting unique web tracking events and creates a compressed file that contains a single flat file with all events."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of Report Ids for a mailing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetReportIdByDate>\n      <MAILING_ID>12345</MAILING_ID>\n      <DATE_START>07/25/2017 00:00:00</DATE_START>\n      <DATE_END>09/30/2017 23:59:59</DATE_END>\n    </GetReportIdByDate>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts the Report Ids for a particular mailing that were generated between specified dates."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of sent mailings for an org",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetSentMailingsForOrg>\n      <SHARED/>\n      <SENT/>\n      <DATE_START>07/25/2017 00:00:00</DATE_START>\n      <DATE_END>09/30/2017 23:59:59</DATE_END>\n    </GetSentMailingsForOrg>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a listing of sent mailings for an organization during a specified date range."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of sent mailings for a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetSentMailingsForUser>\n      <PRIVATE/>\n      <SENT/>\n      <DATE_START>07/25/2017 00:00:00</DATE_START>\n      <DATE_END>09/30/2017 23:59:59</DATE_END>\n      <OPTIONALUSER>name@domain.com</OPTIONALUSER>\n    </GetSentMailingsForUser>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a listing of mailings that are sent for a user during a specified date range."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of sent mailings for a database",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetSentMailingsForList>\n      <DATE_START>07/25/2017 00:00:00</DATE_START>\n      <DATE_END>09/30/2017 23:59:59</DATE_END>\n      <LIST_ID>27546</LIST_ID>\n      <INCLUDE_CHILDREN/>\n      <EXCLUDE_ZERO_SENT/>\n      <EXCLUDE_TEST_MAILINGS/>\n    </GetSentMailingsForList>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a listing of mailings that are sent for a particular database during a specified date range. It allows specification of an individual database or query in addition to a flag to include \"children\"."
+					},
+					"response": []
+				},
+				{
+					"name": "Get aggregate tracking metrics for an org",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetAggregateTrackingForOrg>\n      <PRIVATE/>\n      <SENT/>\n      <TOP_DOMAIN/>\n      <DATE_START>07/25/2017 00:00:00</DATE_START>\n      <DATE_END>09/30/2017 23:59:59</DATE_END>\n    </GetAggregateTrackingForOrg>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a listing of sent mailings and their metrics for an organization during a specified date range."
+					},
+					"response": []
+				},
+				{
+					"name": "Get aggregate tracking metrics for a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetAggregateTrackingForUser>\n      <DATE_START>07/25/2017 12:12:11</DATE_START>\n      <DATE_END>09/30/2017 14:14:11</DATE_END>\n      <PRIVATE/>\n      <SENT/>\n      <OPTIONALUSER>username@domain.com</OPTIONALUSER>\n    </GetAggregateTrackingForUser>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a listing of mailings that are sent by a user during a specified date range and provides metrics for those mailings."
+					},
+					"response": []
+				},
+				{
+					"name": "Get aggregate tracking metrics for a mailing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetAggregateTrackingForMailing>\n      <MAILING_ID>12345</MAILING_ID>\n      <REPORT_ID>98765</REPORT_ID>\n      <PER_CLICK/>\n    </GetAggregateTrackingForMailing>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts metrics for a specified mailing."
+					},
+					"response": []
+				},
+				{
+					"name": "Get mailing metrics for a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ListRecipientMailings>\n      <LIST_ID>45654</LIST_ID>\n      <RECIPIENT_ID>360916458</RECIPIENT_ID>\n    </ListRecipientMailings>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns a list of mailings for a specified database (or query) and individual contact as well as metrics associated with those sent mailings."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Scoring Model Management",
+			"item": [
+				{
+					"name": "Get a list of scoring models",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetScoringModels></GetScoringModels>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns a list of scoring models for an organization.  Standard permissions apply."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a contact's scoring model scores",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetContactScores>\n      <CONTACT_ID>3920341221</CONTACT_ID>\n      <MODEL_ID>9987</MODEL_ID>\n    </GetContactScores>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns a contact’s scoring model's values. Note: CONTACT_ID is equivalent to RecipientId found in other API inputs and responses."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Template and Mailing Management",
+			"item": [
+				{
+					"name": "Get a list of mailing templates",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetMailingTemplates>\n      <VISIBILITY>0</VISIBILITY>\n      <IS_CRM_ENABLED>true</IS_CRM_ENABLED>\n      <LAST_MODIFIED_START_DATE>01/01/2017 01:00:00</LAST_MODIFIED_START_DATE>\n      <LAST_MODIFIED_END_DATE>01/31/2017 01:00:00</LAST_MODIFIED_END_DATE>\n    </GetMailingTemplates>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface extracts a list of shared or private mailing templates for your organization. The templates that are returned can be limited by the date they were last modified."
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update a mailing template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <SaveMailing>\n      <Header>\n        <MailingName>\n          <![CDATA[Dummy Mailing template]]>\n        </MailingName>\n        <FromName>\n          <![CDATA[Watson Campaign Automation]]>\n        </FromName>\n        <FromAddress>\n          <![CDATA[info@ibm.com]]>\n        </FromAddress>\n        <ReplyTo>\n          <![CDATA[info@ibm.com]]>\n        </ReplyTo>\n        <Visibility>0</Visibility>\n        <FolderPath>Shared/WCA/Marketing Templates</FolderPath>\n        <Subject>Subject of a Mailing</Subject>\n        <TrackingLevel>4</TrackingLevel>\n        <Encoding>6</Encoding>\n        <ListID>1924132</ListID>\n      </Header>\n      <MessageBodies>\n        <HTMLBody>\n          <![CDATA[<html><head><title>Mailing</title></head><body><p>This is an Example of a Mailing body. Visit <a name=\"Link1\" href=\"http://www.ibmcom\">IBM</a> for more information</p><p>If you would like to no longer receive any emails from this campaign, click <a href=\"#SPONECLICKOPTOUT\" xt=\"SPONECLICKOPTOUT\" name=\"OOLink\">here</a>t</p></body></html>]]>\n        </HTMLBody>\n      </MessageBodies>\n      <ClickThroughs>\n        <ClickThrough>\n          <ClickThroughName>\n            <![CDATA[Link1]]>\n          </ClickThroughName>\n          <ClickThroughType>2</ClickThroughType>\n          <ClickThroughURL>http://www.ibm.com</ClickThroughURL>\n        </ClickThrough>\n        <ClickThrough>\n          <ClickThroughName>\n            <![CDATA[OOLink]]>\n          </ClickThroughName>\n          <ClickThroughURL>\n            <![CDATA[#SPONECLICKOPTOUT]]>\n          </ClickThroughURL>\n          <ClickThroughType>14</ClickThroughType>\n        </ClickThrough>\n      </ClickThroughs>\n      <ForwardToFriend>\n        <ForwardType>0</ForwardType>\n      </ForwardToFriend>\n    </SaveMailing>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports saving a new, or updating an existing, mailing template that can be used for sending to a database, contact list, or query."
+					},
+					"response": []
+				},
+				{
+					"name": "Preview a mailing before sending",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <PreviewMailing>\n      <MailingId>59294</MailingId>\n      <RecipientEmail>someone@domain.com</RecipientEmail>\n    </PreviewMailing>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports previewing a mailing before sending, and if a contact email address is provided will include fully personalized values for that contact."
+					},
+					"response": []
+				},
+				{
+					"name": "Schedule a mailing to a contact source",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ScheduleMailing>\n      <TEMPLATE_ID>1000</TEMPLATE_ID>\n      <LIST_ID>100</LIST_ID>\n      <MAILING_NAME>New Mailing Name</MAILING_NAME>\n      <SEND_HTML/>\n      <SEND_TEXT/>\n      <SUBJECT>This is the new subject</SUBJECT>\n      <FROM_NAME>Sender Name</FROM_NAME>\n      <FROM_ADDRESS>sender@domain.com</FROM_ADDRESS>\n      <REPLY_TO>sender@domain.com</REPLY_TO>\n      <VISIBILITY>0</VISIBILITY>\n      <PARENT_FOLDER_PATH>2017/October/18</PARENT_FOLDER_PATH>\n      <CREATE_PARENT_FOLDER/>\n      <SCHEDULED>10/18/2017 2:00:00 PM</SCHEDULED>\n      <SEND_TIME_OPTIMIZATION>SEND_24HRS</SEND_TIME_OPTIMIZATION>\n      <SUPPRESSION_LISTS>\n        <SUPPRESSION_LIST_ID>37782</SUPPRESSION_LIST_ID>\n        <SUPPRESSION_LIST_ID>37744</SUPPRESSION_LIST_ID>\n      </SUPPRESSION_LISTS>\n      <SUBSTITUTIONS>\n        <SUBSTITUTION>\n          <NAME>Sub_Value_1</NAME>\n          <VALUE>The value to put in the mailing.</VALUE>\n        </SUBSTITUTION>\n        <SUBSTITUTION>\n          <NAME>Sub_Value_2</NAME>\n          <VALUE>Another value to put in the mailing.</VALUE>\n        </SUBSTITUTION>\n      </SUBSTITUTIONS>\n      <APPEND_TAGS>\n        <TAG>2017 Fall Campaign</TAG>\n      </APPEND_TAGS>\n      <VMTA>mail0000.yourbrand.com</VMTA>\n    </ScheduleMailing>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface can be used to schedule a template-based mailing for future delivery, or send a template-based mailing immediately to a specific database, query, or contact list."
+					},
+					"response": []
+				},
+				{
+					"name": "Send an autoresponder to a contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <SendMailing>\n      <MailingId>25455210</MailingId>\n      <LOOK_UP_KEYS>\n        <LOOK_UP_KEY>\n          <NAME>UID</NAME>\n          <VALUE>36912</VALUE>\n        </LOOK_UP_KEY>\n      </LOOK_UP_KEYS>\n    </SendMailing>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports the delivery of autoresponders to contacts based on a custom event."
+					},
+					"response": []
+				},
+				{
+					"name": "Export a mailing template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ExportMailingTemplate>\n      <TEMPLATE_ID>59294</TEMPLATE_ID>\n      <ADD_TO_STORED_FILES/>\n    </ExportMailingTemplate>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface exports a mailing template from your organization.  The results are a .stl file (a compressed file that contains XML with an Watson Campaign Automation extension) which is written to the FTP account associated with the current session. You can (optionally) copy the resulting file to Stored Files."
+					},
+					"response": []
+				},
+				{
+					"name": "Forward a mailing to a friend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <ForwardToFriend>\n      <SENDER_EMAIL>originalrecipient@domain.com</SENDER_EMAIL>\n      <rs>MTEyMTEzMjYxMAS2</rs>\n      <m>5683145</m>\n      <RECIPIENTS>friend1@domain.com, friend2@domain.com</RECIPIENTS>\n      <MESSAGE>Forwarded Mailing</MESSAGE>\n    </ForwardToFriend>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports sending a copy of a mailing, along with an extra message, to the specified contacts."
+					},
+					"response": []
+				},
+				{
+					"name": "Get contact mailing details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetContactMailingDetails>\n      <SURE_FROM_CODE>1-8QhP4YIS-XYPxqdpK-ia6t4PP3-+/dKSxVg-uCXkKZka-X77SLMfa-0J+R5TBj-AX3N0CTU</SURE_FROM_CODE>\n      <ORGANIZATION_ID>1dcd49d-108b594203d-f528764d624db129b32c21fbca0cb8d6</ORGANIZATION_ID>\n    </GetContactMailingDetails>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns details about a mailing that was sent to a specific contact.  It requires a contact-specific SureFrom code."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Miscellaneous",
+			"item": [
+				{
+					"name": "Get the status of a data job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetJobStatus>\n      <JOB_ID>40865</JOB_ID>\n    </GetJobStatus>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface allows monitoring the status of a job after the data job is initiated."
+					},
+					"response": []
+				},
+				{
+					"name": "Get folder path for a folder or object",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetFolderPath>\n      <OBJECT_TYPE>Mailing</OBJECT_TYPE>\n      <FOLDER_ID>12c734c-108b610e402-f528764d624db129b32c21fbca0cb8d6</FOLDER_ID>\n    </GetFolderPath>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface returns the folder path for a specified Folder ID or a specified Object ID (ex: database, query, contact list, or mailing)."
+					},
+					"response": []
+				},
+				{
+					"name": "Get the contents of a user's stored files directory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<Envelope>\n  <Body>\n    <GetStoredFiles>\n      <VISIBILITY>0</VISIBILITY>\n      <DIRECTORY_ID>1f021361-14173ff1f7f-02314f99fdd3da213aacc7e30a8c506a</DIRECTORY_ID>\n    </GetStoredFiles>\n  </Body>\n</Envelope>"
+						},
+						"url": {
+							"raw": "https://apiX.ibmmarketingcloud.com/XMLAPI",
+							"protocol": "https",
+							"host": [
+								"apiX",
+								"ibmmarketingcloud",
+								"com"
+							],
+							"path": [
+								"XMLAPI"
+							]
+						},
+						"description": "This interface supports retrieving a listing of directory within a user's stored files."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
