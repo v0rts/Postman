@@ -1,0 +1,395 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "IDv2: User management",
+        "description": "",
+        "termsOfService": "http:\/\/exmple.com\/license\/"
+    },
+    "servers": [
+        "https:\/\/api.atlassian.com"
+    ],
+    "paths": {
+        "\/users\/{account_id}\/manage": {
+            "get": {
+                "summary": "Get user management permissions",
+                "description": "Returns the set of permissions you have for managing the specified Atlassian account",
+                "operationId": "GetUserManagementPermissions",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The user account to manage"
+                    },
+                    {
+                        "name": "privileges",
+                        "in": "query",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have permission to manage at least some aspect of the specified user account. Restrictions around the privileges specified are returned.\n- _profile_: DEPRECATED, replace by profile.write - _profile.read_: read the profile data of the user account - _profile.write_: refers to the object mutability of the user's profile\n                   (at PATCH .\/profile)\n- _email.set_: set a new value for the user's email address - _email.initiateChange_: initiate an email address change - _mfa.read_: rea"
+                    }
+                }
+            }
+        },
+        "\/users\/{account_id}\/manage\/profile": {
+            "get": {
+                "summary": "Get user profile",
+                "description": "Returns information about a single Atlassian account by ID",
+                "operationId": "GetUserProfile",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The user account to manage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have permission to manage at least some aspect of the specified user account. Restrictions around the privileges specified are returned.\n- _profile_: DEPRECATED, replace by profile.write - _profile.read_: read the profile data of the user account - _profile.write_: refers to the object mutability of the user's profile\n                   (at PATCH .\/profile)\n- _email.set_: set a new value for the user's email address - _email.initiateChange_: initiate an email address change - _mfa.read_: rea"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update a user profile",
+                "description": "Updates fields in a user account. The `profile` privilege details which fields you can change.",
+                "operationId": "UpdateAUserProfile",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The user account to manage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have permission to manage at least some aspect of the specified user account. Restrictions around the privileges specified are returned.\n- _profile_: DEPRECATED, replace by profile.write - _profile.read_: read the profile data of the user account - _profile.write_: refers to the object mutability of the user's profile\n                   (at PATCH .\/profile)\n- _email.set_: set a new value for the user's email address - _email.initiateChange_: initiate an email address change - _mfa.read_: rea"
+                    }
+                }
+            }
+        },
+        "\/users\/{account_id}\/manage\/email": {
+            "put": {
+                "summary": "Set a user's email \n",
+                "description": "Sets the specified user's email address. Before using this endpoint, you must  [verify the target domain](https:\/\/confluence.atlassian.com\/x\/gjcWN) as the new email address will be considered verified.\nThe permission to make use of this resource is exposed by the `email.set` privilege.\nThis call invalidates all active sessions.\n",
+                "operationId": "SetAUser'sEmail",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The user account to manage"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/users\/{accountId}\/manage\/api-tokens": {
+            "get": {
+                "summary": "Get a user's API tokens",
+                "description": "Gets the API tokens owned by the specified user.",
+                "operationId": "GetAUser'sApiTokens",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "description": "The ID of the user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have permission to manage at least some aspect of the specified user account. Restrictions around the privileges specified are returned.\n- _profile_: DEPRECATED, replace by profile.write - _profile.read_: read the profile data of the user account - _profile.write_: refers to the object mutability of the user's profile\n                   (at PATCH .\/profile)\n- _email.set_: set a new value for the user's email address - _email.initiateChange_: initiate an email address change - _mfa.read_: rea"
+                    }
+                }
+            }
+        },
+        "\/users\/{accountId}\/manage\/api-tokens\/{tokenId}": {
+            "delete": {
+                "summary": "Delete an API token",
+                "description": "Deletes a specifid API token by ID.",
+                "operationId": "DeleteAnApiToken",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "description": "The ID of the user"
+                    },
+                    {
+                        "name": "tokenId",
+                        "in": "path",
+                        "description": "The ID of the API token"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/users\/{account_id}\/manage\/lifecycle\/disable": {
+            "post": {
+                "summary": "Disable a user",
+                "description": "\nDisables the specified user account. The permission to make use of this resource is exposed by the `lifecycle.enablement` privilege.\nYou can optionally set a message associated with the block that will be shown to the user on attempted authentication. If none is supplied, a default message will be used.\n",
+                "operationId": "DisableAUser",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The user account to manage"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/users\/{account_id}\/manage\/lifecycle\/enable": {
+            "post": {
+                "summary": "Enable a user",
+                "description": "\nEnables the specified user account. The permission to make use of this resource is exposed by the `lifecycle.enablement` privilege.\nYou can optionally set a message associated with the block that will be shown to the user on attempted authentication. If none is supplied, a default message will be used.\n",
+                "operationId": "EnableAUser",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The user account to manage"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AtlassianAccountUser": {
+                "type": "object"
+            },
+            "ExtendedProfile": {
+                "type": "object",
+                "properties": {
+                    "job_title": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "organization": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "department": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "location": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "job_title": {
+                "type": "object"
+            },
+            "organization": {
+                "type": "object"
+            },
+            "department": {
+                "type": "object"
+            },
+            "location": {
+                "type": "object"
+            },
+            "AccountCharacteristics": {
+                "type": "object",
+                "properties": {
+                    "not_mentionable": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "account_type": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "account_status": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "name": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "picture": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "characteristics": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "account_id": {
+                "type": "object"
+            },
+            "account_type": {
+                "type": "object"
+            },
+            "account_status": {
+                "type": "object"
+            },
+            "name": {
+                "type": "object"
+            },
+            "picture": {
+                "type": "object"
+            },
+            "characteristics": {
+                "type": "object"
+            },
+            "Manageability.RestrictionReason": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "The property or action is restricted because:\n\n- _administrative_: The property or action is restricted\n  because it is intended exclusively for administrative use\n- _administrative.otherOnly_: The property or action\n  is restricted because it is intended for administrative use and\n  is forbidden for self-use.\n- _managedAccount_: The property or action is restricted because it is\n  available only to the user's organisation administrator\n- _externalDirectory.scim_: The property\/action is restricted because\n  the user is managed by an external SCIM directory\n- _externalDirectory.google_: The property\/action is restricted because\n  the user is managed by an external Google directory\n- _blocked.exportControl_: The property\/action is restricted because\n  the user is blocked by US export control\n",
+                        "type": ""
+                    }
+                }
+            },
+            "Manageability.Allowed": {
+                "type": "object",
+                "properties": {
+                    "allowed": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Manageability.Unallowed": {
+                "type": "object",
+                "properties": {
+                    "allowed": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "reason": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "reason": {
+                "type": "object"
+            },
+            "Manageability.Rule.Simple": {
+                "type": "object"
+            },
+            "Manageability.Rule.ObjectMutability": {
+                "type": "object"
+            },
+            "Response.BadRequest.BodyParseFailure": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Response.BadRequest.FieldConstraintsViolated": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "context": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "context": {
+                "type": "object"
+            },
+            "Response.Forbidden.Basic": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Response.Forbidden.Action": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "context": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "Response.Forbidden.UnclaimedDomain": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "context": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Response.Forbidden.ObjectMutability": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "context": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,3900 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1001.0.0-S",
+        "title": "Service Desk Public REST API",
+        "description": "Public REST API for Jira Service Desk",
+        "termsOfService": "https:\/\/www.atlassian.com\/legal\/customer-agreement"
+    },
+    "servers": [
+        "https:\/\/atlassian.com"
+    ],
+    "paths": {
+        "\/rest\/servicedeskapi\/customer": {
+            "post": {
+                "summary": "Create customer",
+                "description": "This method adds a customer to the Jira Service Desk instance by passing a JSON file including an email address and display name. The display name does not need to be unique. The record's identifiers, `name` and `key`, are automatically generated from the request details.\n\n**[Permissions](#permissions) required**: Jira Administrator Global permission",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCustomerResourceCreateCustomerPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/info": {
+            "get": {
+                "summary": "Get info",
+                "description": "This method retrieves information about the Jira Service Desk instance such as software version, builds, and related links.\n\n**[Permissions](#permissions) required**: None, the user does not need to be logged in.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceSoftwareInfoResourceGetInfoGet",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/knowledgebase\/article": {
+            "get": {
+                "summary": "Get articles",
+                "description": "Returns articles which match the given query string across all service desks.\n\n**[Permissions](#permissions) required**: Permission to access the [customer portal](https:\/\/confluence.atlassian.com\/servicedeskcloud\/configuring-the-customer-portal-732528918.html).",
+                "operationId": "ComAtlassianServicedeskApiRestResourceKBResourceGetArticlesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The string used to filter the articles (required)."
+                    },
+                    {
+                        "name": "highlight",
+                        "in": "query",
+                        "description": "If set to true matching query term in the title and excerpt will be highlighted using the \\{@code @@@hl@@@term@@@endhl@@@\\} syntax. Default: false."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/organization": {
+            "get": {
+                "summary": "Get organizations",
+                "description": "This method returns a list of organizations in the Jira Service Desk instance. Use this method when you want to present a list of organizations or want to locate an organization by name.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: If the user is a customer, only those organizations of which the customer is a member are listed.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceGetOrganizationsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create organization",
+                "description": "This method creates an organization by passing the name of the organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to create organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceCreateOrganizationPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/organization\/{organizationId}": {
+            "get": {
+                "summary": "Get organization",
+                "description": "This method returns details of an organization. Use this method to get organization details whenever your application component is passed an organization ID but needs to display other organization details.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: Customers can only retrieve organization of which they are members.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceGetOrganizationGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete organization",
+                "description": "This method deletes an organization. Note that the organization is deleted regardless of other associations it may have. For example, associations with service desks.\n\n**[Permissions](#permissions) required**: Jira administrator.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceDeleteOrganizationDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/organization\/{organizationId}\/property": {
+            "get": {
+                "summary": "Get properties keys",
+                "description": "Returns the keys of all properties for an organization. Use this resource when you need to find out what additional properties items have been added to an organization.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: Customers can only access properties of organizations of which they are members.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationPropertyResourceGetPropertiesKeysGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/organization\/{organizationId}\/property\/{propertyKey}": {
+            "get": {
+                "summary": "Get property",
+                "description": "Returns the value of a property from an organization. Use this method to obtain the JSON content for an organization's property.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: Customers can only access properties of organizations of which they are members.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationPropertyResourceGetPropertyGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "The key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Set property",
+                "description": "Sets the value of a property for an organization. Use this resource to store custom data against an organization.\n\n**[Permissions](#permissions) required**: Service Desk Administrator or Agent.\n\nNote: Permission to manage organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationPropertyResourceSetPropertyPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "The key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete property",
+                "description": "Removes a property from an organization.\n\n**[Permissions](#permissions) required**: Service Desk Administrator or Agent.\n\nNote: Permission to manage organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationPropertyResourceDeletePropertyDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "The key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/organization\/{organizationId}\/user": {
+            "get": {
+                "summary": "Get users in organization",
+                "description": "This method returns all the users associated with an organization. Use this method where you want to provide a list of users for an organization or determine if a user is associated with an organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceGetUsersInOrganizationGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add users to organization",
+                "description": "This method adds users to an organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to add users to an organization can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceAddUsersToOrganizationPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove users from organization",
+                "description": "This method removes users from an organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to delete users from an organization can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationResourceRemoveUsersFromOrganizationDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "in": "path",
+                        "description": "The ID of the organization."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request": {
+            "get": {
+                "summary": "Get customer requests",
+                "description": "This method returns all customer requests for the user executing the query.\n\nThe returned customer requests are ordered chronologically by the latest activity on each request. For example, the latest status transition or comment.\n\n**[Permissions](#permissions) required**: Permission to access the specified service desk.\n\n**Response limitations**: For customers, the list returned will include request they created (or were created on their behalf) or are participating in only.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCustomerRequestResourceGetCustomerRequestsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "searchTerm",
+                        "in": "query",
+                        "description": "Filters customer requests where the request summary matches the `searchTerm`. [Wildcards](https:\/\/confluence.atlassian.com\/display\/JIRACORECLOUD\/Search+syntax+for+text+fields) can be used in the `searchTerm` parameter."
+                    },
+                    {
+                        "name": "requestOwnership",
+                        "in": "query",
+                        "description": "Filters customer requests using the following values:\n\n *  `OWNED_REQUESTS` returns customer requests where the user is the creator.\n *  `PARTICIPATED_REQUESTS` returns customer requests where the user is a participant.\n *  `ORGANIZATION` returns customer requests for an organization of which the user is a member when used in conjunction with `organizationId`.\n *  `ALL_ORGANIZATIONS` returns customer requests that belong to all organizations of which the user is a member.\n *  `APPROVER` returns "
+                    },
+                    {
+                        "name": "requestStatus",
+                        "in": "query",
+                        "description": "Filters customer requests where the request is closed, open, or either of the two where:\n\n *  `CLOSED_REQUESTS` returns customer requests that are closed.\n *  `OPEN_REQUESTS` returns customer requests that are open.\n *  `ALL_REQUESTS` returns all customer requests."
+                    },
+                    {
+                        "name": "approvalStatus",
+                        "in": "query",
+                        "description": "Filters results to customer requests based on their approval status:\n\n *  `MY_PENDING_APPROVAL` returns customer requests pending the user's approval.\n *  `MY_HISTORY_APPROVAL` returns customer requests where the user was an approver.\n\n**Note**: Valid only when used with requestOwnership=APPROVER."
+                    },
+                    {
+                        "name": "organizationId",
+                        "in": "query",
+                        "description": "Filters customer requests that belong to a specific organization (note that the user must be a member of that organization). **Note**: Valid only when used with requestOwnership=ORGANIZATION."
+                    },
+                    {
+                        "name": "serviceDeskId",
+                        "in": "query",
+                        "description": "Filters customer requests by service desk."
+                    },
+                    {
+                        "name": "requestTypeId",
+                        "in": "query",
+                        "description": "Filters customer requests by request type. Note that the `serviceDeskId` must be specified for the service desk in which the request type belongs."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create customer request",
+                "description": "This method creates a customer request in a service desk.\n\nThe JSON request must include the service desk and customer request type, as well as any fields that are required for the request type. A list of the fields required by a customer request type can be obtained using [servicedesk\/\\{serviceDeskId\\}\/requesttype\/\\{requestTypeId\\}\/field](#api-servicedesk-serviceDeskId-requesttype-requestTypeId-field-get).\n\nThe fields required for a customer request type depend on the user's permissions:\n\n *  `",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCustomerRequestResourceCreateCustomerRequestPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}": {
+            "get": {
+                "summary": "Get customer request by id or key",
+                "description": "This method returns a customer request.\n\n**[Permissions](#permissions) required**: Permission to access the specified service desk.\n\n**Response limitations**: For customers, only a request they created, was created on their behalf, or they are participating in will be returned.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCustomerRequestResourceGetCustomerRequestByIdOrKeyGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/approval": {
+            "get": {
+                "summary": "Get approvals",
+                "description": "This method returns all approvals on a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceApprovalResourceGetApprovalsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/approval\/{approvalId}": {
+            "get": {
+                "summary": "Get approval by id",
+                "description": "This method returns an approval. Use this method to determine the status of an approval and the list of approvers.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceApprovalResourceGetApprovalByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "approvalId",
+                        "in": "path",
+                        "description": "The ID of the approval to be returned."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Answer approval",
+                "description": "This method enables a user to **Approve** or **Decline** an approval on a customer request. The approval is assumed to be owned by the user making the call.\n\n**[Permissions](#permissions) required**: User is assigned to the approval request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceApprovalResourceAnswerApprovalPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "approvalId",
+                        "in": "path",
+                        "description": "The ID of the approval to be returned."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/attachment": {
+            "get": {
+                "summary": "Get attachments for request",
+                "description": "This method returns all the attachments for a customer requests.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers will only get a list of public attachments.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceAttachmentResourceGetAttachmentsForRequestGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create attachment",
+                "description": "This method adds one or more temporary files (attached to the request's service desk using [servicedesk\/\\{serviceDeskId\\}\/attachTemporaryFile](#api-servicedesk-serviceDeskId-attachTemporaryFile-post)) as attachments to a customer request and set the attachment visibility using the `public` flag. Also, it is possible to include a comment with the attachments.\n\nTo get a list of attachments for a comment on the request use [servicedeskapi\/request\/\\{issueIdOrKey\\}\/comment\/\\{commentId\\}\/attachment](#",
+                "operationId": "ComAtlassianServicedeskApiRestResourceAttachmentResourceCreateAttachmentPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment": {
+            "get": {
+                "summary": "Get request comments",
+                "description": "This method returns all comments on a customer request. No permissions error is provided if, for example, the user doesn't have access to the service desk or request, the method simply returns an empty response.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers are returned public comments only.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCommentResourceGetRequestCommentsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "public",
+                        "in": "query",
+                        "description": "Specifies whether to return public comments or not. Default: true."
+                    },
+                    {
+                        "name": "internal",
+                        "in": "query",
+                        "description": "Specifies whether to return internal comments or not. Default: true."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create request comment",
+                "description": "This method creates a public or private (internal) comment on a customer request, with the comment visibility set by `public`. The user recorded as the author of the comment.\n\n**[Permissions](#permissions) required**: User has Add Comments permission.\n\n**Request limitations**: Customers can set comments to public visibility only.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCommentResourceCreateRequestCommentPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment\/{commentId}": {
+            "get": {
+                "summary": "Get request comment by id",
+                "description": "This method returns details of a customer request's comment.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers can only view public comments on requests where they are the reporter or a participant whereas agents can see both internal and public comments.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCommentResourceGetRequestCommentByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "commentId",
+                        "in": "path",
+                        "description": "The ID of the comment to retrieve."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment\/{commentId}\/attachment": {
+            "get": {
+                "summary": "Get comment attachments",
+                "description": "This method returns the attachments referenced in a comment.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers can only view public comments, and retrieve their attachments, on requests where they are the reporter or a participant whereas agents can see both internal and public comments.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCommentResourceGetCommentAttachmentsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "commentId",
+                        "in": "path",
+                        "description": "The ID of the comment to retrieve."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/notification": {
+            "get": {
+                "summary": "Get subscription status",
+                "description": "This method returns the notification subscription status of the user making the request. Use this method to determine if the user is subscribed to a customer request's notifications.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestNotificationResourceGetSubscriptionStatusGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Subscribe",
+                "description": "This method subscribes the user to receiving notifications from a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestNotificationResourceSubscribePut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Unsubscribe",
+                "description": "This method unsubscribes the user from notifications from a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestNotificationResourceUnsubscribeDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/participant": {
+            "get": {
+                "summary": "Get request participants",
+                "description": "This method returns a list of all the participants on a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestParticipantResourceGetRequestParticipantsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add request participants",
+                "description": "This method adds participants to a customer request.\n\n**[Permissions](#permissions) required**: Permission to manage participants on the customer request.\n\nNote, participants can be added when creating a customer request using the [request](#api-request-post) resource, by defining the participants in the `requestParticipants` field.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestParticipantResourceAddRequestParticipantsPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove request participants",
+                "description": "This method removes participants from a customer request.\n\n**[Permissions](#permissions) required**: Permission to manage participants on the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestParticipantResourceRemoveRequestParticipantsDel",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/sla": {
+            "get": {
+                "summary": "Get sla information",
+                "description": "This method returns all the SLA records on a customer request. A customer request can have zero or more SLAs. Each SLA can have recordings for zero or more \"completed cycles\" and zero or 1 \"ongoing cycle\". Each cycle includes information on when it started and stopped, and whether it breached the SLA goal.\n\n**[Permissions](#permissions) required**: Agent for the Service Desk containing the queried customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestSlaResourceGetSlaInformationGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/sla\/{slaMetricId}": {
+            "get": {
+                "summary": "Get sla information by id",
+                "description": "This method returns the details for an SLA on a customer request.\n\n**[Permissions](#permissions) required**: Agent for the Service Desk containing the queried customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestSlaResourceGetSlaInformationByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "slaMetricId",
+                        "in": "path",
+                        "description": "The ID or key of the SLAs metric to be retrieved."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/status": {
+            "get": {
+                "summary": "Get customer request status",
+                "description": "This method returns a list of all the statuses a customer Request has achieved. A status represents the state of an issue in its workflow. An issue can have one active status only. The list returns the status history in chronological order, most recent (current) status first.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestStatusResourceGetCustomerRequestStatusGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/transition": {
+            "get": {
+                "summary": "Get customer transitions",
+                "description": "This method returns a list of transitions, the workflow processes that moves a customer request from one status to another, that the user can perform on a request. Use this method to provide a user with a list if the actions they can take on a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCustomerTransitionResourceGetCustomerTransitionsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Perform customer transition",
+                "description": "This method performs a customer transition for a given request and transition. An optional comment can be included to provide a reason for the transition.\n\n**[Permissions](#permissions) required**: The user must be able to view the request and have the Transition Issues permission. If a comment is passed the user must have the Add Comments permission.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCustomerTransitionResourcePerformCustomerTransitionPos",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or Key of the customer request to be returned"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/request\/{requestIdOrKey}\/feedback": {
+            "get": {
+                "summary": "Get feedback",
+                "description": "This method retrieves a feedback of a request using it's `requestKey` or `requestId`\n\n**[Permissions](#permissions) required**: User has view request permissions.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCSATFeedbackPublicResourceGetFeedbackGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "requestIdOrKey",
+                        "in": "path",
+                        "description": "The id or the key of the request to post the feedback on"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Post feedback",
+                "description": "This method adds a feedback on an request using it's `requestKey` or `requestId`\n\n**[Permissions](#permissions) required**: User must be the reporter or an Atlassian Connect app.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCSATFeedbackPublicResourcePostFeedbackPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "requestIdOrKey",
+                        "in": "path",
+                        "description": "The id or the key of the request to post the feedback on"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete feedback",
+                "description": "This method deletes the feedback of request using it's `requestKey` or `requestId`\n\n**[Permissions](#permissions) required**: User must be the reporter or an Atlassian Connect app.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceCSATFeedbackPublicResourceDeleteFeedbackDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "requestIdOrKey",
+                        "in": "path",
+                        "description": "The id or the key of the request to post the feedback on"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/requesttype": {
+            "get": {
+                "summary": "Get all request types",
+                "description": "This method returns all customer request types used in the Jira Service Desk instance, optionally filtered by a query string.\n\nUse [servicedeskapi\/servicedesk\/\\{serviceDeskId\\}\/requesttype](#api-servicedesk-serviceDeskId-requesttype-get) to find the customer request types supported by a specific service desk.\n\nThe returned list of customer request types can be filtered using the `query` parameter. The parameter is matched against the customer request types' `name` or `description`. For example, ",
+                "operationId": "ComAtlassianServicedeskApiRestResourceGlobalRequestTypeResourceGetAllRequestTypesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "String to be used to filter the results."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk": {
+            "get": {
+                "summary": "Get service desks",
+                "description": "This method returns all the service desks in the Jira Service Desk instance that the user has permission to access. Use this method where you need a list of service desks or need to locate a service desk by name or keyword.\n\n**[Permissions](#permissions) required**: Any",
+                "operationId": "ComAtlassianServicedeskApiRestResourceServiceDeskResourceGetServiceDesksGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}": {
+            "get": {
+                "summary": "Get service desk by id",
+                "description": "This method returns a service desk. Use this method to get service desk details whenever your application component is passed a service desk ID but needs to display other service desk details.\n\n**[Permissions](#permissions) required**: Permission to access the Service Desk. For example, being the Service Desk's Administrator or one of its Agents or Users.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceServiceDeskResourceGetServiceDeskByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/attachTemporaryFile": {
+            "post": {
+                "summary": "Attach temporary file",
+                "description": "This method adds one or more temporary attachments to a service desk, which can then be permanently attached to a customer request using [servicedeskapi\/request\/\\{issueIdOrKey\\}\/attachment](#api-request-issueIdOrKey-attachment-post).\n\n**Note**: It is possible for a service desk administrator to turn off the ability to add attachments to a service desk.\n\nThis method expects a multipart request. The media-type multipart\/form-data is defined in RFC 1867. Most client libraries have classes that make",
+                "operationId": "ComAtlassianServicedeskApiRestResourceTemporaryFileResourceAttachTemporaryFilePost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Returns the customer details."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/customer": {
+            "get": {
+                "summary": "Get customers",
+                "description": "This method returns a list of the customers on a service desk.\n\nThe returned list of customers can be filtered using the `query` parameter. The parameter is matched against customers' `displayName`, `name`, or `email`. For example, searching for \"John\", \"Jo\", \"Smi\", or \"Smith\" will match a user with display name \"John Smith\".\n\n**[Permissions](#permissions) required**: Permission to view this Service Desk's customers.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceServiceDeskCustomerResourceGetCustomersGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The string used to filter the articles (required)."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add customers",
+                "description": "Adds one or more customers to a service desk. If any of the passed customers are associated with the service desk, no changes will be made for those customers and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Service desk administrator",
+                "operationId": "ComAtlassianServicedeskApiRestResourceServiceDeskCustomerResourceAddCustomersPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove customers",
+                "description": "This method removes one or more customers from a service desk. The service desk must have closed access. If any of the passed customers are not associated with the service desk, no changes will be made for those customers and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Services desk administrator",
+                "operationId": "ComAtlassianServicedeskApiRestResourceServiceDeskCustomerResourceRemoveCustomersDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/knowledgebase\/article": {
+            "get": {
+                "summary": "Get articles",
+                "description": "Returns articles which match the given query and belong to the knowledge base linked to the service desk.\n\n**[Permissions](#permissions) required**: Permission to access the service desk.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceKBServiceDeskResourceGetArticlesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The string used to filter the articles (required)."
+                    },
+                    {
+                        "name": "highlight",
+                        "in": "query",
+                        "description": "If set to true matching query term in the title and excerpt will be highlighted using the \\{@code @@@hl@@@term@@@endhl@@@\\} syntax. Default: false."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/organization": {
+            "get": {
+                "summary": "Get organizations",
+                "description": "This method returns a list of all organizations associated with a service desk.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationServiceDeskResourceGetOrganizationsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add organization",
+                "description": "This method adds an organization to a service desk. If the organization ID is already associated with the service desk, no change is made and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationServiceDeskResourceAddOrganizationPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove organization",
+                "description": "This method removes an organization from a service desk. If the organization ID does not match an organization associated with the service desk, no change is made and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceOrganizationServiceDeskResourceRemoveOrganizationDelet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/queue": {
+            "get": {
+                "summary": "Get queues",
+                "description": "This method returns the queues in a service desk. To include a customer request count for each queue (in the `issueCount` field) in the response, set the query parameter `includeCount` to true (its default is false).\n\n**[Permissions](#permissions) required**: service desk's Agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceQueueResourceGetQueuesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "includeCount",
+                        "in": "query",
+                        "description": "Specifies whether to include each queue's customer request (issue) count in the response."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/queue\/{queueId}": {
+            "get": {
+                "summary": "Get queue",
+                "description": "This method returns a specific queues in a service desk. To include a customer request count for the queue (in the `issueCount` field) in the response, set the query parameter `includeCount` to true (its default is false).\n\n**[Permissions](#permissions) required**: service desk's Agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceQueueResourceGetQueueGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "queueId",
+                        "in": "path",
+                        "description": "ID of the required queue."
+                    },
+                    {
+                        "name": "includeCount",
+                        "in": "query",
+                        "description": "Specifies whether to include each queue's customer request (issue) count in the response."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/queue\/{queueId}\/issue": {
+            "get": {
+                "summary": "Get issues in queue",
+                "description": "This method returns the customer requests in a queue. Only fields that the queue is configured to show are returned. For example, if a queue is configured to show description and due date, then only those two fields are returned for each customer request in the queue.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceQueueResourceGetIssuesInQueueGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "queueId",
+                        "in": "path",
+                        "description": "ID of the required queue."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype": {
+            "get": {
+                "summary": "Get request types",
+                "description": "This method returns all customer request types from a service desk. There are two parameters for filtering the returned list:\n\n *  `groupId` which filters the results to items in the customer request type group.\n *  `searchQuery` which is matched against request types' `name` or `description`. For example, the strings \"Install\", \"Inst\", \"Equi\", or \"Equipment\" will match a request type with the *name* \"Equipment Installation Request\".\n\n**[Permissions](#permissions) required**: Permission to acces",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypeResourceGetRequestTypesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Filters results to those in a customer request type group."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    },
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "String to be used to filter the results."
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create request type",
+                "description": "This method enables a customer request type to be added to a service desk based on an issue type. Note that not all customer request type fields can be specified in the request and these fields are given the following default values:\n\n *  Request type icon is given the question mark icon.\n *  Request type groups is left empty, which means this customer request type will not be visible on the [customer portal](https:\/\/confluence.atlassian.com\/servicedeskcloud\/configuring-the-customer-portal-73252",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypeResourceCreateRequestTypePost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}": {
+            "get": {
+                "summary": "Get request type by id",
+                "description": "This method returns a customer request type from a service desk.\n\n**[Permissions](#permissions) required**: Permission to access the service desk.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypeResourceGetRequestTypeByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "requestTypeId",
+                        "in": "path",
+                        "description": "The ID of the customer request type to be returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/field": {
+            "get": {
+                "summary": "Get request type fields",
+                "description": "This method returns the fields for a service desk's customer request type.\n\nAlso, the following information about the user's permissions for the request type is returned:\n\n *  `canRaiseOnBehalfOf` returns `true` if the user has permission to raise customer requests on behalf of other customers. Otherwise, returns `false`.\n *  `canAddRequestParticipants` returns `true` if the user can add customer request participants. Otherwise, returns `false`.\n\n**[Permissions](#permissions) required**: Permiss",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypeFieldResourceGetRequestTypeFieldsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "requestTypeId",
+                        "in": "path",
+                        "description": "The ID of the customer request type to be returned."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/property": {
+            "get": {
+                "summary": "Get properties keys",
+                "description": "Returns the keys of all properties for a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore the keys of all properties for a request type are also available by calling the Jira Cloud Platform [Get issue type property keys](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-get) endpoint.\n\n**[Permissions](#permissions) required**: The user must have permission to view the request type",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypePropertyResourceGetPropertiesKeysGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "requestTypeId",
+                        "in": "path",
+                        "description": "The ID of the customer request type to be returned."
+                    },
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/property\/{propertyKey}": {
+            "get": {
+                "summary": "Get property",
+                "description": "Returns the value of the property from a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore also available by calling the Jira Cloud Platform [Get issue type property](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-get) endpoint.\n\n**[Permissions](#permissions) required**: User must have permission to view the request type.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypePropertyResourceGetPropertyGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "requestTypeId",
+                        "in": "path",
+                        "description": "The ID of the customer request type to be returned."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "The key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Set property",
+                "description": "Sets the value of a request type property. Use this resource to store custom data against a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore can also be set by calling the Jira Cloud Platform [Set issue type property](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-put) endpoint.\n\n**[Permissions](#permissions) required**: Jira project administrator with a Jira Servic",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypePropertyResourceSetPropertyPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "requestTypeId",
+                        "in": "path",
+                        "description": "The ID of the customer request type to be returned."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "The key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete property",
+                "description": "Removes a property from a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore can also be deleted by calling the Jira Cloud Platform [Delete issue type property](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-delete) endpoint.\n\n**[Permissions](#permissions) required**: Jira project administrator with a Jira Service Desk agent license.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypePropertyResourceDeletePropertyDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "requestTypeId",
+                        "in": "path",
+                        "description": "The ID of the customer request type to be returned."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "The key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returned if the organization was deleted."
+                    }
+                }
+            }
+        },
+        "\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttypegroup": {
+            "get": {
+                "summary": "Get request type groups",
+                "description": "This method returns a service desk's customer request type groups. Jira Service Desk administrators can arrange the customer request type groups in an arbitrary order for display on the customer portal; the groups are returned in this order.\n\n**[Permissions](#permissions) required**: Permission to view the service desk.",
+                "operationId": "ComAtlassianServicedeskApiRestResourceRequestTypeGroupResourceGetRequestTypeGroupsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceDeskId",
+                        "in": "path",
+                        "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the runtime information for the Jira Service Desk instance."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "IncludedFields": {
+                "type": "object",
+                "properties": {
+                    "included": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "actuallyIncluded": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "excluded": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "included": {
+                "type": "array"
+            },
+            "actuallyIncluded": {
+                "type": "array"
+            },
+            "excluded": {
+                "type": "array"
+            },
+            "CustomerRequestActionsDTO": {
+                "type": "object",
+                "properties": {
+                    "addAttachment": {
+                        "description": "Action of adding attachments to a request.",
+                        "type": ""
+                    },
+                    "addComment": {
+                        "description": "Action of adding comments to a request.",
+                        "type": ""
+                    },
+                    "addParticipant": {
+                        "description": "Action of adding participants to a request.",
+                        "type": ""
+                    },
+                    "removeParticipant": {
+                        "description": "Action of removing participants from a request.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOOrganizationDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "values": {
+                "type": "array"
+            },
+            "_expands": {
+                "type": "array"
+            },
+            "FieldMetadata": {
+                "type": "object",
+                "properties": {
+                    "required": {
+                        "description": "Indicates whether the field is required.",
+                        "type": "boolean"
+                    },
+                    "schema": {
+                        "description": "The data type of the field.",
+                        "type": ""
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    },
+                    "autoCompleteUrl": {
+                        "description": "The URL that can be used to automatically complete the field.",
+                        "type": "string"
+                    },
+                    "hasDefaultValue": {
+                        "description": "Indicates whether the field has a default value.",
+                        "type": "boolean"
+                    },
+                    "operations": {
+                        "description": "The list of operations that can be performed on the field.",
+                        "type": "array"
+                    },
+                    "allowedValues": {
+                        "description": "The list of values allowed in the field.",
+                        "type": "array"
+                    },
+                    "defaultValue": {
+                        "description": "The default value of the field.",
+                        "type": ""
+                    }
+                }
+            },
+            "operations": {
+                "type": "array"
+            },
+            "allowedValues": {
+                "type": "array"
+            },
+            "CommentCreateDTO": {
+                "type": "object",
+                "properties": {
+                    "body": {
+                        "description": "Content of the comment.",
+                        "type": "string"
+                    },
+                    "public": {
+                        "description": "Indicates whether the comment is public (true) or private\/internal (false).",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PageOfChangelogs": {
+                "type": "object",
+                "properties": {
+                    "startAt": {
+                        "description": "The index of the first item returned on the page.",
+                        "type": "integer"
+                    },
+                    "maxResults": {
+                        "description": "The maximum number of results that could be on the page.",
+                        "type": "integer"
+                    },
+                    "total": {
+                        "description": "The number of results on the page.",
+                        "type": "integer"
+                    },
+                    "histories": {
+                        "description": "The list of changelogs.",
+                        "type": "array"
+                    }
+                }
+            },
+            "histories": {
+                "type": "array"
+            },
+            "SelfLinkDTO": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "HistoryMetadata": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "The type of the history record.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the history record.",
+                        "type": "string"
+                    },
+                    "descriptionKey": {
+                        "description": "The description key of the history record.",
+                        "type": "string"
+                    },
+                    "activityDescription": {
+                        "description": "The activity described in the history record.",
+                        "type": "string"
+                    },
+                    "activityDescriptionKey": {
+                        "description": "The key of the activity described in the history record.",
+                        "type": "string"
+                    },
+                    "emailDescription": {
+                        "description": "The description of the email address associated the history record.",
+                        "type": "string"
+                    },
+                    "emailDescriptionKey": {
+                        "description": "The description key of the email address associated the history record.",
+                        "type": "string"
+                    },
+                    "actor": {
+                        "description": "Details of the user whose action created the history record.",
+                        "type": ""
+                    },
+                    "generator": {
+                        "description": "Details of the system that generated the history record.",
+                        "type": ""
+                    },
+                    "cause": {
+                        "description": "Details of the cause that triggered the creation the history record.",
+                        "type": ""
+                    },
+                    "extraData": {
+                        "description": "Additional arbitrary information about the history record.",
+                        "type": "object"
+                    }
+                }
+            },
+            "extraData": {
+                "type": "object"
+            },
+            "UsersOrganizationUpdateDTO": {
+                "type": "object",
+                "properties": {
+                    "usernames": {
+                        "description": "This property is no longer available and will be removed from the documentation soon. See the [deprecation notice](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/deprecation-notice-user-privacy-api-migration-guide\/) for details. Use `accountIds` instead.",
+                        "type": "array"
+                    },
+                    "accountIds": {
+                        "description": "List of customers, specific by account IDs, to add to or remove from the organization.",
+                        "type": "array"
+                    }
+                }
+            },
+            "usernames": {
+                "type": "array"
+            },
+            "accountIds": {
+                "type": "array"
+            },
+            "CustomerRequestFieldValueDTO": {
+                "type": "object",
+                "properties": {
+                    "fieldId": {
+                        "description": "ID of the field.",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "Text label for the field.",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "Value of the field.",
+                        "type": ""
+                    },
+                    "renderedValue": {
+                        "description": "Value of the field rendered in the UI.",
+                        "type": "object"
+                    }
+                }
+            },
+            "renderedValue": {
+                "type": "object"
+            },
+            "UserDTO": {
+                "type": "object",
+                "properties": {
+                    "accountId": {
+                        "description": "The accountId of the user, which uniquely identifies the user across all Atlassian products. For example, *5b10ac8d82e05b22cc7d4ef5*.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    },
+                    "emailAddress": {
+                        "description": "Customer's email address. Depending on the customer\u2019s privacy settings, this may be returned as null.",
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "description": "Customer's name for display in a UI. Depending on the customer\u2019s privacy settings, this may return an alternative value.",
+                        "type": "string"
+                    },
+                    "active": {
+                        "description": "Indicates if the customer is active (true) or inactive (false)",
+                        "type": "boolean"
+                    },
+                    "timeZone": {
+                        "description": "Customer time zone. Depending on the customer\u2019s privacy settings, this may be returned as null.",
+                        "type": "string"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOUserDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "DateDTO": {
+                "type": "object",
+                "properties": {
+                    "iso8601": {
+                        "description": "Date in ISO8601 format.",
+                        "type": "string"
+                    },
+                    "jira": {
+                        "description": "Date in the format used in the Jira REST APIs, which is ISO8601 format but extended with milliseconds. For example, 2016-09-28T23:08:32.097+1000.",
+                        "type": "string"
+                    },
+                    "friendly": {
+                        "description": "Date in a user-friendly text format.",
+                        "type": "string"
+                    },
+                    "epochMillis": {
+                        "description": "Date as the number of milliseconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), 1 January 1970.",
+                        "type": "integer"
+                    }
+                }
+            },
+            "SlaInformationDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "completedCycles": {
+                        "description": "List of completed cycles for the SLA.",
+                        "type": "array"
+                    },
+                    "ongoingCycle": {
+                        "description": "Details of the active cycle for the SLA.",
+                        "type": ""
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "completedCycles": {
+                "type": "array"
+            },
+            "ArticleDTO": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "description": "Title of the article.",
+                        "type": "string"
+                    },
+                    "excerpt": {
+                        "description": "Excerpt of the article which matches the given query string.",
+                        "type": "string"
+                    },
+                    "source": {
+                        "description": "Source of the article.",
+                        "type": ""
+                    },
+                    "content": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "content": {
+                "type": "object"
+            },
+            "SourceDTO": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "The type of the history record.",
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDetails": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    },
+                    "accountId": {
+                        "description": "The accountId of the user, which uniquely identifies the user across all Atlassian products. For example, *5b10ac8d82e05b22cc7d4ef5*.",
+                        "type": "string"
+                    },
+                    "emailAddress": {
+                        "description": "Customer's email address. Depending on the customer\u2019s privacy settings, this may be returned as null.",
+                        "type": "string"
+                    },
+                    "avatarUrls": {
+                        "description": "The avatars of the user.",
+                        "type": ""
+                    },
+                    "displayName": {
+                        "description": "Customer's name for display in a UI. Depending on the customer\u2019s privacy settings, this may return an alternative value.",
+                        "type": "string"
+                    },
+                    "active": {
+                        "description": "Indicates if the customer is active (true) or inactive (false)",
+                        "type": "boolean"
+                    },
+                    "timeZone": {
+                        "description": "Customer time zone. Depending on the customer\u2019s privacy settings, this may be returned as null.",
+                        "type": "string"
+                    },
+                    "accountType": {
+                        "description": "The type of account represented by this user. This will be one of 'atlassian' (normal users), 'app' (application user) or 'customer' (Jira Service Desk customer user)",
+                        "type": "string"
+                    }
+                }
+            },
+            "SimpleLink": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "styleClass": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "iconClass": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "Text label for the field.",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "Title of the article.",
+                        "type": "string"
+                    },
+                    "href": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "weight": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "RenderedValueDTO": {
+                "type": "object",
+                "properties": {
+                    "html": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "SlaInformationCompletedCycleDTO": {
+                "type": "object",
+                "properties": {
+                    "startTime": {
+                        "description": "Time and date at which the SLA cycle started.",
+                        "type": ""
+                    },
+                    "stopTime": {
+                        "description": "Time and date at which the SLA cycle completed.",
+                        "type": ""
+                    },
+                    "breached": {
+                        "description": "Indicates if the SLA (duration) was exceeded (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "goalDuration": {
+                        "description": "Duration within which the service should have been completed.",
+                        "type": ""
+                    },
+                    "elapsedTime": {
+                        "description": "Duration in which the service was completed.",
+                        "type": ""
+                    },
+                    "remainingTime": {
+                        "description": "Duration remaining after the service was completed.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOArticleDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOIssueBean": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "RequestTypeDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the history record.",
+                        "type": "string"
+                    },
+                    "helpText": {
+                        "description": "Help text for the request type.",
+                        "type": "string"
+                    },
+                    "issueTypeId": {
+                        "description": "ID of the issue type the request type is based upon.",
+                        "type": "string"
+                    },
+                    "serviceDeskId": {
+                        "description": "ID of the service desk the request type belongs to.",
+                        "type": "string"
+                    },
+                    "groupIds": {
+                        "description": "List of the request type groups the request type belongs to.",
+                        "type": "array"
+                    },
+                    "icon": {
+                        "description": "Links to the request type's icons.",
+                        "type": ""
+                    },
+                    "fields": {
+                        "description": "Fields and additional metadata for creating a request that uses the request type",
+                        "type": ""
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "groupIds": {
+                "type": "array"
+            },
+            "Operations": {
+                "type": "object",
+                "properties": {
+                    "linkGroups": {
+                        "description": "Details of the link groups defining issue operations.",
+                        "type": "array"
+                    }
+                }
+            },
+            "linkGroups": {
+                "type": "array"
+            },
+            "CustomerTransitionDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    }
+                }
+            },
+            "HistoryMetadataParticipant": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "description": "Customer's name for display in a UI. Depending on the customer\u2019s privacy settings, this may return an alternative value.",
+                        "type": "string"
+                    },
+                    "displayNameKey": {
+                        "description": "The key of the display name of the user or system associated with a history record.",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The type of the history record.",
+                        "type": "string"
+                    },
+                    "avatarUrl": {
+                        "description": "The URL to an avatar for the user or system associated with a history record.",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "The URL of the user or system associated with a history record.",
+                        "type": "string"
+                    }
+                }
+            },
+            "PagedDTOCustomerRequestStatusDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "OrganizationCreateDTO": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    }
+                }
+            },
+            "ServiceDeskDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "ID of the peer project for the service desk.",
+                        "type": "string"
+                    },
+                    "projectName": {
+                        "description": "Name of the project and service desk.",
+                        "type": "string"
+                    },
+                    "projectKey": {
+                        "description": "Key of the peer project of the service desk.",
+                        "type": "string"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "RequestParticipantUpdateDTO": {
+                "type": "object",
+                "properties": {
+                    "usernames": {
+                        "description": "This property is no longer available and will be removed from the documentation soon. See the [deprecation notice](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/deprecation-notice-user-privacy-api-migration-guide\/) for details. Use `accountIds` instead.",
+                        "type": "array"
+                    },
+                    "accountIds": {
+                        "description": "List of customers, specific by account IDs, to add to or remove from the organization.",
+                        "type": "array"
+                    }
+                }
+            },
+            "SoftwareInfoDTO": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "description": "Jira Service Desk version.",
+                        "type": "string"
+                    },
+                    "platformVersion": {
+                        "description": "Jira Platform version upon which Service Desk is based.",
+                        "type": "string"
+                    },
+                    "buildDate": {
+                        "description": "Date of the current build.",
+                        "type": ""
+                    },
+                    "buildChangeSet": {
+                        "description": "Reference of the change set included in the build.",
+                        "type": "string"
+                    },
+                    "isLicensedForUse": {
+                        "description": "Indicates whether the instance is licensed (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "ApprovalDecisionRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "decision": {
+                        "description": "Response to the approval request.",
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestTypeGroupDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    }
+                }
+            },
+            "OrganizationDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "RequestTypeIconDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "AvatarUrlsBean": {
+                "type": "object",
+                "properties": {
+                    "16x16": {
+                        "description": "The URL of the item's 16x16 pixel avatar.",
+                        "type": "string"
+                    },
+                    "24x24": {
+                        "description": "The URL of the item's 24x24 pixel avatar.",
+                        "type": "string"
+                    },
+                    "32x32": {
+                        "description": "The URL of the item's 32x32 pixel avatar.",
+                        "type": "string"
+                    },
+                    "48x48": {
+                        "description": "The URL of the item's 48x48 pixel avatar.",
+                        "type": "string"
+                    }
+                }
+            },
+            "PagedDTOSlaInformationDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "RequestNotificationSubscriptionDTO": {
+                "type": "object",
+                "properties": {
+                    "subscribed": {
+                        "description": "Indicates whether the user is subscribed (true) or not (false) to the request's notifications.",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PropertyKeys": {
+                "type": "object",
+                "properties": {
+                    "keys": {
+                        "description": "Property key details.",
+                        "type": "array"
+                    }
+                }
+            },
+            "keys": {
+                "type": "array"
+            },
+            "RequestTypeCreateDTO": {
+                "type": "object",
+                "properties": {
+                    "issueTypeId": {
+                        "description": "ID of the issue type the request type is based upon.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the history record.",
+                        "type": "string"
+                    },
+                    "helpText": {
+                        "description": "Help text for the request type.",
+                        "type": "string"
+                    }
+                }
+            },
+            "AdditionalCommentDTO": {
+                "type": "object",
+                "properties": {
+                    "body": {
+                        "description": "Content of the comment.",
+                        "type": "string"
+                    }
+                }
+            },
+            "StatusDetails": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the history record.",
+                        "type": "string"
+                    },
+                    "iconUrl": {
+                        "description": "The URL of the icon used to represent the status.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "statusCategory": {
+                        "description": "The category assigned to the status.",
+                        "type": ""
+                    }
+                }
+            },
+            "RequestTypeFieldDTO": {
+                "type": "object",
+                "properties": {
+                    "fieldId": {
+                        "description": "ID of the field.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the history record.",
+                        "type": "string"
+                    },
+                    "required": {
+                        "description": "Indicates whether the field is required.",
+                        "type": "boolean"
+                    },
+                    "defaultValues": {
+                        "description": "List of default values for the field.",
+                        "type": "array"
+                    },
+                    "validValues": {
+                        "description": "List of valid values for the field.",
+                        "type": "array"
+                    },
+                    "jiraSchema": {
+                        "description": "Jira specific implementation details for the field in the UI.",
+                        "type": ""
+                    }
+                }
+            },
+            "defaultValues": {
+                "type": "array"
+            },
+            "validValues": {
+                "type": "array"
+            },
+            "PagedDTOAttachmentDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedLinkDTO": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "base": {
+                        "description": "Base URL for the REST API calls.",
+                        "type": "string"
+                    },
+                    "context": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "next": {
+                        "description": "REST API URL for the next page, if there is one.",
+                        "type": "string"
+                    },
+                    "prev": {
+                        "description": "REST API URL for the previous page, if there is one.",
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestTypeIconLinkDTO": {
+                "type": "object",
+                "properties": {
+                    "iconUrls": {
+                        "description": "URLs for the request type icons.",
+                        "type": "object"
+                    }
+                }
+            },
+            "iconUrls": {
+                "type": "object"
+            },
+            "CustomerRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "issueId": {
+                        "description": "ID of the request, as the peer issue ID.",
+                        "type": "string"
+                    },
+                    "issueKey": {
+                        "description": "Key of the request, as the peer issue key.",
+                        "type": "string"
+                    },
+                    "requestTypeId": {
+                        "description": "ID of the request type for the request.",
+                        "type": "string"
+                    },
+                    "requestType": {
+                        "description": "Expandable details of the request type.",
+                        "type": ""
+                    },
+                    "serviceDeskId": {
+                        "description": "ID of the service desk the request type belongs to.",
+                        "type": "string"
+                    },
+                    "serviceDesk": {
+                        "description": "Expandable details of the service desk.",
+                        "type": ""
+                    },
+                    "createdDate": {
+                        "description": "Date on which the request was created.",
+                        "type": ""
+                    },
+                    "reporter": {
+                        "description": "Details of the customer reporting the request.",
+                        "type": ""
+                    },
+                    "requestFieldValues": {
+                        "description": "JSON map of Jira field IDs and their values representing the content of the request.",
+                        "type": "array"
+                    },
+                    "currentStatus": {
+                        "description": "Status of the request.",
+                        "type": ""
+                    },
+                    "status": {
+                        "description": "Expandable details of the request's status history.",
+                        "type": ""
+                    },
+                    "participants": {
+                        "description": "Expandable details of the customers participating in the request.",
+                        "type": ""
+                    },
+                    "sla": {
+                        "description": "Expandable details of the SLAs relating to the request.",
+                        "type": ""
+                    },
+                    "attachments": {
+                        "description": "List of attachments included with the request.",
+                        "type": ""
+                    },
+                    "comments": {
+                        "description": "List of comments included with the request.",
+                        "type": ""
+                    },
+                    "actions": {
+                        "description": "List of actions that the user can take on the request.",
+                        "type": ""
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "requestFieldValues": {
+                "type": "object"
+            },
+            "CustomerRequestLinkDTO": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "jiraRest": {
+                        "description": "REST API URL for the request.",
+                        "type": "string"
+                    },
+                    "web": {
+                        "description": "Web URL for the request.",
+                        "type": "string"
+                    }
+                }
+            },
+            "CSATFeedbackFullDTO": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "The type of the history record.",
+                        "type": "string"
+                    },
+                    "rating": {
+                        "description": "A numeric representation of the rating, this must be an integer value between 1 and 5.",
+                        "type": "integer"
+                    },
+                    "comment": {
+                        "description": "(Optional) The comment provided with this feedback.",
+                        "type": ""
+                    }
+                }
+            },
+            "CustomerRequestStatusDTO": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "Name of the status condition.",
+                        "type": "string"
+                    },
+                    "statusCategory": {
+                        "description": "Status category the status belongs to.",
+                        "type": "string"
+                    },
+                    "statusDate": {
+                        "description": "Date on which the status was attained.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOCommentDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "CustomerCreateDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "description": "Customer's email address.",
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "description": "Deprecated, please use 'displayName'.",
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "description": "Customer's name for display in a UI. Depending on the customer\u2019s privacy settings, this may return an alternative value.",
+                        "type": "string"
+                    }
+                }
+            },
+            "CommentDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "body": {
+                        "description": "Content of the comment.",
+                        "type": "string"
+                    },
+                    "renderedBody": {
+                        "description": "The rendered body of the comment.",
+                        "type": ""
+                    },
+                    "author": {
+                        "description": "Details of the customer who authored the comment.",
+                        "type": ""
+                    },
+                    "created": {
+                        "description": "Date the comment was created.",
+                        "type": ""
+                    },
+                    "attachments": {
+                        "description": "List of attachments included with the request.",
+                        "type": ""
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "public": {
+                        "description": "Indicates whether the comment is public (true) or private\/internal (false).",
+                        "type": "boolean"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOApprovalDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOQueueDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "IssueUpdateMetadata": {
+                "type": "object",
+                "properties": {
+                    "fields": {
+                        "description": "A list of editable field details.",
+                        "type": "object"
+                    }
+                }
+            },
+            "fields": {
+                "type": "array"
+            },
+            "LinkGroup": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "styleClass": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "header": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "weight": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "links": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "groups": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "header": {
+                "type": "object"
+            },
+            "links": {
+                "type": "array"
+            },
+            "groups": {
+                "type": "array"
+            },
+            "OrganizationServiceDeskUpdateDTO": {
+                "type": "object",
+                "properties": {
+                    "organizationId": {
+                        "description": "List of organizations, specified by 'ID' field values, to add to or remove from the service desk.",
+                        "type": "integer"
+                    }
+                }
+            },
+            "ChangeDetails": {
+                "type": "object",
+                "properties": {
+                    "field": {
+                        "description": "The name of the field changed.",
+                        "type": "string"
+                    },
+                    "fieldtype": {
+                        "description": "The type of the field changed.",
+                        "type": "string"
+                    },
+                    "fieldId": {
+                        "description": "ID of the field.",
+                        "type": "string"
+                    },
+                    "from": {
+                        "description": "The details of the original value.",
+                        "type": "string"
+                    },
+                    "fromString": {
+                        "description": "The details of the original value as a string.",
+                        "type": "string"
+                    },
+                    "to": {
+                        "description": "The details of the new value.",
+                        "type": "string"
+                    },
+                    "toString": {
+                        "description": "The details of the new value as a string.",
+                        "type": "string"
+                    }
+                }
+            },
+            "EntityProperty": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "Value of the field.",
+                        "type": ""
+                    }
+                }
+            },
+            "ContentDTO": {
+                "type": "object",
+                "properties": {
+                    "iframeSrc": {
+                        "description": "Url containing the body of the article (without title), suitable for rendering in an iframe",
+                        "type": "string"
+                    }
+                }
+            },
+            "AttachmentDTO": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "description": "Filename of the item attached.",
+                        "type": "string"
+                    },
+                    "author": {
+                        "description": "Details of the customer who authored the comment.",
+                        "type": ""
+                    },
+                    "created": {
+                        "description": "Date the comment was created.",
+                        "type": ""
+                    },
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "mimeType": {
+                        "description": "MIME type of the attachment.",
+                        "type": "string"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "StatusCategory": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID of the status category.",
+                        "type": "integer"
+                    },
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    },
+                    "colorName": {
+                        "description": "The name of the color used to represent the status category.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestCreateDTO": {
+                "type": "object",
+                "properties": {
+                    "serviceDeskId": {
+                        "description": "ID of the service desk the request type belongs to.",
+                        "type": "string"
+                    },
+                    "requestTypeId": {
+                        "description": "ID of the request type for the request.",
+                        "type": "string"
+                    },
+                    "requestFieldValues": {
+                        "description": "JSON map of Jira field IDs and their values representing the content of the request.",
+                        "type": "object"
+                    },
+                    "requestParticipants": {
+                        "description": "List of customers to participate in the request, as a list of `accountId` values.",
+                        "type": "array"
+                    },
+                    "raiseOnBehalfOf": {
+                        "description": "The `accountId` of the customer that the request is being raised on behalf of.",
+                        "type": "string"
+                    },
+                    "channel": {
+                        "description": "(Experimental) Shows extra information for the request channel.",
+                        "type": "string"
+                    }
+                }
+            },
+            "requestParticipants": {
+                "type": "array"
+            },
+            "CustomerRequestCreateMetaDTO": {
+                "type": "object",
+                "properties": {
+                    "requestTypeFields": {
+                        "description": "List of the fields included in this request.",
+                        "type": "array"
+                    },
+                    "canRaiseOnBehalfOf": {
+                        "description": "Flag indicating if a request can be raised on behalf of another user (true) or not.",
+                        "type": "boolean"
+                    },
+                    "canAddRequestParticipants": {
+                        "description": "Flag indicating if participants can be added to a request (true) or not.",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "requestTypeFields": {
+                "type": "array"
+            },
+            "AttachmentLinkDTO": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "jiraRest": {
+                        "description": "REST API URL for the request.",
+                        "type": "string"
+                    },
+                    "content": {
+                        "description": "URL for the attachment.",
+                        "type": "string"
+                    },
+                    "thumbnail": {
+                        "description": "URL for the attachment's thumbnail image.",
+                        "type": "string"
+                    }
+                }
+            },
+            "I18nErrorMessage": {
+                "type": "object",
+                "properties": {
+                    "i18nKey": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "parameters": {
+                "type": "array"
+            },
+            "AttachmentCreateDTO": {
+                "type": "object",
+                "properties": {
+                    "temporaryAttachmentIds": {
+                        "description": "List of IDs for the temporary attachments to be added to the customer request.",
+                        "type": "array"
+                    },
+                    "additionalComment": {
+                        "description": "Comment about the attachments.",
+                        "type": ""
+                    },
+                    "public": {
+                        "description": "Indicates whether the comment is public (true) or private\/internal (false).",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "temporaryAttachmentIds": {
+                "type": "array"
+            },
+            "CustomerRequestActionDTO": {
+                "type": "object",
+                "properties": {
+                    "allowed": {
+                        "description": "Indicates whether the user can undertake the action (true) or not (false).",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PagedDTORequestTypeGroupDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOCustomerRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "Changelog": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "author": {
+                        "description": "Details of the customer who authored the comment.",
+                        "type": ""
+                    },
+                    "created": {
+                        "description": "The date on which the change took place.",
+                        "type": "string"
+                    },
+                    "items": {
+                        "description": "The list of items changed.",
+                        "type": "array"
+                    },
+                    "historyMetadata": {
+                        "description": "The history metadata associated with the changed.",
+                        "type": ""
+                    }
+                }
+            },
+            "items": {
+                "type": "array"
+            },
+            "AttachmentCreateResultDTO": {
+                "type": "object",
+                "properties": {
+                    "comment": {
+                        "description": "(Optional) The comment provided with this feedback.",
+                        "type": ""
+                    },
+                    "attachments": {
+                        "description": "List of attachments included with the request.",
+                        "type": ""
+                    }
+                }
+            },
+            "ApprovalDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "finalDecision": {
+                        "description": "Outcome of the approval, based on the approvals provided by all approvers.",
+                        "type": "string"
+                    },
+                    "canAnswerApproval": {
+                        "description": "Indicates whether the user making the request is one of the approvers and can respond to the approval (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "approvers": {
+                        "description": "Detailed list of the users who must provide a response to the approval.",
+                        "type": "array"
+                    },
+                    "createdDate": {
+                        "description": "Date on which the request was created.",
+                        "type": ""
+                    },
+                    "completedDate": {
+                        "description": "Date the approval was completed.",
+                        "type": ""
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "approvers": {
+                "type": "array"
+            },
+            "QueueDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "jql": {
+                        "description": "JQL query that filters reqeusts for the queue.",
+                        "type": "string"
+                    },
+                    "fields": {
+                        "description": "Fields returned for each request in the queue.",
+                        "type": "array"
+                    },
+                    "issueCount": {
+                        "description": "The count of customer requests in the queue.",
+                        "type": "integer"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "DurationDTO": {
+                "type": "object",
+                "properties": {
+                    "millis": {
+                        "description": "Duration in milliseconds.",
+                        "type": "integer"
+                    },
+                    "friendly": {
+                        "description": "Date in a user-friendly text format.",
+                        "type": "string"
+                    }
+                }
+            },
+            "UserLinkDTO": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "jiraRest": {
+                        "description": "REST API URL for the request.",
+                        "type": "string"
+                    },
+                    "avatarUrls": {
+                        "description": "Links to the various sizes of the customer's avatar. Note that this property is deprecated, and will be removed in future versions.",
+                        "type": "object"
+                    }
+                }
+            },
+            "avatarUrls": {
+                "type": "object"
+            },
+            "ServiceDeskCustomerDTO": {
+                "type": "object",
+                "properties": {
+                    "usernames": {
+                        "description": "This property is no longer available and will be removed from the documentation soon. See the [deprecation notice](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/deprecation-notice-user-privacy-api-migration-guide\/) for details. Use `accountIds` instead.",
+                        "type": "array"
+                    },
+                    "accountIds": {
+                        "description": "List of customers, specific by account IDs, to add to or remove from the organization.",
+                        "type": "array"
+                    }
+                }
+            },
+            "IssueBean": {
+                "type": "object",
+                "properties": {
+                    "expand": {
+                        "description": "Expand options that include additional issue details in the response.",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    },
+                    "renderedFields": {
+                        "description": "The rendered value of each field present on the issue.",
+                        "type": "object"
+                    },
+                    "properties": {
+                        "description": "Details of the issue properties identified in the request.",
+                        "type": "object"
+                    },
+                    "names": {
+                        "description": "The ID and name of each field present on the issue.",
+                        "type": "object"
+                    },
+                    "schema": {
+                        "description": "The schema describing each field present on the issue.",
+                        "type": "object"
+                    },
+                    "transitions": {
+                        "description": "The transitions that can be performed on the issue.",
+                        "type": "array"
+                    },
+                    "operations": {
+                        "description": "The operations that can be performed on the issue.",
+                        "type": ""
+                    },
+                    "editmeta": {
+                        "description": "The metadata for the fields on the issue that can be amended.",
+                        "type": ""
+                    },
+                    "changelog": {
+                        "description": "Details of changelogs associated with the issue.",
+                        "type": ""
+                    },
+                    "versionedRepresentations": {
+                        "description": "The versions of each field on the issue.",
+                        "type": "object"
+                    },
+                    "fieldsToInclude": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "fields": {
+                        "description": "A list of editable field details.",
+                        "type": "object"
+                    }
+                }
+            },
+            "renderedFields": {
+                "type": "object"
+            },
+            "properties": {
+                "type": "object"
+            },
+            "names": {
+                "type": "object"
+            },
+            "schema": {
+                "type": "object"
+            },
+            "transitions": {
+                "type": "array"
+            },
+            "versionedRepresentations": {
+                "type": "object"
+            },
+            "fieldsToInclude": {
+                "type": "object"
+            },
+            "RequestTypeFieldValueDTO": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "Value of the field.",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "Text label for the field.",
+                        "type": "string"
+                    },
+                    "children": {
+                        "description": "List of child fields.",
+                        "type": "array"
+                    }
+                }
+            },
+            "children": {
+                "type": "array"
+            },
+            "ApproverDTO": {
+                "type": "object",
+                "properties": {
+                    "approver": {
+                        "description": "Details of the User who is providing approval.",
+                        "type": ""
+                    },
+                    "approverDecision": {
+                        "description": "Decision made by the approver.",
+                        "type": "string"
+                    }
+                }
+            },
+            "CustomerTransitionExecutionDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "additionalComment": {
+                        "description": "Comment about the attachments.",
+                        "type": ""
+                    }
+                }
+            },
+            "IssueTransition": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the Service Level Agreement (SLA).",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the field.",
+                        "type": "string"
+                    },
+                    "to": {
+                        "description": "Details of the issue status after the transition.",
+                        "type": ""
+                    },
+                    "hasScreen": {
+                        "description": "Whether there is a screen associated with the issue transition.",
+                        "type": "boolean"
+                    },
+                    "isGlobal": {
+                        "description": "Whether the issue transition is global, that is, the transition is applied to issues regardless of their status.",
+                        "type": "boolean"
+                    },
+                    "isInitial": {
+                        "description": "Whether this is the initial issue transition for the workflow.",
+                        "type": "boolean"
+                    },
+                    "isConditional": {
+                        "description": "Whether the issue has to meet criteria before the issue transition is applied.",
+                        "type": "boolean"
+                    },
+                    "fields": {
+                        "description": "A list of editable field details.",
+                        "type": "object"
+                    },
+                    "expand": {
+                        "description": "Expand options that include additional issue details in the response.",
+                        "type": "string"
+                    }
+                }
+            },
+            "JsonTypeBean": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "The type of the history record.",
+                        "type": "string"
+                    },
+                    "items": {
+                        "description": "When the data type is an array, the name of the field items within the array.",
+                        "type": "string"
+                    },
+                    "system": {
+                        "description": "If the field is a system field, the name of the field.",
+                        "type": "string"
+                    },
+                    "custom": {
+                        "description": "If the field is a custom field, the URI of the field.",
+                        "type": "string"
+                    },
+                    "customId": {
+                        "description": "If the field is a custom field, the custom ID of the field.",
+                        "type": "integer"
+                    },
+                    "configuration": {
+                        "description": "If the field is a custom field, the configuration of the field.",
+                        "type": "object"
+                    }
+                }
+            },
+            "configuration": {
+                "type": "object"
+            },
+            "SlaInformationOngoingCycleDTO": {
+                "type": "object",
+                "properties": {
+                    "startTime": {
+                        "description": "Time and date at which the SLA cycle started.",
+                        "type": ""
+                    },
+                    "breachTime": {
+                        "description": "Time and date at which the SLA cycle would have breached its limit.",
+                        "type": ""
+                    },
+                    "breached": {
+                        "description": "Indicates if the SLA (duration) was exceeded (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "paused": {
+                        "description": "Indicates whether the SLA is paused (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "withinCalendarHours": {
+                        "description": "Indicates whether the SLA it timed during calendared working hours only (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "goalDuration": {
+                        "description": "Duration within which the service should have been completed.",
+                        "type": ""
+                    },
+                    "elapsedTime": {
+                        "description": "Duration in which the service was completed.",
+                        "type": ""
+                    },
+                    "remainingTime": {
+                        "description": "Duration remaining after the service was completed.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOServiceDeskDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTORequestTypeDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "PagedDTOCustomerTransitionDTO": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "Number of items returned in the page.",
+                        "type": "integer"
+                    },
+                    "start": {
+                        "description": "Index of the first item returned in the page.",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Number of items to be returned per page, up to the maximum set for these objects in the current implementation.",
+                        "type": "integer"
+                    },
+                    "isLastPage": {
+                        "description": "Indicates if this is the last page of records (true) or not (false).",
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "description": "Details of the items included in the page.",
+                        "type": "array"
+                    },
+                    "_expands": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "_links": {
+                        "description": "List of the links relating to the page.",
+                        "type": ""
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "errorMessage": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "i18nErrorMessage": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "i18nErrorMessage": {
+                "type": "object"
+            },
+            "PropertyKey": {
+                "type": "object",
+                "properties": {
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "key": {
+                        "description": "The key of the field.",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

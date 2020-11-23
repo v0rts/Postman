@@ -1,0 +1,275 @@
+{
+    "id": "b5119c852d09d873cbe7b9a9adba6941",
+    "name": "IDv2: User management",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "848927de3ee9f21bda20fa2f4d5d1fdb",
+            "name": "Get user management permissions",
+            "url": "https:\/\/api.atlassian.com\/users\/{account_id}\/manage",
+            "description": "Returns the set of permissions you have for managing the specified Atlassian account",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "account_id",
+                    "description": "The user account to manage",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "privileges",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "45ab5a9fca705e99d604d840447470ef",
+            "name": "Get user profile",
+            "url": "https:\/\/api.atlassian.com\/users\/{account_id}\/manage\/profile",
+            "description": "Returns information about a single Atlassian account by ID",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "account_id",
+                    "description": "The user account to manage",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "623acb5f0e2966b1405c0316d021749a",
+            "name": "Update a user profile",
+            "url": "https:\/\/api.atlassian.com\/users\/{account_id}\/manage\/profile",
+            "description": "Updates fields in a user account. The `profile` privilege details which fields you can change.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "account_id",
+                    "description": "The user account to manage",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "4ebe9e9e3b2577d98ab076ed4deb3ca2",
+            "name": "Set a user's email \n",
+            "url": "https:\/\/api.atlassian.com\/users\/{account_id}\/manage\/email",
+            "description": "Sets the specified user's email address. Before using this endpoint, you must  [verify the target domain](https:\/\/confluence.atlassian.com\/x\/gjcWN) as the new email address will be considered verified.\nThe permission to make use of this resource is exposed by the `email.set` privilege.\nThis call invalidates all active sessions.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "account_id",
+                    "description": "The user account to manage",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "dbd39623b091a32dbc2e27be70abb3d6",
+            "name": "Get a user's API tokens",
+            "url": "https:\/\/api.atlassian.com\/users\/{accountId}\/manage\/api-tokens",
+            "description": "Gets the API tokens owned by the specified user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "accountId",
+                    "description": "The ID of the user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "03e9683076bbd3f7d5f2c4883701be00",
+            "name": "Delete an API token",
+            "url": "https:\/\/api.atlassian.com\/users\/{accountId}\/manage\/api-tokens\/{tokenId}",
+            "description": "Deletes a specifid API token by ID.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "accountId",
+                    "description": "The ID of the user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tokenId",
+                    "description": "The ID of the API token",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "45ffc48d77172d4505d66041c1eb7825",
+            "name": "Disable a user",
+            "url": "https:\/\/api.atlassian.com\/users\/{account_id}\/manage\/lifecycle\/disable",
+            "description": "\nDisables the specified user account. The permission to make use of this resource is exposed by the `lifecycle.enablement` privilege.\nYou can optionally set a message associated with the block that will be shown to the user on attempted authentication. If none is supplied, a default message will be used.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "account_id",
+                    "description": "The user account to manage",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        },
+        {
+            "id": "7664aeb545c63b0c480b13126e0cbd13",
+            "name": "Enable a user",
+            "url": "https:\/\/api.atlassian.com\/users\/{account_id}\/manage\/lifecycle\/enable",
+            "description": "\nEnables the specified user account. The permission to make use of this resource is exposed by the `lifecycle.enablement` privilege.\nYou can optionally set a message associated with the block that will be shown to the user on attempted authentication. If none is supplied, a default message will be used.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "account_id",
+                    "description": "The user account to manage",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "b5119c852d09d873cbe7b9a9adba6941",
+            "rawModeData": ""
+        }
+    ]
+}

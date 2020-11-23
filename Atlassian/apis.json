@@ -1,0 +1,280 @@
+{
+    "name": "Atlassian",
+    "description": "Millions of users globally rely on Atlassian products every day for improving software development, project management, collaboration, and code quality.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+    "tags": [
+        "api provider",
+        "api service provider",
+        "code issues",
+        "coding",
+        "have api",
+        "have openapi",
+        "have swagger",
+        "issues",
+        "new",
+        "programming",
+        "relative data",
+        "service api",
+        "webhook implementations",
+        "wiki"
+    ],
+    "created": "2019-12-25",
+    "modified": "2019-12-25",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Jira Cloud REST API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/jira-cloud-rest-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/jira-cloud-rest-api-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/jira-cloud-rest-api-postman-collection.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/jira-cloud-rest-api-postman-collection.json"
+                },
+                {
+                    "type": "x-source",
+                    "url": "https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/swagger-v3.v3.json"
+                }
+            ]
+        },
+        {
+            "name": "Jira Software Cloud API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/jira-software-cloud-api-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/jira-software-cloud-api-postman-collection.json"
+                },
+                {
+                    "type": "x-source",
+                    "url": "https:\/\/developer.atlassian.com\/cloud\/jira\/software\/swagger.v3.json"
+                }
+            ]
+        },
+        {
+            "name": "Service Desk Public REST API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/service-desk-public-rest-api-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/service-desk-public-rest-api-postman-collection.json"
+                },
+                {
+                    "type": "x-source",
+                    "url": "https:\/\/developer.atlassian.com\/cloud\/jira\/service-desk\/swagger.v3.json"
+                }
+            ]
+        },
+        {
+            "name": "Bitbucket API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/bitbucket-api-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/bitbucket-api-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "The Confluence Cloud REST API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/the-confluence-cloud-rest-api-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/the-confluence-cloud-rest-api-postman-collection.json"
+                },
+                {
+                    "type": "x-source",
+                    "url": "https:\/\/developer.atlassian.com\/cloud\/confluence\/swagger.v3.json"
+                }
+            ]
+        },
+        {
+            "name": "IDv2: User management",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/idv2-user-management-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/idv2-user-management-postman-collection.json"
+                },
+                {
+                    "type": "x-source",
+                    "url": "https:\/\/developer.atlassian.com\/cloud\/admin\/user-management\/swagger.v3.json"
+                }
+            ]
+        },
+        {
+            "name": "User provisioning",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/691-atlassian.jpg",
+            "humanURL": "http:\/\/www.atlassian.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/user-provisioning-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/atlassian\/master\/user-provisioning-postman-collection.json"
+                },
+                {
+                    "type": "x-source",
+                    "url": "https:\/\/developer.atlassian.com\/cloud\/admin\/user-provisioning\/swagger.v3.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/atlassian.com\/"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.atlassian.com"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blogs.atlassian.com\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/atlassian"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/atlassian"
+        },
+        {
+            "type": "Email",
+            "url": "copyright@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "trademarks@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "sales@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "ar_enterprise@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "eudatarep@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "experts@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "remittance@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "ap@atlassian.com"
+        },
+        {
+            "type": "Email",
+            "url": "procurement@atlassian.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/atlassian"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/691-2019-12-25-22-23-13.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/691-2019-12-25-22-25-41.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/691-2019-12-25-22-33-52.json"
+        },
+        {
+            "type": "Privacy Policy",
+            "url": "https:\/\/www.atlassian.com\/legal\/privacy-policy?_ga=2.188884514.868776184.1519225620-845241124.1519225620"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/atlassian"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/confluence.atlassian.com\/bitbucket\/manage-webhooks-735643732.html"
+        }
+    ]
+}

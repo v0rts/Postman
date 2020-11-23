@@ -1,0 +1,801 @@
+{
+    "id": "2e46af71763fe4f4bb08d27498797094",
+    "name": "User provisioning",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "0fb849174125a5ef2e4adfbd8070b0a5",
+            "name": "Get a group by ID",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Groups\/{id}",
+            "description": "Get a group from a directory by group ID.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "id",
+                    "description": "Group Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "16b3fe049b4d07f3d88d73233d1d1680",
+            "name": "Update a group by ID",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Groups\/{id}",
+            "description": "Update a group in a directory by group ID.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "id",
+                    "description": "Group Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "15ce89126a6b9a0a2a30c4ea485c351c",
+            "name": "Delete a group by ID",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Groups\/{id}",
+            "description": "Delete a group from a directory. An attempt to delete a non-existent group fails with a 404 (Resource Not found) error.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "id",
+                    "description": "Group Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "e2d4578796bca1d13aef2faf7fb8eacb",
+            "name": "Update a group by ID (PATCH)",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Groups\/{id}",
+            "description": "Update a group's information in a directory by `groupId` via `PATCH`.\nYou can use this API to manage group membership.\n\n**Note:** Renaming groups after they've synced to your Atlassian organization isn't supported in this \nrelease of the User Provisioning API. To rename a group, create a new group with the desired \nname, update membership, and then delete the old group.\n\n#### Example\n\nSome HTTP headers omitted and JSON payloads formatted for readability.\n\n```\n# Request\nPATCH \/scim\/directory\/2fb2",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "id",
+                    "description": "Group Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "823088707cbe6ed5aa7f1c836ee8531c",
+            "name": "Get groups",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Groups",
+            "description": "Get groups from a directory. Filtering is supported with a single exact match (`eq`) against  the `displayName` attribute. Pagination is supported. Sorting is not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filter for `displayName`. Example: `displayName eq \"SCIM_GROUP\"`",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "startIndex",
+                    "description": "A 1-based index of the first query result.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "count",
+                    "description": "Desired maximum number of query results in the list response page.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "e85230289c8723f398787c036a2b4f3d",
+            "name": "Create a group",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Groups",
+            "description": "Create a group in a directory. An attempt to create a group with an existing  name fails with a 409 (Conflict) error.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "3a4eb98dcacd2cd28703a03f6922681d",
+            "name": "Get all schemas",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Schemas",
+            "description": "Get all SCIM features metadata. Filtering, pagination and sorting are  not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "5ecf36fc10cff03b2b697328b03493e1",
+            "name": "Get resource types",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/ResourceTypes",
+            "description": "Get types of resources available on a SCIM service provider (e.g., Users and Groups). This  is used to get all resources of the SCIM provider. Filtering, pagination and sorting are  not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "4a8ffaad64c94d2b37a116d21f0fab14",
+            "name": "Get user resource types",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/ResourceTypes\/User",
+            "description": "Retrieve user resource types from the SCIM service provider. Filtering, pagination and  sorting are not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "5aee5f8e05be621ccdb2b0810dd30e85",
+            "name": "Get group resource types",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/ResourceTypes\/Group",
+            "description": "Retrieve group resource type of this SCIM service provider. Filtering, pagination and sorting  are not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "5e7b4fa4b2418344272ee601b23f8445",
+            "name": "Get user schemas",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Schemas\/urn:ietf:params:scim:schemas:core:2.0:User",
+            "description": "Get the user schemas from the SCIM provider. Filtering, pagination and sorting  are not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "1775d3d2317b94a37695dde2b9e11143",
+            "name": "Get group schemas",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Schemas\/urn:ietf:params:scim:schemas:core:2.0:Group",
+            "description": "Get the group schemas from the SCIM provider. Filtering, pagination and sorting are not  supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "0bda9813b0ef118fd14901b60b99f955",
+            "name": "Get user enterprise extension schemas",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Schemas\/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+            "description": "Get the user enterprise extension schemas from the SCIM provider. Filtering, pagination and  sorting are not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "2e4170a7e54f1b1dbef51da17bc41da1",
+            "name": "Get feature metadata",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/ServiceProviderConfig",
+            "description": "Get metadata about the supported SCIM features. This is a service provider configuration  endpoint providing supported SCIM features. Filtering, pagination and sorting are not  supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "740a33ee52041a85bb8a4f4a65bdee5b",
+            "name": "Get a user by ID",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Users\/{userId}",
+            "description": "Get a user from a directory by `userId`. \n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "The user ID",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "attributes",
+                    "description": "Resource attributes to be included in response. Mutually exclusive with `excludedAttributes`.  Example: `userName,emails.value`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "excludedAttributes",
+                    "description": "Resource attributes to be excluded from response. Mutually exclusive with `attributes`.  Example: `timezone,emails.type,department`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "6436557e28fc7d1ad7344b456e581506",
+            "name": "Update user via user attributes",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Users\/{userId}",
+            "description": "Updates a user's information in a directory by `userId` via user attributes. User information  is replaced attribute-by-attribute, with the exception of immutable and read-only  attributes. Existing values of unspecified attributes are cleaned.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "The user ID",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "attributes",
+                    "description": "Resource attributes to be included in response. Mutually exclusive with `excludedAttributes`.  Example: `userName,emails.value`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "excludedAttributes",
+                    "description": "Resource attributes to be excluded from response. Mutually exclusive with `attributes`.  Example: `timezone,emails.type,department`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "6a4ba56a8abf5b7b265c0ef11a8c4adc",
+            "name": "Deactivate a user",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Users\/{userId}",
+            "description": "Deactivate a user by `userId`. The user is not available for future requests until  activated again. Any future operation for the deactivated user returns the 404  (resource not found) error.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "The user ID",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "2da95cb49f40c6f1fcd7f15afcddcf8d",
+            "name": "Update user by ID (PATCH)",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Users\/{userId}",
+            "description": "This operation updates a user's information in a directory by `userId` via `PATCH`. Refer to  `GET \/ServiceProviderConfig` for details on the supported operations.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "userId",
+                    "description": "The user ID",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "attributes",
+                    "description": "Resource attributes to be included in response. Mutually exclusive with `excludedAttributes`.  Example: `userName,emails.value`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "excludedAttributes",
+                    "description": "Resource attributes to be excluded from response. Mutually exclusive with `attributes`.  Example: `timezone,emails.type,department`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "bd034b66a107e0d90c75081739e8ed36",
+            "name": "Get users",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Users",
+            "description": "Get users from the specified directory. Filtering is supported with a single exact match  (`eq`) against the `userName` and `externalId` attributes. Pagination is supported. Sorting  is not supported.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "attributes",
+                    "description": "Resource attributes to be included in response. Mutually exclusive with `excludedAttributes`.  Example: `userName,emails.value`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "excludedAttributes",
+                    "description": "Resource attributes to be excluded from response. Mutually exclusive with `attributes`.  Example: `timezone,emails.type,department`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter",
+                    "description": "Filter for `displayName`. Example: `displayName eq \"SCIM_GROUP\"`",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "startIndex",
+                    "description": "A 1-based index of the first query result.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "count",
+                    "description": "Desired maximum number of query results in the list response page.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        },
+        {
+            "id": "9eb8bab6f96f35ceaae1767494f257d7",
+            "name": "Create a user",
+            "url": "https:\/\/api.atlassian.com\/\/scim\/directory\/{directoryId}\/Users",
+            "description": "Create a user in a directory. An attempt to create an existing user fails with a 409 (Conflict) error. A user account can only be created if it has an email address on a verified domain. If a managed Atlassian account already exists on the Atlassian platform for the specified email address, the user in your identity provider is linked to the user in your Atlassian organization.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "directoryId",
+                    "description": "Directory Id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "attributes",
+                    "description": "Resource attributes to be included in response. Mutually exclusive with `excludedAttributes`.  Example: `userName,emails.value`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "excludedAttributes",
+                    "description": "Resource attributes to be excluded from response. Mutually exclusive with `attributes`.  Example: `timezone,emails.type,department`\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "2e46af71763fe4f4bb08d27498797094",
+            "rawModeData": ""
+        }
+    ]
+}

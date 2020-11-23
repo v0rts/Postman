@@ -1,0 +1,1951 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1001.0.0",
+        "title": "Jira Software Cloud API",
+        "description": "Jira Software Cloud REST API documentation",
+        "termsOfService": "http:\/\/atlassian.com\/terms\/"
+    },
+    "servers": [
+        "\/\/atlassian.com"
+    ],
+    "paths": {
+        "\/rest\/agile\/1.0\/backlog\/issue": {
+            "post": {
+                "summary": "Move issues to backlog",
+                "description": "Move issues to the backlog.  \nThis operation is equivalent to remove future and active sprints from a given set of issues. At most 50 issues may be moved at once.",
+                "operationId": "ComAtlassianGreenhopperApiRestBacklogResourceMoveIssuesToBacklogPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/backlog\/{boardId}\/issue": {
+            "post": {
+                "summary": "Move issues to backlog for board",
+                "description": "Move issues to the backlog of a particular board (if they are already on that board).  \nThis operation is equivalent to remove future and active sprints from a given set of issues if the board has sprints If the board does not have sprints this will put the issues back into the backlog from the board. At most 50 issues may be moved at once.",
+                "operationId": "ComAtlassianGreenhopperApiRestBacklogResourceMoveIssuesToBacklogForBoardPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board": {
+            "get": {
+                "summary": "Get all boards",
+                "description": "Returns all boards. This only includes boards that the user has permission to view.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceGetAllBoardsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Filters results to boards of the specified types. Valid values: scrum, kanban, simple."
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filters results to boards that match or partially match the specified name."
+                    },
+                    {
+                        "name": "projectKeyOrId",
+                        "in": "query",
+                        "description": "Filters results to boards that are relevant to a project. Relevance means that the jql filter defined in board contains a reference to a project."
+                    },
+                    {
+                        "name": "accountIdLocation",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "userkeyLocation",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "usernameLocation",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "projectLocation",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "includePrivate",
+                        "in": "query",
+                        "description": "Appends private boards to the end of the list. The name and type fields are excluded for security reasons."
+                    },
+                    {
+                        "name": "negateLocationFiltering",
+                        "in": "query",
+                        "description": "If set to true, negate filters used for querying by location. By default false."
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Ordering of the results by a given field. If not provided, values will not be sorted. Valid values: name."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    },
+                    {
+                        "name": "filterId",
+                        "in": "query",
+                        "description": "Filters results to boards that are relevant to a filter. Not supported for next-gen boards."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create board",
+                "description": "Creates a new board. Board name, type and filter ID is required.\n\n*   `name` \\- Must be less than 255 characters.\n*   `type` \\- Valid values: scrum, kanban\n*   `filterId` \\- ID of a filter that the user has permissions to view. Note, if the user does not have the 'Create shared objects' permission and tries to create a shared board, a private board will be created instead (remember that board sharing depends on the filter sharing).\n*   `location` \\- The container that the board will be located i",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceCreateBoardPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Returns the created board."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/filter\/{filterId}": {
+            "get": {
+                "summary": "Get board by filter id",
+                "description": "Returns any boards which use the provided filter id. This method can be executed by users without a valid software license in order to find which boards are using a particular filter.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceGetBoardByFilterIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "filterId",
+                        "in": "path",
+                        "description": "Filters results to boards that are relevant to a filter. Not supported for next-gen boards."
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}": {
+            "get": {
+                "summary": "Get board",
+                "description": "Returns the board for the given board ID. This board will only be returned if the user has permission to view it. Admins without the view permission will see the board as a private one, so will see only a subset of the board's data (board location for instance).",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceGetBoardGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete board",
+                "description": "Deletes the board. Admin without the view permission can still remove the board.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceDeleteBoardDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/backlog": {
+            "get": {
+                "summary": "Get issues for backlog",
+                "description": "Returns all issues from the board's backlog, for the given board ID. This only includes issues that the user has permission to view. The backlog contains incomplete issues that are not assigned to any future or active sprint. Note, if the user does not have permission to view the board, no issues will be returned at all. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic. By default, the returned issues are ordered by rank.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceGetIssuesForBacklogGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/configuration": {
+            "get": {
+                "summary": "Get configuration",
+                "description": "Get the board configuration. The response contains the following fields:\n\n*   `id` \\- ID of the board.\n*   `name` \\- Name of the board.\n*   `filter` \\- Reference to the filter used by the given board.\n*   `location` \\- Reference to the container that the board is located in. Includes the container type (Valid values: project, user).\n*   `subQuery` (Kanban only) - JQL subquery used by the given board.\n*   `columnConfig` \\- The column configuration lists the columns for the board, in the order def",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceGetConfigurationGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/epic": {
+            "get": {
+                "summary": "Get epics",
+                "description": "Returns all epics from the board, for the given board ID. This only includes epics that the user has permission to view. Note, if the user does not have permission to view the board, no epics will be returned at all.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardEpicResourceGetEpicsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "done",
+                        "in": "query",
+                        "description": "Filters results to epics that are either done or not done. Valid values: true, false."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/epic\/none\/issue": {
+            "get": {
+                "summary": "Get issues without epic",
+                "description": "Returns all issues that do not belong to any epic on a board, for a given board ID. This only includes issues that the user has permission to view. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic. By default, the returned issues are ordered by rank.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardEpicResourceGetIssuesWithoutEpicGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/epic\/{epicId}\/issue": {
+            "get": {
+                "summary": "Get issues for epic",
+                "description": "Returns all issues that belong to an epic on the board, for the given epic ID and the board ID. This only includes issues that the user has permission to view. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic. By default, the returned issues are ordered by rank.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardEpicResourceGetIssuesForEpicGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "epicId",
+                        "in": "path",
+                        "description": "The ID of the epic that contains the requested issues."
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/features": {
+            "get": {
+                "summary": "Get features for board",
+                "description": "",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardFeaturesResourceGetFeaturesForBoardGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Toggle features",
+                "description": "",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardFeaturesResourceToggleFeaturesPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/issue": {
+            "get": {
+                "summary": "Get issues for board",
+                "description": "Returns all issues from a board, for a given board ID. This only includes issues that the user has permission to view. An issue belongs to the board if its status is mapped to the board's column. Epic issues do not belongs to the scrum boards. Note, if the user does not have permission to view the board, no issues will be returned at all. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic. By default, the returned issues are ordered by rank.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceGetIssuesForBoardGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Move issues to board",
+                "description": "Move issues from the backog to the board (if they are already in the backlog of that board).  \nThis operation either moves an issue(s) onto a board from the backlog (by adding it to the issueList for the board) Or transitions the issue(s) to the first column for a kanban board with backlog. At most 50 issues may be moved at once.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardResourceMoveIssuesToBoardPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/project": {
+            "get": {
+                "summary": "Get projects",
+                "description": "Returns all projects that are associated with the board, for the given board ID. If the user does not have permission to view the board, no projects will be returned at all. Returned projects are ordered by the name.\n\nA project is associated with a board if the board filter contains reference the project or there is an issue from the project that belongs to the board.\n\nThe board filter contains reference the project only if JQL query guarantees that returned issues will be returned from the proj",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardProjectResourceGetProjectsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/project\/full": {
+            "get": {
+                "summary": "Get projects full",
+                "description": "Returns all projects that are statically associated with the board, for the given board ID. Returned projects are ordered by the name.\n\nA project is associated with a board if the board filter contains reference the project.\n\nThe board filter contains reference the project only if JQL query guarantees that returned issues will be returned from the project set defined in JQL. For instance the query `project in (ABC, BCD) AND reporter = admin` have reference to ABC and BCD projects but query `proj",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardProjectResourceGetProjectsFullGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/properties": {
+            "get": {
+                "summary": "Get board property keys",
+                "description": "Returns the keys of all properties for the board identified by the id. The user who retrieves the property keys is required to have permissions to view the board.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardPropertyResourceGetBoardPropertyKeysGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/properties\/{propertyKey}": {
+            "get": {
+                "summary": "Get board property",
+                "description": "Returns the value of the property with a given key from the board identified by the provided id. The user who retrieves the property is required to have permissions to view the board.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardPropertyResourceGetBoardPropertyGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "the key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Set board property",
+                "description": "Sets the value of the specified board's property.\n\nYou can use this resource to store a custom data against the board identified by the id. The user who stores the data is required to have permissions to modify the board.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardPropertyResourceSetBoardPropertyPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "the key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete board property",
+                "description": "Removes the property from the board identified by the id. Ths user removing the property is required to have permissions to modify the board.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardPropertyResourceDeleteBoardPropertyDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "the key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/quickfilter": {
+            "get": {
+                "summary": "Get all quick filters",
+                "description": "Returns all quick filters from a board, for a given board ID.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardQuickFilterResourceGetAllQuickFiltersGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/quickfilter\/{quickFilterId}": {
+            "get": {
+                "summary": "Get quick filter",
+                "description": "Returns the quick filter for a given quick filter ID. The quick filter will only be returned if the user can view the board that the quick filter belongs to.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardQuickFilterResourceGetQuickFilterGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "quickFilterId",
+                        "in": "path",
+                        "description": "The ID of the requested quick filter."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/reports": {
+            "get": {
+                "summary": "Get reports for board",
+                "description": "",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardReportsResourceGetReportsForBoardGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/sprint": {
+            "get": {
+                "summary": "Get all sprints",
+                "description": "Returns all sprints from a board, for a given board ID. This only includes sprints that the user has permission to view.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardSprintResourceGetAllSprintsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "Filters results to sprints in specified states. Valid values: future, active, closed. You can define multiple states separated by commas, e.g. state=active,closed"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/sprint\/{sprintId}\/issue": {
+            "get": {
+                "summary": "Get issues for sprint",
+                "description": "Get all issues you have access to that belong to the sprint from the board. Issue returned from this resource contains additional fields like: sprint, closedSprints, flagged and epic. Issues are returned ordered by rank. JQL order has higher priority than default rank.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardSprintResourceGetIssuesForSprintGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/board\/{boardId}\/version": {
+            "get": {
+                "summary": "Get all versions",
+                "description": "Returns all versions from a board, for a given board ID. This only includes versions that the user has permission to view. Note, if the user does not have permission to view the board, no versions will be returned at all. Returned versions are ordered by the name of the project from which they belong and then by sequence defined by user.",
+                "operationId": "ComAtlassianGreenhopperApiRestBoardVersionResourceGetAllVersionsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "boardId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "released",
+                        "in": "query",
+                        "description": "Filters results to versions that are either released or unreleased. Valid values: true, false."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/epic\/none\/issue": {
+            "get": {
+                "summary": "Get issues without epic",
+                "description": "Returns all issues that do not belong to any epic. This only includes issues that the user has permission to view. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic. By default, the returned issues are ordered by rank. **Note:** If you are querying a next-gen project, do not use this operation. Instead, search for issues that don't belong to an epic by using the [Search for issues using JQL](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourceGetIssuesWithoutEpicGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Remove issues from epic",
+                "description": "Removes issues from epics. The user needs to have the edit issue permission for all issue they want to remove from epics. The maximum number of issues that can be moved in one operation is 50. **Note:** This operation does not work for epics in next-gen projects. Instead, update the issue using `{ fields: { parent: {} } }`",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourceRemoveIssuesFromEpicPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/epic\/{epicIdOrKey}": {
+            "get": {
+                "summary": "Get epic",
+                "description": "Returns the epic for a given epic ID. This epic will only be returned if the user has permission to view it. **Note:** This operation does not work for epics in next-gen projects.",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourceGetEpicGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "epicIdOrKey",
+                        "in": "path",
+                        "description": "The id or key of the requested epic."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Partially update epic",
+                "description": "Performs a partial update of the epic. A partial update means that fields not present in the request JSON will not be updated. Valid values for color are `color_1` to `color_9`. **Note:** This operation does not work for epics in next-gen projects.",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourcePartiallyUpdateEpicPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "epicIdOrKey",
+                        "in": "path",
+                        "description": "The id or key of the requested epic."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/epic\/{epicIdOrKey}\/issue": {
+            "get": {
+                "summary": "Get issues for epic",
+                "description": "Returns all issues that belong to the epic, for the given epic ID. This only includes issues that the user has permission to view. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic. By default, the returned issues are ordered by rank. **Note:** If you are querying a next-gen project, do not use this operation. Instead, search for issues that belong to an epic by using the [Search for issues using JQL](https:\/\/developer.atlassian.com\/cloud\/jira",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourceGetIssuesForEpicGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "epicIdOrKey",
+                        "in": "path",
+                        "description": "The id or key of the requested epic."
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Move issues to epic",
+                "description": "Moves issues to an epic, for a given epic id. Issues can be only in a single epic at the same time. That means that already assigned issues to an epic, will not be assigned to the previous epic anymore. The user needs to have the edit issue permission for all issue they want to move and to the epic. The maximum number of issues that can be moved in one operation is 50. **Note:** This operation does not work for epics in next-gen projects.",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourceMoveIssuesToEpicPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "epicIdOrKey",
+                        "in": "path",
+                        "description": "The id or key of the requested epic."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/epic\/{epicIdOrKey}\/rank": {
+            "put": {
+                "summary": "Rank epics",
+                "description": "Moves (ranks) an epic before or after a given epic.\n\nIf rankCustomFieldId is not defined, the default rank field will be used.\n\n**Note:** This operation does not work for epics in next-gen projects.",
+                "operationId": "ComAtlassianGreenhopperApiRestEpicResourceRankEpicsPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "epicIdOrKey",
+                        "in": "path",
+                        "description": "The id or key of the requested epic."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/issue\/rank": {
+            "put": {
+                "summary": "Rank issues",
+                "description": "Moves (ranks) issues before or after a given issue. At most 50 issues may be ranked at once.\n\nThis operation may fail for some issues, although this will be rare. In that case the 207 status code is returned for the whole response and detailed information regarding each issue is available in the response body.\n\nIf rankCustomFieldId is not defined, the default rank field will be used.",
+                "operationId": "ComAtlassianGreenhopperApiRestIssueResourceRankIssuesPut",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/issue\/{issueIdOrKey}": {
+            "get": {
+                "summary": "Get issue",
+                "description": "Returns a single issue, for a given issue ID or issue key. Issues returned from this resource include Agile fields, like sprint, closedSprints, flagged, and epic.",
+                "operationId": "ComAtlassianGreenhopperApiRestIssueResourceGetIssueGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or key of the requested issue."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    },
+                    {
+                        "name": "updateHistory",
+                        "in": "query",
+                        "description": "A boolean indicating whether the issue retrieved by this method should be added to the current user's issue history"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/issue\/{issueIdOrKey}\/estimation": {
+            "get": {
+                "summary": "Get issue estimation for board",
+                "description": "Returns the estimation of the issue and a fieldId of the field that is used for it. `boardId` param is required. This param determines which field will be updated on a issue.\n\nOriginal time internally stores and returns the estimation as a number of seconds.\n\nThe field used for estimation on the given board can be obtained from [board configuration resource](#agile\/1.0\/board-getConfiguration). More information about the field are returned by [edit meta resource](#api-rest-api-<ver>-issue-getEdit",
+                "operationId": "ComAtlassianGreenhopperApiRestIssueResourceGetIssueEstimationForBoardGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or key of the requested issue."
+                    },
+                    {
+                        "name": "boardId",
+                        "in": "query",
+                        "description": "The ID of the board required to determine which field is used for estimation."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Estimate issue for board",
+                "description": "Updates the estimation of the issue. boardId param is required. This param determines which field will be updated on a issue.\n\nNote that this resource changes the estimation field of the issue regardless of appearance the field on the screen.\n\nOriginal time tracking estimation field accepts estimation in formats like \"1w\", \"2d\", \"3h\", \"20m\" or number which represent number of minutes. However, internally the field stores and returns the estimation as a number of seconds.\n\nThe field used for esti",
+                "operationId": "ComAtlassianGreenhopperApiRestIssueResourceEstimateIssueForBoardPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "issueIdOrKey",
+                        "in": "path",
+                        "description": "The ID or key of the requested issue."
+                    },
+                    {
+                        "name": "boardId",
+                        "in": "query",
+                        "description": "The ID of the board required to determine which field is used for estimation."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/sprint": {
+            "post": {
+                "summary": "Create sprint",
+                "description": "Creates a future sprint. Sprint name and origin board id are required. Start date, end date, and goal are optional.\n\nNote that the sprint name is trimmed. Also, when starting sprints from the UI, the \"endDate\" set through this call is ignored and instead the last sprint's duration is used to fill the form.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceCreateSprintPost",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": "Returns the created board."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/sprint\/{sprintId}": {
+            "get": {
+                "summary": "Get sprint",
+                "description": "Returns the sprint for a given sprint ID. The sprint will only be returned if the user can view the board that the sprint was created on, or view at least one of the issues in the sprint.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceGetSprintGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Partially update sprint",
+                "description": "Performs a partial update of a sprint. A partial update means that fields not present in the request JSON will not be updated.\n\nNotes:\n\n*   Sprints that are in a closed state cannot be updated.\n*   A sprint can be started by updating the state to 'active'. This requires the sprint to be in the 'future' state and have a startDate and endDate set.\n*   A sprint can be completed by updating the state to 'closed'. This action requires the sprint to be in the 'active' state. This sets the completeDate",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourcePartiallyUpdateSprintPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update sprint",
+                "description": "Performs a full update of a sprint. A full update means that the result will be exactly the same as the request body. Any fields not present in the request JSON will be set to null.\n\nNotes:\n\n*   Sprints that are in a closed state cannot be updated.\n*   A sprint can be started by updating the state to 'active'. This requires the sprint to be in the 'future' state and have a startDate and endDate set.\n*   A sprint can be completed by updating the state to 'closed'. This action requires the sprint ",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceUpdateSprintPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete sprint",
+                "description": "Deletes a sprint. Once a sprint is deleted, all open issues in the sprint will be moved to the backlog.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceDeleteSprintDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/sprint\/{sprintId}\/issue": {
+            "get": {
+                "summary": "Get issues for sprint",
+                "description": "Returns all issues in a sprint, for a given sprint ID. This only includes issues that the user has permission to view. By default, the returned issues are ordered by rank.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceGetIssuesForSprintGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    },
+                    {
+                        "name": "startAt",
+                        "in": "query",
+                        "description": "The starting index of the returned boards. Base index: 0. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "The maximum number of boards to return per page. See the 'Pagination' section at the top of this page for more details."
+                    },
+                    {
+                        "name": "jql",
+                        "in": "query",
+                        "description": "Filters results using a JQL query. If you define an order in your JQL query, it will override the default order of the returned issues.  \nNote that `username` and `userkey` can't be used as search terms for this parameter due to privacy reasons. Use `accountId` instead."
+                    },
+                    {
+                        "name": "validateQuery",
+                        "in": "query",
+                        "description": "Specifies whether to validate the JQL query or not. Default: true."
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "The list of fields to return for each issue. By default, all navigable and Agile fields are returned."
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "List of fields to expand for each board. Valid values: admins, permissions."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Move issues to sprint and rank",
+                "description": "Moves issues to a sprint, for a given sprint ID. Issues can only be moved to open or active sprints. The maximum number of issues that can be moved in one operation is 50.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceMoveIssuesToSprintAndRankPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/sprint\/{sprintId}\/properties": {
+            "get": {
+                "summary": "Get properties keys",
+                "description": "Returns the keys of all properties for the sprint identified by the id. The user who retrieves the property keys is required to have permissions to view the sprint.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintPropertyResourceGetPropertiesKeysGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/sprint\/{sprintId}\/properties\/{propertyKey}": {
+            "get": {
+                "summary": "Get property",
+                "description": "Returns the value of the property with a given key from the sprint identified by the provided id. The user who retrieves the property is required to have permissions to view the sprint.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintPropertyResourceGetPropertyGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "the key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Set property",
+                "description": "Sets the value of the specified sprint's property.\n\nYou can use this resource to store a custom data against the sprint identified by the id. The user who stores the data is required to have permissions to modify the sprint.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintPropertyResourceSetPropertyPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "the key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete property",
+                "description": "Removes the property from the sprint identified by the id. Ths user removing the property is required to have permissions to modify the sprint.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintPropertyResourceDeletePropertyDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    },
+                    {
+                        "name": "propertyKey",
+                        "in": "path",
+                        "description": "the key of the property to return."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/agile\/1.0\/sprint\/{sprintId}\/swap": {
+            "post": {
+                "summary": "Swap sprint",
+                "description": "Swap the position of the sprint with the second sprint.",
+                "operationId": "ComAtlassianGreenhopperApiRestSprintResourceSwapSprintPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sprintId",
+                        "in": "path",
+                        "description": "The ID of the sprint that contains requested issues."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty response is returned if operation was successful."
+                    }
+                }
+            }
+        },
+        "\/rest\/devinfo\/0.10\/bulk": {
+            "post": {
+                "summary": "Store development information",
+                "description": "Stores development information provided in the request to make it available when viewing issues in JIRA. Existing repository and entity data for the same ID will be replaced if the updateSequenceId of existing data is less than the incoming data. Submissions are performed asynchronously. Submitted data will eventually be available in Jira; most updates are available within a short period of time, but may take some time during peak load and\/or maintenance times.",
+                "operationId": "StoreDevelopmentInformation",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            }
+        },
+        "\/rest\/devinfo\/0.10\/repository\/{repositoryId}": {
+            "get": {
+                "summary": "Get repository",
+                "description": "For the specified repository ID, retrieves the repository and the most recent 400 development information entities. The result will be what is currently stored, ignoring any pending updates or deletes.",
+                "operationId": "GetRepository",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "repositoryId",
+                        "in": "path",
+                        "description": "The ID of repository to fetch"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete repository",
+                "description": "Deletes the repository data stored by the given ID and all related development information entities. Deletion is performed asynchronously.",
+                "operationId": "DeleteRepository",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "repositoryId",
+                        "in": "path",
+                        "description": "The ID of repository to fetch"
+                    },
+                    {
+                        "name": "_updateSequenceId",
+                        "in": "query",
+                        "description": "An optional property to use to control deletion. Only stored data with an updateSequenceId less than or equal to that provided will be deleted. This can be used to help ensure submit\/delete requests are applied correctly if they are issued close together."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            }
+        },
+        "\/rest\/devinfo\/0.10\/bulkByProperties": {
+            "delete": {
+                "summary": "Delete development information by properties",
+                "description": "Deletes development information entities which have all the provided properties. Entities will be deleted that match ALL of the properties (i.e. treated as an AND). For example if request is DELETE bulk?accountId=123&projectId=ABC entities which have properties accountId=123 and projectId=ABC will be deleted. Special property '\\_updateSequenceId' can be used to delete all entities with updateSequenceId less or equal than the value specified. In addition to the optional '\\_updateSequenceId', one ",
+                "operationId": "DeleteByProperties",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "_updateSequenceId",
+                        "in": "query",
+                        "description": "An optional property to use to control deletion. Only stored data with an updateSequenceId less than or equal to that provided will be deleted. This can be used to help ensure submit\/delete requests are applied correctly if they are issued close together."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            }
+        },
+        "\/rest\/devinfo\/0.10\/existsByProperties": {
+            "get": {
+                "summary": "Check if data exists for the supplied properties",
+                "description": "Checks if development information which have all the provided properties exists. For example, if request is GET existsByProperties?accountId=123&projectId=ABC then result will be positive only if there is at least one entity or repository with both properties accountId=123 and projectId=ABC. Special property '\\_updateSequenceId' can be used to filter all entities with updateSequenceId less or equal than the value specified. In addition to the optional '\\_updateSequenceId', one or more query para",
+                "operationId": "ExistsByProperties",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "_updateSequenceId",
+                        "in": "query",
+                        "description": "An optional property to use to control deletion. Only stored data with an updateSequenceId less than or equal to that provided will be deleted. This can be used to help ensure submit\/delete requests are applied correctly if they are issued close together."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            }
+        },
+        "\/rest\/devinfo\/0.10\/repository\/{repositoryId}\/{entityType}\/{entityId}": {
+            "delete": {
+                "summary": "Delete development information entity",
+                "description": "Deletes particular development information entity. Deletion is performed asynchronously.",
+                "operationId": "DeleteEntity",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "repositoryId",
+                        "in": "path",
+                        "description": "The ID of repository to fetch"
+                    },
+                    {
+                        "name": "entityType",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "description": ""
+                    },
+                    {
+                        "name": "_updateSequenceId",
+                        "in": "query",
+                        "description": "An optional property to use to control deletion. Only stored data with an updateSequenceId less than or equal to that provided will be deleted. This can be used to help ensure submit\/delete requests are applied correctly if they are issued close together."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            }
+        },
+        "\/rest\/featureflags\/0.1\/bulk": {
+            "post": {
+                "summary": "Submit Feature Flag data",
+                "description": "Update \/ insert Feature Flag data. Feature Flags are identified by their ID, and existing Feature Flag data for the same ID will be replaced if it exists and the updateSequenceId of existing data is less than the incoming data. Submissions are performed asynchronously. Submitted data will eventually be available in Jira; most updates are available within a short period of time, but may take some time during peak load and\/or maintenance times. The getFeatureFlagById operation can be used to confi",
+                "operationId": "SubmitFeatureFlags",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/featureflags\/0.1\/bulkByProperties": {
+            "delete": {
+                "summary": "Delete Feature Flags by Property",
+                "description": "Bulk delete all Feature Flags that match the given request. In addition to the optional `updateSequenceId`, one or more query params must be supplied to specify Properties to delete by. If more than one Property is provided, data will be deleted that matches ALL of the Properties (e.g. treated as an AND). See the documentation for the submitFeatureFlags operation for more details. e.g. DELETE \/bulkByProperties?accountId=account-123&createdBy=user-456 Deletion is performed asynchronously. The get",
+                "operationId": "DeleteFeatureFlagsByProperty",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "_updateSequenceId",
+                        "in": "query",
+                        "description": "An optional property to use to control deletion. Only stored data with an updateSequenceId less than or equal to that provided will be deleted. This can be used to help ensure submit\/delete requests are applied correctly if they are issued close together."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/featureflags\/0.1\/flag\/{featureFlagId}": {
+            "get": {
+                "summary": "Get a Feature Flag by ID",
+                "description": "Retrieve the currently stored Feature Flag data for the given ID. The result will be what is currently stored, ignoring any pending updates or deletes. Only apps that define the Feature Flags module can access this resource. This resource requires the 'READ' scope.",
+                "operationId": "GetFeatureFlagById",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "featureFlagId",
+                        "in": "path",
+                        "description": "The ID of the Feature Flag to fetch."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a Feature Flag by ID",
+                "description": "Delete the Feature Flag data currently stored for the given ID. Deletion is performed asynchronously. The getFeatureFlagById operation can be used to confirm that data has been deleted successfully (if needed). Only apps that define the Feature Flags module can access this resource. This resource requires the 'DELETE' scope.",
+                "operationId": "DeleteFeatureFlagById",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "featureFlagId",
+                        "in": "path",
+                        "description": "The ID of the Feature Flag to fetch."
+                    },
+                    {
+                        "name": "_updateSequenceId",
+                        "in": "query",
+                        "description": "An optional property to use to control deletion. Only stored data with an updateSequenceId less than or equal to that provided will be deleted. This can be used to help ensure submit\/delete requests are applied correctly if they are issued close together."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/deployments\/0.1\/bulk": {
+            "post": {
+                "summary": "Submit deployment data",
+                "description": "Update \/ insert deployment data. Deployments are identified by the combination of `pipelineId`, `environmentId` and `deploymentSequenceNumber`, and existing deployment data for the same deployment will be replaced if it exists and the `updateSequenceNumber` of existing data is less than the incoming data. Submissions are processed asynchronously. Submitted data will eventually be available in Jira. Most updates are available within a short period of time, but may take some time during peak load ",
+                "operationId": "SubmitDeployments",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/deployments\/0.1\/bulkByProperties": {
+            "delete": {
+                "summary": "Delete deployments by Property",
+                "description": "Bulk delete all deployments that match the given request. In addition to the optional `_updateSequenceNumber`, one or more query params must be supplied to specify the Properties to delete by. If more than one Property is provided, data will be deleted that matches ALL of the Properties (i.e. treated as AND). See the documentation for the `submitDeployments` operation for more details. Example operation: DELETE \/bulkByProperties?accountId=account-123&createdBy=user-456 Deletion is performed asyn",
+                "operationId": "DeleteDeploymentsByProperty",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "_updateSequenceNumber",
+                        "in": "query",
+                        "description": "An optional `updateSequenceNumber` to use to control deletion. Only stored data with an `updateSequenceNumber` less than or equal to that provided will be deleted. This can be used help ensure submit\/delete requests are applied correctly if issued close together. If not provided, all stored data that matches the request will be deleted."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/deployments\/0.1\/pipelines\/{pipelineId}\/environments\/{environmentId}\/deployments\/{deploymentSequenceNumber}": {
+            "get": {
+                "summary": "Get a deployment by key",
+                "description": "Retrieve the currently stored deployment data for the given `pipelineId`, `environmentId` and `deploymentSequenceNumber` combination. The result will be what is currently stored, ignoring any pending updates or deletes. Only Connect apps that define the `jiraDeploymentInfoProvider` module, and on-premise integrations, can access this resource. This resource requires the 'READ' scope for Connect apps.",
+                "operationId": "GetDeploymentByKey",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "pipelineId",
+                        "in": "path",
+                        "description": "The ID of the deployment's pipeline."
+                    },
+                    {
+                        "name": "environmentId",
+                        "in": "path",
+                        "description": "The ID of the deployment's environment."
+                    },
+                    {
+                        "name": "deploymentSequenceNumber",
+                        "in": "path",
+                        "description": "The deployment's deploymentSequenceNumber."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a deployment by key",
+                "description": "Delete the currently stored deployment data for the given `pipelineId`, `environmentId` and `deploymentSequenceNumber` combination. Deletion is performed asynchronously. The `getDeploymentByKey` operation can be used to confirm that data has been deleted successfully (if needed). Only Connect apps that define the `jiraDeploymentInfoProvider` module, and on-premise integrations, can access this resource. This resource requires the 'DELETE' scope for Connect apps.",
+                "operationId": "DeleteDeploymentByKey",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "pipelineId",
+                        "in": "path",
+                        "description": "The ID of the deployment's pipeline."
+                    },
+                    {
+                        "name": "environmentId",
+                        "in": "path",
+                        "description": "The ID of the deployment's environment."
+                    },
+                    {
+                        "name": "deploymentSequenceNumber",
+                        "in": "path",
+                        "description": "The deployment's deploymentSequenceNumber."
+                    },
+                    {
+                        "name": "_updateSequenceNumber",
+                        "in": "query",
+                        "description": "An optional `updateSequenceNumber` to use to control deletion. Only stored data with an `updateSequenceNumber` less than or equal to that provided will be deleted. This can be used help ensure submit\/delete requests are applied correctly if issued close together. If not provided, all stored data that matches the request will be deleted."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/builds\/0.1\/bulk": {
+            "post": {
+                "summary": "Submit build data",
+                "description": "Update \/ insert builds data. Builds are identified by the combination of `pipelineId` and `buildNumber`, and existing build data for the same build will be replaced if it exists and the `updateSequenceNumber` of the existing data is less than the incoming data. Submissions are performed asynchronously. Submitted data will eventually be available in Jira; most updates are available within a short period of time, but may take some time during peak load and\/or maintenance times. The `getBuildByKey`",
+                "operationId": "SubmitBuilds",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/builds\/0.1\/bulkByProperties": {
+            "delete": {
+                "summary": "Delete builds by Property",
+                "description": "Bulk delete all builds data that match the given request. In addition to the optional `_updateSequenceNumber`, one or more query params must be supplied to specify Properties to delete by. If more than one Property is provided, data will be deleted that matches ALL of the Properties (e.g. treated as an AND). See the documentation for the `submitBuilds` operation for more details. e.g. DELETE \/bulkByProperties?accountId=account-123&repoId=repo-345 Deletion is performed asynchronously. The `getBui",
+                "operationId": "DeleteBuildsByProperty",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "_updateSequenceNumber",
+                        "in": "query",
+                        "description": "An optional `updateSequenceNumber` to use to control deletion. Only stored data with an `updateSequenceNumber` less than or equal to that provided will be deleted. This can be used help ensure submit\/delete requests are applied correctly if issued close together. If not provided, all stored data that matches the request will be deleted."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/rest\/builds\/0.1\/pipelines\/{pipelineId}\/builds\/{buildNumber}": {
+            "get": {
+                "summary": "Get a build by key",
+                "description": "Retrieve the currently stored build data for the given `pipelineId` and `buildNumber` combination. The result will be what is currently stored, ignoring any pending updates or deletes. Only Connect apps that define the `jiraBuildInfoProvider` module, and on-premise integrations, can access this resource. This resource requires the 'WRITE' scope for Connect apps.",
+                "operationId": "GetBuildByKey",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "pipelineId",
+                        "in": "path",
+                        "description": "The ID of the deployment's pipeline."
+                    },
+                    {
+                        "name": "buildNumber",
+                        "in": "path",
+                        "description": "The `buildNumber` of the build."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the requested boards, at the specified page of the results."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a build by key",
+                "description": "Delete the build data currently stored for the given `pipelineId` and `buildNumber` combination. Deletion is performed asynchronously. The `getBuildByKey` operation can be used to confirm that data has been deleted successfully (if needed). Only Connect apps that define the `jiraBuildInfoProvider` module, and on-premise integrations, can access this resource. This resource requires the 'WRITE' scope for Connect apps.",
+                "operationId": "DeleteBuildByKey",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "pipelineId",
+                        "in": "path",
+                        "description": "The ID of the deployment's pipeline."
+                    },
+                    {
+                        "name": "buildNumber",
+                        "in": "path",
+                        "description": "The `buildNumber` of the build."
+                    },
+                    {
+                        "name": "_updateSequenceNumber",
+                        "in": "query",
+                        "description": "An optional `updateSequenceNumber` to use to control deletion. Only stored data with an `updateSequenceNumber` less than or equal to that provided will be deleted. This can be used help ensure submit\/delete requests are applied correctly if issued close together. If not provided, all stored data that matches the request will be deleted."
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Submission accepted. Each submitted repository and entity that is of a valid format will be eventually available in Jira."
+                    }
+                }
+            },
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "com.atlassian.greenhopper.api.rest.BacklogResource.moveIssuesToBacklogForBoard_postIssuerankrequestbean": {
+                "type": "object",
+                "properties": {
+                    "issues": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "rankBeforeIssue": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "rankAfterIssue": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "rankCustomFieldId": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "issues": {
+                "type": "array"
+            },
+            "com.atlassian.greenhopper.api.rest.BacklogResource.moveIssuesToBacklog_postIssueassignrequestbean": {
+                "type": "object",
+                "properties": {
+                    "issues": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "com.atlassian.greenhopper.api.rest.SprintResource.partiallyUpdateSprint_postSprintbean": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "self": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "startDate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "endDate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "completeDate": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "originBoardId": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "goal": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,2508 @@
+{
+    "id": "265925fedfcd0fc65d98c48d06bb6678",
+    "name": "Service Desk Public REST API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "f72a98ed000b363ad61ca2210eac2a88",
+            "name": "Create customer",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/customer",
+            "description": "This method adds a customer to the Jira Service Desk instance by passing a JSON file including an email address and display name. The display name does not need to be unique. The record's identifiers, `name` and `key`, are automatically generated from the request details.\n\n**[Permissions](#permissions) required**: Jira Administrator Global permission",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "a2c6c9a5437214288fa59c56da893b2f",
+            "name": "Get info",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/info",
+            "description": "This method retrieves information about the Jira Service Desk instance such as software version, builds, and related links.\n\n**[Permissions](#permissions) required**: None, the user does not need to be logged in.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "8a2bc0cf7b03032e9b1ba863f31367b8",
+            "name": "Get articles",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/knowledgebase\/article",
+            "description": "Returns articles which match the given query string across all service desks.\n\n**[Permissions](#permissions) required**: Permission to access the [customer portal](https:\/\/confluence.atlassian.com\/servicedeskcloud\/configuring-the-customer-portal-732528918.html).",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "query",
+                    "description": "The string used to filter the articles (required).",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "highlight",
+                    "description": "If set to true matching query term in the title and excerpt will be highlighted using the \\{@code @@@hl@@@term@@@endhl@@@\\} syntax. Default: false.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "f9a8a6d52117a2b2637ded88adbc8678",
+            "name": "Get organizations",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization",
+            "description": "This method returns a list of organizations in the Jira Service Desk instance. Use this method when you want to present a list of organizations or want to locate an organization by name.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: If the user is a customer, only those organizations of which the customer is a member are listed.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "ac3ed9d90d38abd4775d072ae2101b4a",
+            "name": "Create organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization",
+            "description": "This method creates an organization by passing the name of the organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to create organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "7d4ea3734fb56c58c415da4e18a169bd",
+            "name": "Get organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}",
+            "description": "This method returns details of an organization. Use this method to get organization details whenever your application component is passed an organization ID but needs to display other organization details.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: Customers can only retrieve organization of which they are members.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "5fdd2e6a818b92c41d4a448515f8d96a",
+            "name": "Delete organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}",
+            "description": "This method deletes an organization. Note that the organization is deleted regardless of other associations it may have. For example, associations with service desks.\n\n**[Permissions](#permissions) required**: Jira administrator.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "bf2fed6a08d65724e0da6c442c732dab",
+            "name": "Get properties keys",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/property",
+            "description": "Returns the keys of all properties for an organization. Use this resource when you need to find out what additional properties items have been added to an organization.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: Customers can only access properties of organizations of which they are members.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "73f75f725871fd96243ff3ea7d07800d",
+            "name": "Get property",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/property\/{propertyKey}",
+            "description": "Returns the value of a property from an organization. Use this method to obtain the JSON content for an organization's property.\n\n**[Permissions](#permissions) required**: Any\n\n**Response limitations**: Customers can only access properties of organizations of which they are members.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "propertyKey",
+                    "description": "The key of the property to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "cc44a6332c29c28d15f944c535a6afb9",
+            "name": "Set property",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/property\/{propertyKey}",
+            "description": "Sets the value of a property for an organization. Use this resource to store custom data against an organization.\n\n**[Permissions](#permissions) required**: Service Desk Administrator or Agent.\n\nNote: Permission to manage organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "propertyKey",
+                    "description": "The key of the property to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "dc3b55a02c0c608be90eaa589eff6ef2",
+            "name": "Delete property",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/property\/{propertyKey}",
+            "description": "Removes a property from an organization.\n\n**[Permissions](#permissions) required**: Service Desk Administrator or Agent.\n\nNote: Permission to manage organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "propertyKey",
+                    "description": "The key of the property to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "7afdb2a26d9a4498db81d4dd7cb7caf8",
+            "name": "Get users in organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/user",
+            "description": "This method returns all the users associated with an organization. Use this method where you want to provide a list of users for an organization or determine if a user is associated with an organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "1edd3d73886172612cac2f51573f6b0d",
+            "name": "Add users to organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/user",
+            "description": "This method adds users to an organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to add users to an organization can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "366b14916eae27f366cb7a5dcae27d49",
+            "name": "Remove users from organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/organization\/{organizationId}\/user",
+            "description": "This method removes users from an organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to delete users from an organization can be switched to users with the Jira administrator permission, using the **[Organization management](https:\/\/confluence.atlassian.com\/servicedeskcloud\/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "organizationId",
+                    "description": "The ID of the organization.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "6685c463ea569cb486f1efd4d36e45ae",
+            "name": "Get customer requests",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request",
+            "description": "This method returns all customer requests for the user executing the query.\n\nThe returned customer requests are ordered chronologically by the latest activity on each request. For example, the latest status transition or comment.\n\n**[Permissions](#permissions) required**: Permission to access the specified service desk.\n\n**Response limitations**: For customers, the list returned will include request they created (or were created on their behalf) or are participating in only.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "searchTerm",
+                    "description": "Filters customer requests where the request summary matches the `searchTerm`. [Wildcards](https:\/\/confluence.atlassian.com\/display\/JIRACORECLOUD\/Search+syntax+for+text+fields) can be used in the `searchTerm` parameter.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestOwnership",
+                    "description": "Filters customer requests using the following values:\n\n *  `OWNED_REQUESTS` returns customer requests where the user is the creator.\n *  `PARTICIPATED_REQUESTS` returns customer requests where the user is a participant.\n *  `ORGANIZATION` returns customer requests for an organization of which the user is a member when used in conjunction with `organizationId`.\n *  `ALL_ORGANIZATIONS` returns customer requests that belong to all organizations of which the user is a member.\n *  `APPROVER` returns ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestStatus",
+                    "description": "Filters customer requests where the request is closed, open, or either of the two where:\n\n *  `CLOSED_REQUESTS` returns customer requests that are closed.\n *  `OPEN_REQUESTS` returns customer requests that are open.\n *  `ALL_REQUESTS` returns all customer requests.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "approvalStatus",
+                    "description": "Filters results to customer requests based on their approval status:\n\n *  `MY_PENDING_APPROVAL` returns customer requests pending the user's approval.\n *  `MY_HISTORY_APPROVAL` returns customer requests where the user was an approver.\n\n**Note**: Valid only when used with requestOwnership=APPROVER.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "organizationId",
+                    "description": "Filters customer requests that belong to a specific organization (note that the user must be a member of that organization). **Note**: Valid only when used with requestOwnership=ORGANIZATION.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "serviceDeskId",
+                    "description": "Filters customer requests by service desk.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestTypeId",
+                    "description": "Filters customer requests by request type. Note that the `serviceDeskId` must be specified for the service desk in which the request type belongs.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "df5263e1a945239561998933329af851",
+            "name": "Create customer request",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request",
+            "description": "This method creates a customer request in a service desk.\n\nThe JSON request must include the service desk and customer request type, as well as any fields that are required for the request type. A list of the fields required by a customer request type can be obtained using [servicedesk\/\\{serviceDeskId\\}\/requesttype\/\\{requestTypeId\\}\/field](#api-servicedesk-serviceDeskId-requesttype-requestTypeId-field-get).\n\nThe fields required for a customer request type depend on the user's permissions:\n\n *  `",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "550f0303397438006a8173b0d4ed6798",
+            "name": "Get customer request by id or key",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}",
+            "description": "This method returns a customer request.\n\n**[Permissions](#permissions) required**: Permission to access the specified service desk.\n\n**Response limitations**: For customers, only a request they created, was created on their behalf, or they are participating in will be returned.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "449d842d20b6d91ee5f5853cd1e37833",
+            "name": "Get approvals",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/approval",
+            "description": "This method returns all approvals on a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "6d8b6e5f36665c682c7d32dc838e9d4d",
+            "name": "Get approval by id",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/approval\/{approvalId}",
+            "description": "This method returns an approval. Use this method to determine the status of an approval and the list of approvers.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "approvalId",
+                    "description": "The ID of the approval to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "07ae3f29b564d866e8f9bb736cab83cb",
+            "name": "Answer approval",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/approval\/{approvalId}",
+            "description": "This method enables a user to **Approve** or **Decline** an approval on a customer request. The approval is assumed to be owned by the user making the call.\n\n**[Permissions](#permissions) required**: User is assigned to the approval request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "approvalId",
+                    "description": "The ID of the approval to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "42205fa5a37f05d665a91208743c498a",
+            "name": "Get attachments for request",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/attachment",
+            "description": "This method returns all the attachments for a customer requests.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers will only get a list of public attachments.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "ab0514ac8a712850f36fbff5d4d4a17b",
+            "name": "Create attachment",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/attachment",
+            "description": "This method adds one or more temporary files (attached to the request's service desk using [servicedesk\/\\{serviceDeskId\\}\/attachTemporaryFile](#api-servicedesk-serviceDeskId-attachTemporaryFile-post)) as attachments to a customer request and set the attachment visibility using the `public` flag. Also, it is possible to include a comment with the attachments.\n\nTo get a list of attachments for a comment on the request use [servicedeskapi\/request\/\\{issueIdOrKey\\}\/comment\/\\{commentId\\}\/attachment](#",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "1d34bcdafee748ff35e848f56cf48377",
+            "name": "Get request comments",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment",
+            "description": "This method returns all comments on a customer request. No permissions error is provided if, for example, the user doesn't have access to the service desk or request, the method simply returns an empty response.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers are returned public comments only.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "public",
+                    "description": "Specifies whether to return public comments or not. Default: true.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "internal",
+                    "description": "Specifies whether to return internal comments or not. Default: true.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "6cf7960dd542d96b756de828903798d7",
+            "name": "Create request comment",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment",
+            "description": "This method creates a public or private (internal) comment on a customer request, with the comment visibility set by `public`. The user recorded as the author of the comment.\n\n**[Permissions](#permissions) required**: User has Add Comments permission.\n\n**Request limitations**: Customers can set comments to public visibility only.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "2a6b3a45b43a961cc809a03dd3c6d29f",
+            "name": "Get request comment by id",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment\/{commentId}",
+            "description": "This method returns details of a customer request's comment.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers can only view public comments on requests where they are the reporter or a participant whereas agents can see both internal and public comments.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "commentId",
+                    "description": "The ID of the comment to retrieve.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "5c0adddb57c3e34ff535a36043d8efbc",
+            "name": "Get comment attachments",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/comment\/{commentId}\/attachment",
+            "description": "This method returns the attachments referenced in a comment.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.\n\n**Response limitations**: Customers can only view public comments, and retrieve their attachments, on requests where they are the reporter or a participant whereas agents can see both internal and public comments.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "commentId",
+                    "description": "The ID of the comment to retrieve.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "301c1e94573f7f751b67ec3c175412dd",
+            "name": "Get subscription status",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/notification",
+            "description": "This method returns the notification subscription status of the user making the request. Use this method to determine if the user is subscribed to a customer request's notifications.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "b9d0b67080fbd00c74b74eb6334c3760",
+            "name": "Subscribe",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/notification",
+            "description": "This method subscribes the user to receiving notifications from a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "572898b2dcf1b9621f9105fe8ad825e3",
+            "name": "Unsubscribe",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/notification",
+            "description": "This method unsubscribes the user from notifications from a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "a0f07b73d4aaf11cd8997b757d2efe64",
+            "name": "Get request participants",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/participant",
+            "description": "This method returns a list of all the participants on a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "aa986b45bb8b5d2c0dced7af1e0d4b37",
+            "name": "Add request participants",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/participant",
+            "description": "This method adds participants to a customer request.\n\n**[Permissions](#permissions) required**: Permission to manage participants on the customer request.\n\nNote, participants can be added when creating a customer request using the [request](#api-request-post) resource, by defining the participants in the `requestParticipants` field.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "5322887cc407e7501a68cf7a582985f9",
+            "name": "Remove request participants",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/participant",
+            "description": "This method removes participants from a customer request.\n\n**[Permissions](#permissions) required**: Permission to manage participants on the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "3449a6ec9db28b3a27a4a2d230e8f4a6",
+            "name": "Get sla information",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/sla",
+            "description": "This method returns all the SLA records on a customer request. A customer request can have zero or more SLAs. Each SLA can have recordings for zero or more \"completed cycles\" and zero or 1 \"ongoing cycle\". Each cycle includes information on when it started and stopped, and whether it breached the SLA goal.\n\n**[Permissions](#permissions) required**: Agent for the Service Desk containing the queried customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "7e9699739f0c5539fe7fa253d58912a7",
+            "name": "Get sla information by id",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/sla\/{slaMetricId}",
+            "description": "This method returns the details for an SLA on a customer request.\n\n**[Permissions](#permissions) required**: Agent for the Service Desk containing the queried customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "slaMetricId",
+                    "description": "The ID or key of the SLAs metric to be retrieved.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "fed9b375faad5efbe5bfd5cae7ba1f75",
+            "name": "Get customer request status",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/status",
+            "description": "This method returns a list of all the statuses a customer Request has achieved. A status represents the state of an issue in its workflow. An issue can have one active status only. The list returns the status history in chronological order, most recent (current) status first.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "d9ed52661ebd9b7120e22f25d0083cd9",
+            "name": "Get customer transitions",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/transition",
+            "description": "This method returns a list of transitions, the workflow processes that moves a customer request from one status to another, that the user can perform on a request. Use this method to provide a user with a list if the actions they can take on a customer request.\n\n**[Permissions](#permissions) required**: Permission to view the customer request.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "0d6c7db130cdc2d526799b5e60bb6f9e",
+            "name": "Perform customer transition",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{issueIdOrKey}\/transition",
+            "description": "This method performs a customer transition for a given request and transition. An optional comment can be included to provide a reason for the transition.\n\n**[Permissions](#permissions) required**: The user must be able to view the request and have the Transition Issues permission. If a comment is passed the user must have the Add Comments permission.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "issueIdOrKey",
+                    "description": "The ID or Key of the customer request to be returned",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "d9b39f79bdbee50f7a7f1c0734700b4e",
+            "name": "Get feedback",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{requestIdOrKey}\/feedback",
+            "description": "This method retrieves a feedback of a request using it's `requestKey` or `requestId`\n\n**[Permissions](#permissions) required**: User has view request permissions.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "requestIdOrKey",
+                    "description": "The id or the key of the request to post the feedback on",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "119d8b779f553d98804ae3ff959c1c4d",
+            "name": "Post feedback",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{requestIdOrKey}\/feedback",
+            "description": "This method adds a feedback on an request using it's `requestKey` or `requestId`\n\n**[Permissions](#permissions) required**: User must be the reporter or an Atlassian Connect app.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "requestIdOrKey",
+                    "description": "The id or the key of the request to post the feedback on",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "52d8bf563bba74761ec2bdbc83394846",
+            "name": "Delete feedback",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/request\/{requestIdOrKey}\/feedback",
+            "description": "This method deletes the feedback of request using it's `requestKey` or `requestId`\n\n**[Permissions](#permissions) required**: User must be the reporter or an Atlassian Connect app.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "requestIdOrKey",
+                    "description": "The id or the key of the request to post the feedback on",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "b8099c67b0604cc12d036d353933683b",
+            "name": "Get all request types",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/requesttype",
+            "description": "This method returns all customer request types used in the Jira Service Desk instance, optionally filtered by a query string.\n\nUse [servicedeskapi\/servicedesk\/\\{serviceDeskId\\}\/requesttype](#api-servicedesk-serviceDeskId-requesttype-get) to find the customer request types supported by a specific service desk.\n\nThe returned list of customer request types can be filtered using the `query` parameter. The parameter is matched against the customer request types' `name` or `description`. For example, ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "searchQuery",
+                    "description": "String to be used to filter the results.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "df9714a33a9f2bd22605957086828065",
+            "name": "Get service desks",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk",
+            "description": "This method returns all the service desks in the Jira Service Desk instance that the user has permission to access. Use this method where you need a list of service desks or need to locate a service desk by name or keyword.\n\n**[Permissions](#permissions) required**: Any",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "d5f97c2ec6eb25f25e90351434005b02",
+            "name": "Get service desk by id",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}",
+            "description": "This method returns a service desk. Use this method to get service desk details whenever your application component is passed a service desk ID but needs to display other service desk details.\n\n**[Permissions](#permissions) required**: Permission to access the Service Desk. For example, being the Service Desk's Administrator or one of its Agents or Users.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "6fbca49738aada130542260a5edbad9c",
+            "name": "Attach temporary file",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/attachTemporaryFile",
+            "description": "This method adds one or more temporary attachments to a service desk, which can then be permanently attached to a customer request using [servicedeskapi\/request\/\\{issueIdOrKey\\}\/attachment](#api-request-issueIdOrKey-attachment-post).\n\n**Note**: It is possible for a service desk administrator to turn off the ability to add attachments to a service desk.\n\nThis method expects a multipart request. The media-type multipart\/form-data is defined in RFC 1867. Most client libraries have classes that make",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "955d01f6e34b017c927780072c3011a2",
+            "name": "Get customers",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/customer",
+            "description": "This method returns a list of the customers on a service desk.\n\nThe returned list of customers can be filtered using the `query` parameter. The parameter is matched against customers' `displayName`, `name`, or `email`. For example, searching for \"John\", \"Jo\", \"Smi\", or \"Smith\" will match a user with display name \"John Smith\".\n\n**[Permissions](#permissions) required**: Permission to view this Service Desk's customers.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "query",
+                    "description": "The string used to filter the articles (required).",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "b65aa752f665e015362321713ac20fcd",
+            "name": "Add customers",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/customer",
+            "description": "Adds one or more customers to a service desk. If any of the passed customers are associated with the service desk, no changes will be made for those customers and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Service desk administrator",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "df72d5859bd0a6e277d80bf5f6619efa",
+            "name": "Remove customers",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/customer",
+            "description": "This method removes one or more customers from a service desk. The service desk must have closed access. If any of the passed customers are not associated with the service desk, no changes will be made for those customers and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Services desk administrator",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "756c438fa428cb0691c091d8e38c4171",
+            "name": "Get articles",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/knowledgebase\/article",
+            "description": "Returns articles which match the given query and belong to the knowledge base linked to the service desk.\n\n**[Permissions](#permissions) required**: Permission to access the service desk.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "query",
+                    "description": "The string used to filter the articles (required).",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "highlight",
+                    "description": "If set to true matching query term in the title and excerpt will be highlighted using the \\{@code @@@hl@@@term@@@endhl@@@\\} syntax. Default: false.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "b7f621cf0d4af398e26fd4fb4186f963",
+            "name": "Get organizations",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/organization",
+            "description": "This method returns a list of all organizations associated with a service desk.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "21886b3f26df498cff9e17288e236d9a",
+            "name": "Add organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/organization",
+            "description": "This method adds an organization to a service desk. If the organization ID is already associated with the service desk, no change is made and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "fe8bb96afd404b3149f06a47b3b8ad49",
+            "name": "Remove organization",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/organization",
+            "description": "This method removes an organization from a service desk. If the organization ID does not match an organization associated with the service desk, no change is made and the resource returns a 204 success code.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "30d97cf99e6a0d68c764ed1c9651c7f2",
+            "name": "Get queues",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/queue",
+            "description": "This method returns the queues in a service desk. To include a customer request count for each queue (in the `issueCount` field) in the response, set the query parameter `includeCount` to true (its default is false).\n\n**[Permissions](#permissions) required**: service desk's Agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "includeCount",
+                    "description": "Specifies whether to include each queue's customer request (issue) count in the response.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "db0aa201685bf3be9ed1bdc495f78bd4",
+            "name": "Get queue",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/queue\/{queueId}",
+            "description": "This method returns a specific queues in a service desk. To include a customer request count for the queue (in the `issueCount` field) in the response, set the query parameter `includeCount` to true (its default is false).\n\n**[Permissions](#permissions) required**: service desk's Agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "queueId",
+                    "description": "ID of the required queue.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "includeCount",
+                    "description": "Specifies whether to include each queue's customer request (issue) count in the response.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "3a4fa4e1de3015c9039f16b49dab713c",
+            "name": "Get issues in queue",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/queue\/{queueId}\/issue",
+            "description": "This method returns the customer requests in a queue. Only fields that the queue is configured to show are returned. For example, if a queue is configured to show description and due date, then only those two fields are returned for each customer request in the queue.\n\n**[Permissions](#permissions) required**: Service desk's agent.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "queueId",
+                    "description": "ID of the required queue.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "55bea5724c792e575552351309cefc99",
+            "name": "Get request types",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype",
+            "description": "This method returns all customer request types from a service desk. There are two parameters for filtering the returned list:\n\n *  `groupId` which filters the results to items in the customer request type group.\n *  `searchQuery` which is matched against request types' `name` or `description`. For example, the strings \"Install\", \"Inst\", \"Equi\", or \"Equipment\" will match a request type with the *name* \"Equipment Installation Request\".\n\n**[Permissions](#permissions) required**: Permission to acces",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "Filters results to those in a customer request type group.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "searchQuery",
+                    "description": "String to be used to filter the results.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "9bc2c4f4453bc87e2849a664e21b8f91",
+            "name": "Create request type",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype",
+            "description": "This method enables a customer request type to be added to a service desk based on an issue type. Note that not all customer request type fields can be specified in the request and these fields are given the following default values:\n\n *  Request type icon is given the question mark icon.\n *  Request type groups is left empty, which means this customer request type will not be visible on the [customer portal](https:\/\/confluence.atlassian.com\/servicedeskcloud\/configuring-the-customer-portal-73252",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "a07feaed868a33c6152d14f56e543d1c",
+            "name": "Get request type by id",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}",
+            "description": "This method returns a customer request type from a service desk.\n\n**[Permissions](#permissions) required**: Permission to access the service desk.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestTypeId",
+                    "description": "The ID of the customer request type to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expand",
+                    "description": "A multi-value parameter indicating which properties of the customer request to expand, where:\n\n *  `serviceDesk` returns additional details for each service desk.\n *  `requestType` returns additional details for each request type.\n *  `participant` returns the participant details, if any, for each customer request.\n *  `sla` returns the SLA information on each customer request.\n *  `status` returns the status transitions, in chronological order, for each customer request.\n *  `attachment` return",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "ae981c373229f6fed4393032e49c0dd5",
+            "name": "Get request type fields",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/field",
+            "description": "This method returns the fields for a service desk's customer request type.\n\nAlso, the following information about the user's permissions for the request type is returned:\n\n *  `canRaiseOnBehalfOf` returns `true` if the user has permission to raise customer requests on behalf of other customers. Otherwise, returns `false`.\n *  `canAddRequestParticipants` returns `true` if the user can add customer request participants. Otherwise, returns `false`.\n\n**[Permissions](#permissions) required**: Permiss",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestTypeId",
+                    "description": "The ID of the customer request type to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "06f218709ff818c4541dca20bf07a4da",
+            "name": "Get properties keys",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/property",
+            "description": "Returns the keys of all properties for a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore the keys of all properties for a request type are also available by calling the Jira Cloud Platform [Get issue type property keys](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-get) endpoint.\n\n**[Permissions](#permissions) required**: The user must have permission to view the request type",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "requestTypeId",
+                    "description": "The ID of the customer request type to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "588cf5c223bbbc7bdec8e336c6669448",
+            "name": "Get property",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/property\/{propertyKey}",
+            "description": "Returns the value of the property from a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore also available by calling the Jira Cloud Platform [Get issue type property](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-get) endpoint.\n\n**[Permissions](#permissions) required**: User must have permission to view the request type.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestTypeId",
+                    "description": "The ID of the customer request type to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "propertyKey",
+                    "description": "The key of the property to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "ac92c0d72176a225f614755698934020",
+            "name": "Set property",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/property\/{propertyKey}",
+            "description": "Sets the value of a request type property. Use this resource to store custom data against a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore can also be set by calling the Jira Cloud Platform [Set issue type property](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-put) endpoint.\n\n**[Permissions](#permissions) required**: Jira project administrator with a Jira Servic",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestTypeId",
+                    "description": "The ID of the customer request type to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "propertyKey",
+                    "description": "The key of the property to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "0d7104dcd134f0519ff4ae3ca82067f2",
+            "name": "Delete property",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttype\/{requestTypeId}\/property\/{propertyKey}",
+            "description": "Removes a property from a request type.\n\nProperties for a Request Type in next-gen are stored as Issue Type properties and therefore can also be deleted by calling the Jira Cloud Platform [Delete issue type property](https:\/\/developer.atlassian.com\/cloud\/jira\/platform\/rest\/v3\/#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-delete) endpoint.\n\n**[Permissions](#permissions) required**: Jira project administrator with a Jira Service Desk agent license.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "requestTypeId",
+                    "description": "The ID of the customer request type to be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "propertyKey",
+                    "description": "The key of the property to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        },
+        {
+            "id": "65fdb8658b0f864abdfe557ef85905a6",
+            "name": "Get request type groups",
+            "url": "https:\/\/atlassian.com\/rest\/servicedeskapi\/servicedesk\/{serviceDeskId}\/requesttypegroup",
+            "description": "This method returns a service desk's customer request type groups. Jira Service Desk administrators can arrange the customer request type groups in an arbitrary order for display on the customer portal; the groups are returned in this order.\n\n**[Permissions](#permissions) required**: Permission to view the service desk.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceDeskId",
+                    "description": "The ID of the service desk to return. This can alternatively be a [project identifier.](#project-identifiers)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start",
+                    "description": "The starting index of the returned objects. Base index: 0. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "The maximum number of items to return per page. Default: 100. See the [Pagination](#pagination) section for more details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "265925fedfcd0fc65d98c48d06bb6678",
+            "rawModeData": ""
+        }
+    ]
+}
